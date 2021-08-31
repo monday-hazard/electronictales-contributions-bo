@@ -23,3 +23,19 @@ In a terminal in the current project, run :
 `npm run server`
 
 You're good if it says that the mangoose got the couleuvre. Otherwise, check if your Internect connection uses a proxy, or if you made an error in your `default.json`
+
+## How to run the project
+
+In a terminal in the current project...
+
+. to run the client and the server concurrently, run :
+
+`npm run dev`
+
+. to run the server only, run:
+
+`npm run server`
+
+. to run the client only, run:
+
+`npm run client`
