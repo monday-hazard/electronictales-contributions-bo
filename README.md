@@ -22,4 +22,4 @@ In a terminal in the current project, run :
 
 `npm run server`
 
-You're good if it says that the mangoose got the couleuvre. Otherwise, check if your Internect connection uses a proxy, or if you made an error in your `default.json``
+You're good if it says that the mangoose got the couleuvre. Otherwise, check if your Internect connection uses a proxy, or if you made an error in your `default.json`
