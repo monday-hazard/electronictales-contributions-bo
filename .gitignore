@@ -1,8 +1,0 @@
-# dependencies
-node_modules/
-
-# misc
-.history/
-
-# our secrets
-config/default.json
