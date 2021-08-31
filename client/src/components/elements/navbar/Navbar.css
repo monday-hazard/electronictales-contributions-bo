@@ -19,6 +19,19 @@ nav {
    width: 120%;
 }
 
+.nav-links {
+   display: flex;
+   /* width: 80%;
+   margin: 0 auto; */
+   justify-content: center;
+}
+
+nav-links a {
+   margin-right: 5%;
+   text-transform: uppercase;
+   font-weight: bold;
+}
+
 /* ==== Mobile Version ==== */
 
 @media only screen and (max-width: 768px) {
