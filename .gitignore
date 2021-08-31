@@ -1,4 +1,8 @@
+# dependencies
 node_modules/
 
-#our secrets
+# misc
+.history/
+
+# our secrets
 config/default.json
