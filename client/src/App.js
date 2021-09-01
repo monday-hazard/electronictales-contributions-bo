@@ -4,10 +4,11 @@ import Navbar from './components/elements/navbar/Navbar';
 import Landing from './components/layout/landing/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import Modal from './components/elements/modal/Modal'
 import './App.css';
 // Provider connects react and redux 
 import { Provider } from 'react-redux';
-import store from './redux/store'
+import store from './redux/store';
 
 const App = () =>
    <Provider store={store}>
@@ -16,6 +17,7 @@ const App = () =>
             <Navbar />
             <Route exact path="/" component={Landing} />
             <section className="container">
+               <Modal />
                <Switch>
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />

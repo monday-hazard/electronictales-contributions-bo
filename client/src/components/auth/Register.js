@@ -1,6 +1,10 @@
 import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
+import { setModal } from '../../redux/actions/modal';
+import PropTypes from 'prop-types'
 
-const Register = () => {
+
+const Register = ({ setModal }) => {
    const [formData, setFormData] = useState({
       username: '',
       email: '',
@@ -17,7 +21,8 @@ const Register = () => {
    const onSubmit = e => {
       e.preventDefault();
       if (password !== confirm_password) {
-         console.log("Your passwords don't match :/")
+         // console.log("Your passwords don't match 😱")
+         setModal('Your passwords don\'t match 😱', 'error')
       } else {
          console.log(formData);
       }
@@ -95,4 +100,8 @@ const Register = () => {
    );
 };
 
-export default Register;
+Register.propTypes = {
+   setModal: PropTypes.func.isRequired,
+}
+
+export default connect(null, { setModal })(Register);
