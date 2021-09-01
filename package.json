@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node server",
-    "server":"nodemon server",
+    "server": "nodemon server",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dep": "npm i && cd client && npm i && cd .."
   },
   "repository": {
     "type": "git",
