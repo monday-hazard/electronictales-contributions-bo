@@ -28,7 +28,8 @@ const UserSchema = new mongoose.Schema({
         default: Date.now
     },
     avatar: {
-        type: String
+        type: String,
+        default: 'avatar.jpg'
     }
 });
 
