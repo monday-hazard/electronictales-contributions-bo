@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
@@ -39,5 +40,77 @@ router.post('/',
         }
     }
 );
+
+
+
+// @route   GET api/topics
+// @desc    get all Topics
+// @access  Private
+// TODO add middleweare 'authentification'
+router.get('/', async (req, res)=>{
+    try{
+        const topics = await Topic.find().sort({ creationDate: -1 });
+        res.json(topics);
+    } catch (err){
+        console.error(err.message);
+            res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
+    }
+})
+
+
+// @route   GET api/topics/:id
+// @desc    get Topic by ID
+// @access  Private
+// TODO add middleweare 'authentification'
+router.get('/:id', async (req, res) => {
+    try {
+        const topic = await Topic.findById(req.params.id);
+
+        if (!topic) {
+            return res.status(404).json({ msg: "Topic not found !" });
+        }
+
+        res.json(topic);
+    } catch (err) {
+        console.error(err.message);
+
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({ msg: "Topic ID not valid" });
+        }
+        res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
+    }
+})
+
+// @route   DELETE api/topics/:id
+// @desc    delete Topic by ID
+// @access  Private
+// TODO add middleweare 'authentification'
+router.delete('/:id', async (req, res) => {
+    try {
+        const topic = await Topic.findById(req.params.id);
+
+        if (!topic) {
+            return res.status(404).json({ msg: "Topic not found !" });
+        }
+
+        // TODO check user
+        // ...
+
+        await topic.remove();
+
+        res.json({ msg: 'Topic removed' });
+    } catch (err) {
+        console.error(err.message);
+
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({ msg: "Topic ID not valid" });
+        }
+        res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
+    }
+})
+
+
+// TODO : add PUT method
+// TODO : testing fonctionalities delete and get by id
 
 module.exports = router;
