@@ -1,14 +1,22 @@
-import uuid from 'uuid/v4';
-import { SET_MODAL, REMOVE_MODAL } from "./types";
-
+import { OPEN_MODAL, CLOSE_MODAL, SET_MODAL_CONTENT } from './types';
 
 // Dispatch: comes from thunk middleware: allows us to dispatch more than one action type from setModa() function
-export const setModal = (msg, modalType) => dispatch => {
-   const id = uuid();
-   dispatch({
-      type: SET_MODAL,
-      payload: { msg, modalType, id }
-   });
 
-   // TODO: find a way to remove the modal with a dispatch when click on it 
+export const setModalContent = (content) => (dispatch) => {
+   dispatch({
+      type: SET_MODAL_CONTENT,
+      payload: content,
+   });
+};
+
+export const openModal = () => (dispatch) => {
+   dispatch({
+      type: OPEN_MODAL
+   });
+};
+
+export const closeModal = () => (dispatch) => {
+   dispatch({
+      type: CLOSE_MODAL
+   });
 };
