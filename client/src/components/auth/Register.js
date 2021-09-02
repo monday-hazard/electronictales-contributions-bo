@@ -4,9 +4,10 @@ import Modal from '../elements/modal/Modal';
 import { connect } from 'react-redux';
 import { openModal } from '../../redux/actions/modal';
 import { setAlert } from '../../redux/actions/alert';
+import { register } from '../../redux/actions/auth';
 import { REGISTER_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 
-const Register = ({ openModal, setAlert }) => {
+const Register = ({ openModal, setAlert, register }) => {
    const [formData, setFormData] = useState({
       username: '',
       email: '',
@@ -23,10 +24,9 @@ const Register = ({ openModal, setAlert }) => {
    const onSubmit = e => {
       e.preventDefault();
       if (password !== confirm_password) {
-         // console.log('Your passwords don\'t match 😱')
          setAlert('Your passwords don\'t match 😱', 'error')
       } else {
-         // TODO : learn how to do the asynchronous way and set the POST request logic
+         register( { username, slackname, email, password } );
          openModal();
       }
    }
@@ -43,7 +43,6 @@ const Register = ({ openModal, setAlert }) => {
                   placeholder='captainAnonymous'
                   value={username}
                   onChange={(e) => onChange(e)}
-                  required
                />
             </div>
             <div className='email'>
@@ -54,7 +53,6 @@ const Register = ({ openModal, setAlert }) => {
                   placeholder='email'
                   value={email}
                   onChange={(e) => onChange(e)}
-                  required
                />
             </div>
             <div className='slackname'>
@@ -75,7 +73,6 @@ const Register = ({ openModal, setAlert }) => {
                   placeholder='Moi1234'
                   value={password}
                   onChange={(e) => onChange(e)}
-                  required
                />
             </div>
             <div className='form-group'>
@@ -88,7 +85,6 @@ const Register = ({ openModal, setAlert }) => {
                   placeholder='Le même mot de passe (si, si)'
                   value={confirm_password}
                   onChange={(e) => onChange(e)}
-                  required
                />
             </div>
             <div className='form-footer'>
@@ -107,6 +103,7 @@ const Register = ({ openModal, setAlert }) => {
 Register.propTypes = {
    openModal: PropTypes.func.isRequired,
    setAlert: PropTypes.func.isRequired,
+   register: PropTypes.func.isRequired
 }
 
-export default connect(null, { openModal, setAlert })(Register);
+export default connect(null, { openModal, setAlert, register })(Register);
