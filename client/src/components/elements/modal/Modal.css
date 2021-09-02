@@ -1,0 +1,13 @@
+.modal {
+   padding: 5rem;
+   margin: 2rem;
+   border: solid 1px #666666;
+   position: fixed;
+   top: 25%;
+   background-color: #222222;
+   border-radius: 1rem;
+}
+
+.close {
+   cursor: pointer;
+}

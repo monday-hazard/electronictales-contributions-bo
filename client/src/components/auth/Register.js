@@ -1,6 +1,11 @@
 import React, { Fragment, useState } from 'react';
+import PropTypes from 'prop-types';
+import Modal from '../elements/modal/Modal';
+import { connect } from 'react-redux';
+import { openModal } from '../../redux/actions/modal';
+import { REGISTER_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 
-const Register = () => {
+const Register = ({ openModal }) => {
    const [formData, setFormData] = useState({
       username: '',
       email: '',
@@ -17,18 +22,19 @@ const Register = () => {
    const onSubmit = e => {
       e.preventDefault();
       if (password !== confirm_password) {
-         console.log("Your passwords don't match :/")
+         console.log('Your passwords don\'t match 😱')
       } else {
-         console.log(formData);
+         // TODO : learn how to do the asynchronous way and set the POST request logic
+         openModal();
       }
    }
 
    return (
       <Fragment>
-         <div className='form-header'>Login</div>
+         <div className='form-header'>Inscris-toi</div>
          <form className='form' onSubmit={e => onSubmit(e)} >
             <div className='form-group'>
-               <label htmlFor='username'>Ton nom préféré</label>
+               <label htmlFor='username'>Ton nom préféré (ce sera ton nom d'utilisateur&#xB7;ice)&nbsp;:</label>
                <input
                   type='text'
                   name='username'
@@ -39,7 +45,7 @@ const Register = () => {
                />
             </div>
             <div className='email'>
-               <label htmlFor='email'>Ton courriel</label>
+               <label htmlFor='email'>Ton courriel&nbsp;:</label>
                <input
                   type='email'
                   name='email'
@@ -50,7 +56,7 @@ const Register = () => {
                />
             </div>
             <div className='slackname'>
-               <label htmlFor='slackname'>Ton pseudo sur notre slack</label>
+               <label htmlFor='slackname'>Ton pseudo sur notre slack&nbsp;:</label>
                <input
                   type='text'
                   name='slackname'
@@ -60,11 +66,11 @@ const Register = () => {
                />
             </div>
             <div className='form-group'>
-               <label htmlFor='password'>Password</label>
+               <label htmlFor='password'>Un mot de passe complexe&nbsp;:</label>
                <input
                   type='password'
                   name='password'
-                  placeholder='password'
+                  placeholder='Moi1234'
                   value={password}
                   onChange={(e) => onChange(e)}
                   required
@@ -72,7 +78,7 @@ const Register = () => {
             </div>
             <div className='form-group'>
                <label htmlFor='confirm_password'>
-                  Confirme ton mot de passe, stp
+                  Sauras-tu confirmer ton mot de passe&nbsp;?
                </label>
                <input
                   type='password'
@@ -91,8 +97,13 @@ const Register = () => {
                />
             </div>
          </form>
+         <Modal content={REGISTER_MODAL_CONTENT} />
       </Fragment>
    );
 };
 
-export default Register;
+Register.propTypes = {
+   openModal: PropTypes.func.isRequired
+}
+
+export default connect(null, { openModal })(Register);
