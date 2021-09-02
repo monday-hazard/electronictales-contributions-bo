@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import Modal from '../elements/modal/Modal';
 import { connect } from 'react-redux';
 import { openModal } from '../../redux/actions/modal';
+import { setAlert } from '../../redux/actions/alert';
 import { REGISTER_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 
-const Register = ({ openModal }) => {
+const Register = ({ openModal, setAlert }) => {
    const [formData, setFormData] = useState({
       username: '',
       email: '',
@@ -22,7 +23,8 @@ const Register = ({ openModal }) => {
    const onSubmit = e => {
       e.preventDefault();
       if (password !== confirm_password) {
-         console.log('Your passwords don\'t match 😱')
+         // console.log('Your passwords don\'t match 😱')
+         setAlert('Your passwords don\'t match 😱', 'error')
       } else {
          // TODO : learn how to do the asynchronous way and set the POST request logic
          openModal();
@@ -103,7 +105,8 @@ const Register = ({ openModal }) => {
 };
 
 Register.propTypes = {
-   openModal: PropTypes.func.isRequired
+   openModal: PropTypes.func.isRequired,
+   setAlert: PropTypes.func.isRequired,
 }
 
-export default connect(null, { openModal })(Register);
+export default connect(null, { openModal, setAlert })(Register);
