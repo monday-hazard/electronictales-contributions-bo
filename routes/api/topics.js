@@ -22,13 +22,14 @@ router.post('/',
         }
 
         try {
-            // TODO : à refacto, est-ce qu'on peut pas faire une décompo de req.body ?
+            const { name, emailContributor, slackContributor, type, lockedBy } = req.body;
+
             const newTopic = new Topic({
-                name: req.body.name,
-                emailContributor: req.body.emailContributor,
-                slackContributor: req.body.slackContributor,
-                type: req.body.type,
-                lockedBy: req.body.lockedBy
+                name,
+                emailContributor,
+                slackContributor,
+                type,
+                lockedBy
             });
 
             const topic = await newTopic.save();
@@ -67,7 +68,7 @@ router.get('/:id', async (req, res) => {
         const topic = await Topic.findById(req.params.id);
 
         if (!topic) {
-            return res.status(404).json({ msg: "Topic not found !" });
+            return res.status(404).json({ msg: "Topic not found ! ┐(´～｀)┌" });
         }
 
         res.json(topic);
@@ -75,7 +76,7 @@ router.get('/:id', async (req, res) => {
         console.error(err.message);
 
         if (err.kind === 'ObjectId') {
-            return res.status(404).json({ msg: "Topic ID not valid" });
+            return res.status(404).json({ msg: "Topic ID not valid ⊙︿⊙" });
         }
         res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
     }
@@ -84,13 +85,13 @@ router.get('/:id', async (req, res) => {
 // @route   DELETE api/topics/:id
 // @desc    delete Topic by ID
 // @access  Private
-// TODO add middleweare 'authentification'
+// TODO add middleware 'authentification'
 router.delete('/:id', async (req, res) => {
     try {
         const topic = await Topic.findById(req.params.id);
 
         if (!topic) {
-            return res.status(404).json({ msg: "Topic not found !" });
+            return res.status(404).json({ msg: "Topic not found ! ┐(´～｀)┌" });
         }
 
         // TODO check user
@@ -98,19 +99,57 @@ router.delete('/:id', async (req, res) => {
 
         await topic.remove();
 
-        res.json({ msg: 'Topic removed' });
+        res.json({ msg: 'Topic removed (｀∀´)Ψ' });
     } catch (err) {
         console.error(err.message);
 
         if (err.kind === 'ObjectId') {
-            return res.status(404).json({ msg: "Topic ID not valid" });
+            return res.status(404).json({ msg: "Topic ID not valid ⊙︿⊙" });
         }
         res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
     }
 })
 
+// @route   PUT api/topics/:id
+// @desc    Update Topic by ID
+// @access  Private
+// TODO add middleware 'authentification'
+router.put('/:id', async(req, res) => {
+        const { name, emailContributor, slackContributor, status, type, priority, lockedBy } = req.body;
 
-// TODO : add PUT method
-// TODO : testing fonctionalities delete and get by id
+        let topicFields = {};
+
+        if (name) topicFields.name = name;
+        if (emailContributor) topicFields.emailContributor = emailContributor;
+        if (slackContributor) topicFields.slackContributor = slackContributor;
+        if (status) topicFields.status = status;
+        if (type) topicFields.type = type;
+        if (priority) topicFields.priority = priority;
+        if (lockedBy) topicFields.lockedBy = lockedBy;
+
+        // TODO check user
+        // ...
+
+        try {
+            let topic = await Topic.findById(req.params.id);
+
+            if (topic) {
+                // Update
+                topic = await Topic.findOneAndUpdate(
+                    { id: req.params.id},
+                    { $set: topicFields},
+                    { new: true });
+                return res.json(topic);
+            }
+        } catch (err) {
+            console.error(err.message);
+
+            if (err.kind === 'ObjectId') {
+                return res.status(404).json({ msg: "Topic ID not valid ⊙︿⊙" });
+            }
+            res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
+        }
+    }
+)
 
 module.exports = router;
