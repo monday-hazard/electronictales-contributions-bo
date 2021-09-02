@@ -2,6 +2,7 @@ import { SET_ALERT, REMOVE_ALERT } from "../actions/types";
 
 const initialState = [];
 
+// eslint-disable-next-line
 export default function (state = initialState, action) {
    const { type, payload } = action;
 

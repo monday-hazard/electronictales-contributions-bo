@@ -9,14 +9,14 @@ import { REGISTER_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 
 const Register = ({ openModal, setAlert, register }) => {
    const [formData, setFormData] = useState({
-      username: '',
+      userName: '',
       email: '',
       slackname: '',
       password: '',
       confirm_password: '',
    });
 
-   const { username, email, slackname, password, confirm_password } = formData;
+   const { userName, email, slackname, password, confirm_password } = formData;
 
    const onChange = (e) =>
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,8 +26,8 @@ const Register = ({ openModal, setAlert, register }) => {
       if (password !== confirm_password) {
          setAlert('Your passwords don\'t match 😱', 'error')
       } else {
-         register( { username, slackname, email, password } );
-         openModal();
+         register({ userName, slackname, email, password });
+         //TODO: find condition (isAutheticated?) to openModal();
       }
    }
 
@@ -36,12 +36,12 @@ const Register = ({ openModal, setAlert, register }) => {
          <div className='form-header'>Inscris-toi</div>
          <form className='form' onSubmit={e => onSubmit(e)} >
             <div className='form-group'>
-               <label htmlFor='username'>Ton nom préféré (ce sera ton nom d'utilisateur&#xB7;ice)&nbsp;:</label>
+               <label htmlFor='userName'>Ton nom préféré (ce sera ton nom d'utilisateur&#xB7;ice)&nbsp;:</label>
                <input
                   type='text'
-                  name='username'
+                  name='userName'
                   placeholder='captainAnonymous'
-                  value={username}
+                  value={userName}
                   onChange={(e) => onChange(e)}
                />
             </div>
