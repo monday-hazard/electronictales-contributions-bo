@@ -8,11 +8,6 @@ const initialState = {
 export default function (state = initialState, action) {
    const { type, payload } = action;
    switch (type) {
-      case SET_MODAL_CONTENT:
-         return {
-            ...state,
-            modalContent: payload,
-         };
       case OPEN_MODAL:
          return {
             ...state,

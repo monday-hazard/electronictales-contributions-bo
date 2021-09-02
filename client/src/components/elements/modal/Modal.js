@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../../redux/actions/modal';
 import './Modal.css';
 
-const Modal = ({ modalContent, openModal, closeModal }) => {
-   const { title, body, links } = modalContent;
+const Modal = ({ content, openModal, closeModal }) => {
+   const { title, body, links } = content;
 
    // Source: https://stackoverflow.com/a/42234988
    const useOutsideCloser = (ref) => {
@@ -42,14 +42,12 @@ const Modal = ({ modalContent, openModal, closeModal }) => {
    )
 }
 
-
 Modal.propTypes = {
-   modalContent: PropTypes.string.isRequired,
+   content: PropTypes.object.isRequired,
    openModal: PropTypes.bool.isRequired
 }
 
-const mapStateToProps = state => ({
-   modalContent: state.modal.modalContent,
+const mapStateToProps = (state) => ({
    openModal: state.modal.openModal
 });
 

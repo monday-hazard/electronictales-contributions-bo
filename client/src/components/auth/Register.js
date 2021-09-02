@@ -2,11 +2,10 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from '../elements/modal/Modal';
 import { connect } from 'react-redux';
-import { openModal, setModalContent } from '../../redux/actions/modal';
+import { openModal } from '../../redux/actions/modal';
+import { REGISTER_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 
-
-
-const Register = ({ openModal, setModalContent }) => {
+const Register = ({ openModal }) => {
    const [formData, setFormData] = useState({
       username: '',
       email: '',
@@ -17,11 +16,6 @@ const Register = ({ openModal, setModalContent }) => {
 
    const { username, email, slackname, password, confirm_password } = formData;
 
-   const modalContent = {
-      title: 'Félicitations, tu es quasiment inscrit·e !',
-      body: 'Va voir dans ta boîte aux lettres 👣 📬, nous t\'avons envoyé un email   📯 Clique sur le lien pour confirmer ton adresse et zou, tu es inscrit·e.'
-   }
-
    const onChange = (e) =>
       setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -30,16 +24,14 @@ const Register = ({ openModal, setModalContent }) => {
       if (password !== confirm_password) {
          console.log('Your passwords don\'t match 😱')
       } else {
-         console.log("openModal : ", openModal);
          // TODO : learn how to do the asynchronous way and set the POST request logic
-         setModalContent(modalContent);
          openModal();
       }
    }
 
    return (
       <Fragment>
-         <div className='form-header'>Login</div>
+         <div className='form-header'>Inscris-toi</div>
          <form className='form' onSubmit={e => onSubmit(e)} >
             <div className='form-group'>
                <label htmlFor='username'>Ton nom préféré (ce sera ton nom d'utilisateur&#xB7;ice)&nbsp;:</label>
@@ -105,14 +97,13 @@ const Register = ({ openModal, setModalContent }) => {
                />
             </div>
          </form>
-         <Modal />
+         <Modal content={REGISTER_MODAL_CONTENT} />
       </Fragment>
    );
 };
 
 Register.propTypes = {
-   openModal: PropTypes.func.isRequired,
-   setModalContent: PropTypes.func.isRequired,
+   openModal: PropTypes.func.isRequired
 }
 
-export default connect(null, { openModal, setModalContent })(Register);
+export default connect(null, { openModal })(Register);
