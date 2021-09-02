@@ -4,13 +4,19 @@
 
 1. Clone the project on your local device :
 
-`git clone https://github.com/monday-hazard/electronictales-contributions-bo.git`
+```bash
+git clone https://github.com/monday-hazard/electronictales-contributions-bo.git
+```
 
 You may need to install SSH keys locally, see GitHub or Gitlab docs for this.
 
 2. Install dependencies
 
-`npm i`
+A custom script allows you to install `node_modules` for both server and client sides of the project.
+
+```bash
+npm run dep
+```
 
 3. Connect to your database
 
@@ -20,7 +26,9 @@ Create `default.json` with your database logins (secret key etc)
 
 In a terminal in the current project, run :
 
-`npm run server`
+```bash
+npm run server
+```
 
 You're good if it says that the mangoose got the couleuvre. Otherwise, check if your Internect connection uses a proxy, or if you made an error in your `default.json`
 
@@ -28,14 +36,28 @@ You're good if it says that the mangoose got the couleuvre. Otherwise, check if 
 
 In a terminal in the current project...
 
-. to run the client and the server concurrently, run :
+- to run the client and the server concurrently, run :
 
-`npm run dev`
+```bash
+npm run dev
+```
 
-. to run the server only, run:
+- to run the server only, run:
 
-`npm run server`
+```bash
+npm run server
+```
 
-. to run the client only, run:
+- to run the client only, run:
 
-`npm run client`
+```bash
+npm run client
+```
+
+## Authentication
+
+For the authentication middleware, add in your local `default.json` a secret token as following :
+
+```json
+{ "jwtToken": "value-of-your-secret-token" }
+```
