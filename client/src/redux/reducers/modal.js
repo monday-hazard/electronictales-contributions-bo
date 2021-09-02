@@ -1,4 +1,4 @@
-import { SET_MODAL_CONTENT, OPEN_MODAL, CLOSE_MODAL } from '../actions/types';
+import { OPEN_MODAL, CLOSE_MODAL } from '../actions/types';
 
 const initialState = {
    modalContent: '',
@@ -6,7 +6,7 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-   const { type, payload } = action;
+   const { type } = action;
    switch (type) {
       case OPEN_MODAL:
          return {
