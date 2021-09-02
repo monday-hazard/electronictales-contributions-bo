@@ -1,9 +1,10 @@
-const { response } = require('express');
-const express = require('express');
+const express = require('express'); 
 const router = express.Router();
+const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 const Topic = require('../../models/Topic');
+const User = require('../../models/User');
 
 // @route   POST api/topics
 // @desc    Create a new Topic
@@ -42,28 +43,23 @@ router.post('/',
     }
 );
 
-
-
 // @route   GET api/topics
 // @desc    get all Topics
-// @access  Private
-// TODO add middleweare 'authentification'
+// @access  Public
 router.get('/', async (req, res)=>{
     try{
         const topics = await Topic.find().sort({ creationDate: -1 });
         res.json(topics);
     } catch (err){
         console.error(err.message);
-            res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
+        res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
     }
 })
-
 
 // @route   GET api/topics/:id
 // @desc    get Topic by ID
 // @access  Private
-// TODO add middleweare 'authentification'
-router.get('/:id', async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
     try {
         const topic = await Topic.findById(req.params.id);
 
@@ -85,8 +81,7 @@ router.get('/:id', async (req, res) => {
 // @route   DELETE api/topics/:id
 // @desc    delete Topic by ID
 // @access  Private
-// TODO add middleware 'authentification'
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
     try {
         const topic = await Topic.findById(req.params.id);
 
@@ -94,12 +89,17 @@ router.delete('/:id', async (req, res) => {
             return res.status(404).json({ msg: "Topic not found ! ┐(´～｀)┌" });
         }
 
-        // TODO check user
-        // ...
+        const authenticatedUser = await User.findById(req.user.id);
+
+        if (authenticatedUser.roles !== 'reviewer' &&
+            authenticatedUser.roles !== 'admin' &&
+            authenticatedUser.email !== topic.emailContributor) {
+            return res.status(401).json({ msg: 'User not authorized >:[ '});
+        }
 
         await topic.remove();
+        return res.json({ msg: 'Topic removed (｀∀´)Ψ' });
 
-        res.json({ msg: 'Topic removed (｀∀´)Ψ' });
     } catch (err) {
         console.error(err.message);
 
@@ -113,42 +113,50 @@ router.delete('/:id', async (req, res) => {
 // @route   PUT api/topics/:id
 // @desc    Update Topic by ID
 // @access  Private
-// TODO add middleware 'authentification'
-router.put('/:id', async(req, res) => {
-        const { name, emailContributor, slackContributor, status, type, priority, lockedBy } = req.body;
+router.put('/:id', auth, async(req, res) => {
+    const { name, emailContributor, slackContributor, status, type, priority, lockedBy } = req.body;
 
-        let topicFields = {};
+    let topicFields = {};
 
-        if (name) topicFields.name = name;
-        if (emailContributor) topicFields.emailContributor = emailContributor;
-        if (slackContributor) topicFields.slackContributor = slackContributor;
-        if (status) topicFields.status = status;
-        if (type) topicFields.type = type;
-        if (priority) topicFields.priority = priority;
-        if (lockedBy) topicFields.lockedBy = lockedBy;
+    if (name) topicFields.name = name;
+    if (emailContributor) topicFields.emailContributor = emailContributor;
+    if (slackContributor) topicFields.slackContributor = slackContributor;
+    if (status) topicFields.status = status;
+    if (type) topicFields.type = type;
+    if (priority) topicFields.priority = priority;
+    if (lockedBy) topicFields.lockedBy = lockedBy;
 
-        // TODO check user
-        // ...
+    try {
+        let topic = await Topic.findById(req.params.id);
 
-        try {
-            let topic = await Topic.findById(req.params.id);
+        if (topic) {
 
-            if (topic) {
-                // Update
-                topic = await Topic.findOneAndUpdate(
-                    { id: req.params.id},
-                    { $set: topicFields},
-                    { new: true });
-                return res.json(topic);
+            // Check user
+            const authenticatedUser = await User.findById(req.user.id);
+
+            if (!(
+                (authenticatedUser.roles === 'reviewer' || authenticatedUser.roles === 'admin')
+                ||
+                (authenticatedUser.email === topic.emailContributor && topic.status === 'suggested')
+                )) {
+                return res.status(401).json({ msg: 'User not authorized >:[ '});
             }
-        } catch (err) {
-            console.error(err.message);
 
-            if (err.kind === 'ObjectId') {
-                return res.status(404).json({ msg: "Topic ID not valid ⊙︿⊙" });
-            }
-            res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
+            // Update
+            topic = await Topic.findOneAndUpdate(
+                { id: req.params.id },
+                { $set: topicFields },
+                { new: true });
+            return res.json(topic);
         }
+    } catch (err) {
+        console.error(err.message);
+
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({ msg: "Topic ID not valid ⊙︿⊙" });
+        }
+        res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
+    }
     }
 )
 
