@@ -7,6 +7,7 @@ import { setAlert } from '../../redux/actions/alert';
 import { register } from '../../redux/actions/auth';
 import { REGISTER_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 const Register = ({ openModal, setAlert, register }) => {
    const [formData, setFormData] = useState({
@@ -29,6 +30,8 @@ const Register = ({ openModal, setAlert, register }) => {
       } else {
          register({ userName, slackname, email, password });
          //TODO: find condition (isAutheticated?) to openModal();
+         // openModal();
+
       }
    }
 
