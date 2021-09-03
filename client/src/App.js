@@ -4,7 +4,8 @@ import Navbar from './components/elements/navbar/Navbar';
 import Landing from './components/layout/landing/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Alert from './components/elements/alert/Alert'
+import Alert from './components/elements/alert/Alert';
+import Dashboard from './components/layout/dashboard/Dashboard';
 import './App.css';
 // Provider connects react and redux 
 import { Provider } from 'react-redux';
@@ -32,6 +33,7 @@ const App = () => {
                   <Switch>
                      <Route exact path="/register" component={Register} />
                      <Route exact path="/login" component={Login} />
+                     <Route exact path="/dashboard" component={Dashboard} />
                   </Switch>
                </section>
             </Fragment>

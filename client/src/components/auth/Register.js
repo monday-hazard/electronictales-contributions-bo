@@ -1,15 +1,15 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link, Redirect } from 'react-router-dom';
 import Modal from '../elements/modal/Modal';
 import { connect } from 'react-redux';
 import { openModal } from '../../redux/actions/modal';
 import { setAlert } from '../../redux/actions/alert';
 import { register } from '../../redux/actions/auth';
 import { REGISTER_MODAL_CONTENT } from '../../dictionnary/modalContentList';
-import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router';
 
-const Register = ({ openModal, setAlert, register }) => {
+
+const Register = ({ isAuthenticated, openModal, setAlert, register }) => {
    const [formData, setFormData] = useState({
       userName: '',
       email: '',
@@ -29,10 +29,12 @@ const Register = ({ openModal, setAlert, register }) => {
          setAlert('Your passwords don\'t match 😱', 'error')
       } else {
          register({ userName, slackname, email, password });
-         //TODO: find condition (isAutheticated?) to openModal();
-         // openModal();
-
       }
+   }
+
+   if (isAuthenticated) {
+      // openModal(); In fact, we could open the modal in the dashboard once authenticated :/
+      return <Redirect to="/dashboard" />
    }
 
    return (
@@ -110,7 +112,12 @@ const Register = ({ openModal, setAlert, register }) => {
 Register.propTypes = {
    openModal: PropTypes.func.isRequired,
    setAlert: PropTypes.func.isRequired,
-   register: PropTypes.func.isRequired
+   register: PropTypes.func.isRequired,
+   isAuthenticated: PropTypes.bool
 }
 
-export default connect(null, { openModal, setAlert, register })(Register);
+const mapStateToProps = state => ({
+   isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, { openModal, setAlert, register })(Register);
