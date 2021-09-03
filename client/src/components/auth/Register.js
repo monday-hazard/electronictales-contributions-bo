@@ -6,6 +6,7 @@ import { openModal } from '../../redux/actions/modal';
 import { setAlert } from '../../redux/actions/alert';
 import { register } from '../../redux/actions/auth';
 import { REGISTER_MODAL_CONTENT } from '../../dictionnary/modalContentList';
+import { Link } from 'react-router-dom';
 
 const Register = ({ openModal, setAlert, register }) => {
    const [formData, setFormData] = useState({
@@ -95,6 +96,9 @@ const Register = ({ openModal, setAlert, register }) => {
                />
             </div>
          </form>
+         <p className='gotosignup'>
+            Déjà inscrit ? <Link to="/login">Connecte toi</Link>
+         </p>
          <Modal content={REGISTER_MODAL_CONTENT} />
       </Fragment>
    );
