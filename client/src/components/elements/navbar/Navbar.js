@@ -7,12 +7,15 @@ import { logout } from '../../../redux/actions/auth'
 import './Navbar.css';
 
 import logo from '../../../resources/img/logo-transparent-350.png';
+import Button from '../button/Button';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
    const authLinks = (
       <ul>
          <li>
-            <a onClick={logout} href="#!">Logout</a>
+            <Link to="/">
+               <Button onClick={logout} buttonStyle="btn-outline">Se déconnecter</Button>
+            </Link>
          </li>
       </ul>
    )
@@ -20,13 +23,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
    const guestLinks = (
       <ul>
          <li>
-            <Link to="/register">
-               Register
+            <Link to="/login">
+               <Button buttonStyle="btn-outline">Se connecter</Button>
             </Link>
          </li>
          <li>
-            <Link to="/login">
-               Log in
+            <Link to="/register">
+               <Button>S'inscrire</Button>
             </Link>
          </li>
       </ul>
@@ -40,9 +43,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
             </Link>
          </div>
          {!loading && (<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>)}
-         <div className="nav-links">
-
-         </div>
       </nav>
    );
 }

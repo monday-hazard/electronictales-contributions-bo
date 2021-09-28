@@ -1,0 +1,26 @@
+.btn {
+    display: inline-block; 
+    padding: 1rem 3rem;
+    line-height: 2rem;
+    border-radius: 50px;
+    transition: .3s ease;
+    margin: .5rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-solid {
+    background: linear-gradient(to left, var(--pinkpale), var(--pinkflashy)); 
+    border: 2px solid var(--pinkflashy);
+}
+
+.btn-outline {
+    border: 2px solid var(--pinkflashy);
+    transition: .3s ease;
+}
+
+.btn-outline:hover {
+    background: linear-gradient(to left, var(--pinkpale), var(--pinkflashy)); 
+}
