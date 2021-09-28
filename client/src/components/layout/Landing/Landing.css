@@ -1,3 +1,9 @@
 .landing {
-   border: 1px solid black;
+    border: 1px solid black;
+}
+
+.site-name {
+    font: normal normal 800 40px/49px Montserrat;
+    letter-spacing: 0px;
+    color: #ff4093;
 }

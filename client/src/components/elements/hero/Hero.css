@@ -1,0 +1,28 @@
+.hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20rem 15rem 10rem;
+}
+
+.hero-title {
+    text-align: left;
+    font: normal normal 4rem/4.9rem Montserrat;
+    letter-spacing: 0;
+    color: #ffffff;
+    opacity: 1;
+}
+
+.hero-subtitle {
+    font: normal normal normal 1.4rem/1.8rem Montserrat;
+    letter-spacing: 0;
+    color: #ffffff;
+    opacity: 1;
+    width: 70%;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.hero-chevron {
+    padding-top: 10rem;
+}
