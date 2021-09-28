@@ -3,7 +3,8 @@ nav {
    position: sticky;
    z-index: 2;
    top: 0;
-   background-color: #303237;
+   background-color: #303435;
+   /* background-color: var(--transparent-background); */
    display: flex;
    justify-content: space-between;
    align-items: center;
