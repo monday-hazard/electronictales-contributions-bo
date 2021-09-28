@@ -1,6 +1,7 @@
 import React from 'react';
-import './Landing.css';
 import Hero from '../../elements/hero/Hero';
+
+import './Landing.css';
 
 const Landing = () => {
     const titleText = 'Bienvenue sur le ';
