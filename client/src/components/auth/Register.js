@@ -1,21 +1,24 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link, Redirect } from 'react-router-dom';
 import Modal from '../elements/modal/Modal';
 import { connect } from 'react-redux';
 import { openModal } from '../../redux/actions/modal';
 import { setAlert } from '../../redux/actions/alert';
+import { register } from '../../redux/actions/auth';
 import { REGISTER_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 
-const Register = ({ openModal, setAlert }) => {
+
+const Register = ({ isAuthenticated, openModal, setAlert, register }) => {
    const [formData, setFormData] = useState({
-      username: '',
+      userName: '',
       email: '',
       slackname: '',
       password: '',
       confirm_password: '',
    });
 
-   const { username, email, slackname, password, confirm_password } = formData;
+   const { userName, email, slackname, password, confirm_password } = formData;
 
    const onChange = (e) =>
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,12 +26,15 @@ const Register = ({ openModal, setAlert }) => {
    const onSubmit = e => {
       e.preventDefault();
       if (password !== confirm_password) {
-         // console.log('Your passwords don\'t match 😱')
          setAlert('Your passwords don\'t match 😱', 'error')
       } else {
-         // TODO : learn how to do the asynchronous way and set the POST request logic
-         openModal();
+         register({ userName, slackname, email, password });
       }
+   }
+
+   if (isAuthenticated) {
+      // openModal(); In fact, we could open the modal in the dashboard once authenticated :/
+      return <Redirect to="/dashboard" />
    }
 
    return (
@@ -36,14 +42,13 @@ const Register = ({ openModal, setAlert }) => {
          <div className='form-header'>Inscris-toi</div>
          <form className='form' onSubmit={e => onSubmit(e)} >
             <div className='form-group'>
-               <label htmlFor='username'>Ton nom préféré (ce sera ton nom d'utilisateur&#xB7;ice)&nbsp;:</label>
+               <label htmlFor='userName'>Ton nom préféré (ce sera ton nom d'utilisateur&#xB7;ice)&nbsp;:</label>
                <input
                   type='text'
-                  name='username'
+                  name='userName'
                   placeholder='captainAnonymous'
-                  value={username}
+                  value={userName}
                   onChange={(e) => onChange(e)}
-                  required
                />
             </div>
             <div className='email'>
@@ -54,7 +59,6 @@ const Register = ({ openModal, setAlert }) => {
                   placeholder='email'
                   value={email}
                   onChange={(e) => onChange(e)}
-                  required
                />
             </div>
             <div className='slackname'>
@@ -75,7 +79,6 @@ const Register = ({ openModal, setAlert }) => {
                   placeholder='Moi1234'
                   value={password}
                   onChange={(e) => onChange(e)}
-                  required
                />
             </div>
             <div className='form-group'>
@@ -88,7 +91,6 @@ const Register = ({ openModal, setAlert }) => {
                   placeholder='Le même mot de passe (si, si)'
                   value={confirm_password}
                   onChange={(e) => onChange(e)}
-                  required
                />
             </div>
             <div className='form-footer'>
@@ -99,6 +101,9 @@ const Register = ({ openModal, setAlert }) => {
                />
             </div>
          </form>
+         <p className='gotosignup'>
+            Déjà inscrit ? <Link to="/login">Connecte toi</Link>
+         </p>
          <Modal content={REGISTER_MODAL_CONTENT} />
       </Fragment>
    );
@@ -107,6 +112,12 @@ const Register = ({ openModal, setAlert }) => {
 Register.propTypes = {
    openModal: PropTypes.func.isRequired,
    setAlert: PropTypes.func.isRequired,
+   register: PropTypes.func.isRequired,
+   isAuthenticated: PropTypes.bool
 }
 
-export default connect(null, { openModal, setAlert })(Register);
+const mapStateToProps = state => ({
+   isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, { openModal, setAlert, register })(Register);
