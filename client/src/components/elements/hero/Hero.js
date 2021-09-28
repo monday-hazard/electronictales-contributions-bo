@@ -22,9 +22,11 @@ const Hero = ({
                     )}
                 </h1>
                 {!disableSubtitle && (
-                    <div className="hero-subtitle">{subtitleText}</div>
+                    <div className="hero-subtitle container-narrow">
+                        {subtitleText}
+                    </div>
                 )}
-                <DoubleChevronDown class="hero-chevron" />
+                <DoubleChevronDown className="hero-chevron" />
             </div>
         </>
     );
@@ -34,7 +36,7 @@ Hero.propTypes = {
     disableSubtitle: PropTypes.bool,
     styledTitleText: PropTypes.string,
     styledTitleClass: PropTypes.string,
-    titleText: PropTypes.object.isRequired,
+    titleText: PropTypes.string.isRequired,
     subtitleText: PropTypes.string,
 };
 
