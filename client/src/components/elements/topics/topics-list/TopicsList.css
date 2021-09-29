@@ -1,0 +1,9 @@
+.topic-card {
+   display: flex;
+   flex-direction: column;
+   padding: 1rem 1.5rem;
+   border: 1px solid pink;
+   border-radius: 1rem;
+   margin: 1rem auto;
+   max-width: 50rem;
+}
