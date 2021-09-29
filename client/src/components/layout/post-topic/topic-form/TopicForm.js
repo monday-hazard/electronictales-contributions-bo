@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { postTopic } from '../../../../redux/actions/topic';
-import { setAlert } from '../../redux/actions/alert';
+import { setAlert } from '../../../../redux/actions/alert';
+import Alert from '../../../elements/alert/Alert';
 import { Redirect } from 'react-router';
 
 import './TopicForm.css';
@@ -24,9 +25,14 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
 
    const onSubmit = e => {
       e.preventDefault();
-      if ( /*somecondition*/ ) {
-         setAlert('Message 😱', 'error')
-      } else {
+      
+/* TODO : check if there are errors
+      let errors = false;
+      if ( errors ) {
+         setAlert('Message 😱', 'error');
+      } 
+      else {
+*/
          postTopic({ name, emailContributor, slackContributor, type, lockedBy });
 
          if (isAuthenticated) {
@@ -35,11 +41,11 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
          } else {
             <Redirect to='/' />
          }
-      }
+      // }
    }
 
    return (
-      <form className='form' onSubmit={e => onSubmit(e)} >
+      <form className='topic-form form' onSubmit={e => onSubmit(e)} >
          <div className='name'>
             <label htmlFor='name'>Ton sujet</label>
             <input
@@ -49,6 +55,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                value={name}
                onChange={(e) => onChange(e)}
                required
+               maxLength={73}
             />
          </div>
          <div className='email-contributor'>
@@ -74,7 +81,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
             />
          </div>
          <div className='type'>
-            {/* TODO : CHECKBOX HERE */}
+            {/* TODO : Radio button HERE */}
             <label htmlFor='type'>Le type de contenu que tu imagines</label>
             <input
                type='text'

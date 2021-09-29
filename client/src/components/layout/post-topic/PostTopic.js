@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../../elements/card/Card';
 import CardContent from '../../elements/card/CardContent';
 import Hero from '../../elements/hero/Hero';
-import TopicForm from '../../elements/topics/topic-form/TopicForm';
+import TopicForm from './topic-form/TopicForm';
 
 import './PostTopic.css';
 
