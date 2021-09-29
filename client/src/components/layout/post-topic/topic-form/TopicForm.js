@@ -19,7 +19,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
       type: '',
       lockedBy: ''
    })
-
+   const [selectedTopicType, selectTopicType] = useState('any');
    const { name, emailContributor, slackContributor, type, lockedBy } = formData;
 
    const onChange = (e) =>
@@ -27,7 +27,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
 
    const onSubmit = e => {
       e.preventDefault();
-      
+
 /* TODO : check if there are errors
       let errors = false;
       if ( errors ) {
@@ -46,6 +46,10 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
       // }
    }
 
+   const handleTopicTypeChange = (selectedTopicType) => {
+      selectTopicType(selectedTopicType);
+      console.log('topic type is set to:', selectedTopicType);
+   }
    return (
       <form className='topic-form form' onSubmit={e => onSubmit(e)} >
             <Input
@@ -73,19 +77,38 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                onChange={(e) => onChange(e)}
                required
             />
-            {/* TODO : Radio button HERE */}
-            <Input
-               type='text'
-               name='type'
-               placeholder='Boarf...'
-               value={type}
-               onChange={(e) => onChange(e)}
-               required
-               label={{
-                  htmlFor: 'type',
-                  labelText: 'Le type de contenu que tu imagines'
-               }}
-            />
+            <label htmlFor="type">
+               Le type de contenu que tu imagines
+            </label>
+            <div className="topic-type-choice-group">
+               <Input
+                  type="radio"
+                  id="typeChoiceTLTA"
+                  name="type"
+                  value="TLTA"
+                  checked={selectedTopicType === "TLTA"}
+                  // onChange={handleTopicTypeChange("TLTA")}
+                  label={{ htmlFor: "typeChoiceTLTA", labelText: "TLTA" }}
+               />
+               <Input 
+                  type="radio"
+                  id="typeChoiceRegular"
+                  name="type"
+                  value="regular"
+                  checked={selectedTopicType === "regular"}
+                  // onChange={handleTopicTypeChange("regular")}
+                  label={{ htmlFor: "typeChoiceRegular", labelText: "Regular" }}
+               />
+               <Input 
+                  type="radio"
+                  id="typeChoiceAny"
+                  name="type"
+                  value="any"
+                  checked={selectedTopicType === "any"}
+                  // onChange={handleTopicTypeChange("any")}
+                  label={{ htmlFor: 'typeChoiceAny', labelText: 'Any' }}
+               />
+            </div>
             {/* TODO : CHECKBOX HERE */}
             <Input
                type='text'
@@ -96,7 +119,8 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                required
                label={{
                   htmlFor: 'lockedBy',
-                  labelText: 'Souhaites-tu écrire l\'article toi-même ?'
+                  labelText: 'Souhaites-tu écrire l\'article toi-même ?',
+                  position: 'before',
                }}
             />
             <Button>

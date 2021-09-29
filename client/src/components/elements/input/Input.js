@@ -3,15 +3,27 @@ import PropTypes from 'prop-types';
 
 import './Input.css';
 
-const Input = ({ label = {}, onlyText, ...props }) => {
+const Input = ({ label = {}, onlyText, checked, ...props }) => {
     return (
-        <>
-            {label && <label htmlFor={label.htmlFor}>{label.labelText}</label>}
+        <div className="input-wrapper">
+            {label && label.position === 'before' && (
+                <label htmlFor={label.htmlFor}>{label.labelText}</label>
+            )}
+            {props.type === 'radio' && (
+                <span className="radio-button-icon">
+                    <span
+                        className={`${checked ? 'checked' : 'unchecked'}`}
+                    ></span>
+                </span>
+            )}
             <input
                 className={'input' + `${!onlyText ? ' styled-input' : ''}`}
                 {...props}
             />
-        </>
+            {label && label.position !== 'before' && (
+                <label htmlFor={label.htmlFor}>{label.labelText}</label>
+            )}
+        </div>
     );
 };
 
