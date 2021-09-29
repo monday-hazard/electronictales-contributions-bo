@@ -1,3 +1,8 @@
 .styled-input {
-    border: solid 1px var(--pinkflashy);
+    border: 1px solid white;
+    border-radius: 1.5rem;
+    background-color: inherit;
+    color: white;
+    margin: 2rem 0;
+    padding: 2.2rem 2rem;
 }
