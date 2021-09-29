@@ -32,12 +32,12 @@ body {
 
 ::-moz-selection {
    color: #000;
-   background-color: #fd0;
+   background-color: var(--pinkflashy);
 }
 
 ::selection {
    color: #000;
-   background-color: #fd0;
+   background-color: var(--pinkflashy);
 }
 
 /* Remove default margin */
