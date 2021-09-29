@@ -24,6 +24,7 @@ const PostTopic = () => {
                     <CardContent text={introRegular} />
                 </Card>
             </section>
+            <section className="post-topic-form"></section>
         </div>
     );
 };
