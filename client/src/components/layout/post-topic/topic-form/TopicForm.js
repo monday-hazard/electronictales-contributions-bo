@@ -47,7 +47,6 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
 
    return (
       <form className='topic-form form' onSubmit={e => onSubmit(e)} >
-         <div className='name'>
             <Input
                type='text'
                name='name'
@@ -57,8 +56,6 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                required
                maxLength={73}
             />
-         </div>
-         <div className='email-contributor'>
             <Input
                type='email'
                name='emailContributor'
@@ -67,8 +64,6 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                onChange={(e) => onChange(e)}
                required
             />
-         </div>
-         <div className='slack-contributor'>
             <Input
                type='text'
                name='slackContributor'
@@ -77,8 +72,6 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                onChange={(e) => onChange(e)}
                required
             />
-         </div>
-         <div className='type'>
             {/* TODO : Radio button HERE */}
             <label htmlFor='type'>Le type de contenu que tu imagines</label>
             <Input
@@ -89,12 +82,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                onChange={(e) => onChange(e)}
                required
             />
-         </div>
-         <div className='locked-by'>
             {/* TODO : CHECKBOX HERE */}
-            <label htmlFor='lockedBy'>
-               Souhaites-tu écrire l'article toi-même ?
-            </label>
             <Input
                type='text'
                name='lockedBy'
@@ -102,15 +90,16 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                value={lockedBy}
                onChange={(e) => onChange(e)}
                required
+               label={{
+                  htmlFor: 'lockedBy',
+                  labelText: 'Souhaites-tu écrire l\'article toi-même ?'
+               }}
             />
-         </div>
-         <div className='form-footer'>
             <Input
                type='submit'
                value="Zou, j'envoie !"
                className='button'
             />
-         </div>
       </form>
    );
 };

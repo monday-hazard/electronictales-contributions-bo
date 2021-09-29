@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 
 import './Input.css';
 
-function Input({ ...props }) {
-    return <input className="styled-input" {...props} />;
-}
+const Input = ({ label = {}, ...props }) => {
+    return (
+        <>
+            {label && <label htmlFor={label.htmlFor}>{label.labelText}</label>}
+            <input className="styled-input" {...props} />
+        </>
+    );
+};
+
+Input.propTypes = {
+    label: PropTypes.object,
+};
 
 export default Input;
