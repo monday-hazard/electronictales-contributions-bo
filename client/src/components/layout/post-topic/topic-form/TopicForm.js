@@ -77,7 +77,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                onChange={(e) => onChange(e)}
                required
             />
-            <label htmlFor="type">
+            <label className="topic-type-label" htmlFor="type">
                Le type de contenu que tu imagines
             </label>
             <div className="topic-type-choice-group">
@@ -88,7 +88,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                   value="TLTA"
                   checked={selectedTopicType === "TLTA"}
                   // onChange={handleTopicTypeChange("TLTA")}
-                  label={{ htmlFor: "typeChoiceTLTA", labelText: "TLTA" }}
+                  label={{ htmlFor: "typeChoiceTLTA", labelText: "Too Late Too Ask" }}
                />
                <Input 
                   type="radio"
@@ -97,7 +97,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                   value="regular"
                   checked={selectedTopicType === "regular"}
                   // onChange={handleTopicTypeChange("regular")}
-                  label={{ htmlFor: "typeChoiceRegular", labelText: "Regular" }}
+                  label={{ htmlFor: "typeChoiceRegular", labelText: "Article" }}
                />
                <Input 
                   type="radio"
@@ -106,7 +106,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                   value="any"
                   checked={selectedTopicType === "any"}
                   // onChange={handleTopicTypeChange("any")}
-                  label={{ htmlFor: 'typeChoiceAny', labelText: 'Any' }}
+                  label={{ htmlFor: 'typeChoiceAny', labelText: "Peu m'importe" }}
                />
             </div>
             {/* TODO : CHECKBOX HERE */}

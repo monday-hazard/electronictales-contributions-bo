@@ -5,12 +5,16 @@
     padding: 5rem 0 0;
 }
 
+.topic-type-label {
+    padding: 2rem 0;
+}
+
 .topic-type-choice-group {
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 50%;
     column-gap: 5rem;
-    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .topic-type-choice-group > * {
