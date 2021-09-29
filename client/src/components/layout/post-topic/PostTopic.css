@@ -1,0 +1,17 @@
+.post-topic {
+    padding: 0 0 5rem;
+}
+
+.topic-info {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    column-gap: 5rem;
+}
+
+.topic-info > :first-child {
+    justify-self: end;
+}
+
+.post-topic-form {
+}
