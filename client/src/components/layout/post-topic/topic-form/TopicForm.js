@@ -5,6 +5,7 @@ import { postTopic } from '../../../../redux/actions/topic';
 import { setAlert } from '../../../../redux/actions/alert';
 import Alert from '../../../elements/alert/Alert';
 import { Redirect } from 'react-router';
+import Input from '../../../elements/input/Input';
 
 import './TopicForm.css';
 
@@ -47,11 +48,10 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
    return (
       <form className='topic-form form' onSubmit={e => onSubmit(e)} >
          <div className='name'>
-            <label htmlFor='name'>Ton sujet</label>
-            <input
+            <Input
                type='text'
                name='name'
-               placeholder='Super sujet'
+               placeholder='Ton super sujet'
                value={name}
                onChange={(e) => onChange(e)}
                required
@@ -59,8 +59,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
             />
          </div>
          <div className='email-contributor'>
-            <label htmlFor='emailContributor'>Ton courriel&nbsp;:</label>
-            <input
+            <Input
                type='email'
                name='emailContributor'
                placeholder='Ton email'
@@ -70,11 +69,10 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
             />
          </div>
          <div className='slack-contributor'>
-            <label htmlFor='slackContributor'>Ton pseudo sur notre slack&nbsp;:</label>
-            <input
+            <Input
                type='text'
                name='slackContributor'
-               placeholder='Gigi93'
+               placeholder='Ton pseudo sur notre slack'
                value={slackContributor}
                onChange={(e) => onChange(e)}
                required
@@ -83,7 +81,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
          <div className='type'>
             {/* TODO : Radio button HERE */}
             <label htmlFor='type'>Le type de contenu que tu imagines</label>
-            <input
+            <Input
                type='text'
                name='type'
                placeholder='Boarf...'
@@ -97,7 +95,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
             <label htmlFor='lockedBy'>
                Souhaites-tu écrire l'article toi-même ?
             </label>
-            <input
+            <Input
                type='text'
                name='lockedBy'
                placeholder='Oui ou non ?'
@@ -107,7 +105,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
             />
          </div>
          <div className='form-footer'>
-            <input
+            <Input
                type='submit'
                value="Zou, j'envoie !"
                className='button'
