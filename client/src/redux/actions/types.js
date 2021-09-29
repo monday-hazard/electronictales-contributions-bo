@@ -11,3 +11,5 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT = 'LOGOUT';
 export const GET_TOPICS = 'GET_TOPICS';
 export const TOPICS_ERROR = 'TOPICS_ERROR';
+export const POST_TOPIC = 'POST_TOPIC';
+export const DELETE_TOPIC = 'DELETE_TOPIC';

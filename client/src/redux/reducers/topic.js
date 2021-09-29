@@ -1,6 +1,7 @@
 import {
    GET_TOPICS,
-   TOPICS_ERROR
+   TOPICS_ERROR,
+   DELETE_TOPIC
 } from '../actions/types';
 
 const initialState = {
@@ -21,6 +22,12 @@ export default function (state = initialState, action) {
             loading: false,
 
          };
+      case DELETE_TOPIC:
+         return {
+            ...state,
+            topic: state.topics.filter(topic => topic._id !== payload),
+            loading: false
+         }
       case TOPICS_ERROR:
          return {
             ...state,
