@@ -8,6 +8,7 @@ import { Redirect } from 'react-router';
 import Input from '../../../elements/input/Input';
 
 import './TopicForm.css';
+import Button from '../../../elements/button/Button';
 
 
 const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
@@ -73,7 +74,6 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                required
             />
             {/* TODO : Radio button HERE */}
-            <label htmlFor='type'>Le type de contenu que tu imagines</label>
             <Input
                type='text'
                name='type'
@@ -81,6 +81,10 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                value={type}
                onChange={(e) => onChange(e)}
                required
+               label={{
+                  htmlFor: 'type',
+                  labelText: 'Le type de contenu que tu imagines'
+               }}
             />
             {/* TODO : CHECKBOX HERE */}
             <Input
@@ -95,11 +99,13 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                   labelText: 'Souhaites-tu écrire l\'article toi-même ?'
                }}
             />
-            <Input
-               type='submit'
-               value="Zou, j'envoie !"
-               className='button'
-            />
+            <Button>
+               <Input
+                  onlyText
+                  type='submit'
+                  value="Zou, j'envoie !"
+               />
+            </Button>
       </form>
    );
 };
