@@ -1,5 +1,8 @@
 import React from 'react';
 import Hero from '../../elements/hero/Hero';
+import PageSection from '../../elements/page-section/PageSection';
+import homeImg1 from '../../../resources/img/imghome1.png';
+import homeImg2 from '../../../resources/img/imghome2.png';
 
 import './Landing.css';
 
@@ -18,6 +21,8 @@ const Landing = () => {
                 styledTitleClass={styledTitleClass}
                 subtitleText={subtitleText}
             />
+            <PageSection imgLeft isTopic hasText imgSrc={homeImg1}/>
+            <PageSection imgSrc={homeImg2}/>
         </div>
     );
 };
