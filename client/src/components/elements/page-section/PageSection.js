@@ -6,6 +6,7 @@ import Button from "../button/Button";
 import { Link } from "react-router-dom";
 import TitleSection from "./title-section/TitleSection";
 import TextSection from "./text-section/TextSection";
+import TopicsList from "../topics/topics-list/TopicsList";
 
 
 const PageSection = ({
@@ -22,14 +23,16 @@ const PageSection = ({
                 ? <TitleSection title="Proposer un topic" subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
                 : <TitleSection title="Rédiger un article" subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
                 }
-                {hasText && 
-                <Fragment>
+                {hasText
+                ? <Fragment>
                     <TextSection textSection="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at maximus ante. Morbi pretium vel diam in dignissim. Etiam auctor turpis quis justo sodales mattis. Phasellus tristique tincidunt quam, ac." />
                     <TextSection textSection="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at maximus ante. Morbi pretium vel diam in dignissim. Etiam auctor turpis quis justo sodales mattis. Phasellus tristique tincidunt quam, ac." />
                     <Link to="/">
                         <Button>Let's go !</Button>
                     </Link>
-                </Fragment>}
+                </Fragment>
+                : <TopicsList />
+                }
             </div>
             {imgLeft || <RichImage imgSrc={imgSrc}/>}
         </section>

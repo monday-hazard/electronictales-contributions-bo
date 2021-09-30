@@ -14,15 +14,11 @@ const TopicsList = ({ getTopics, topic: { topics, loading } }) => {
    }, [getTopics]);
 
    return loading ? <Loading /> :
-      <Fragment>
-         <h1>Ecrire un article : les sujets proposés par la communauté</h1>
-         <div className="topics-list">
-            {topics.map(topic => (
-               <TopicCard key={topic._id} topic={topic} />
-            ))}
-         </div>
-
-      </Fragment>;
+      <div className="topics-list">
+         {topics.map(topic => (
+            <TopicCard key={topic._id} topic={topic} />
+         ))}
+      </div>
 }
 
 TopicsList.propTypes = {
