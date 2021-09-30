@@ -2,18 +2,25 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import firePicto from '../../../resources/img/icons/fire.svg';
+import penPicto from '../../../resources/img/icons/pen.svg';
 
 const TopicCard = ({ topic: { _id, name, type, priority } }) => {
    return (
       // TODO : add write-article route to Link
-
       <div className="topic-card">
-         <p>{name}</p>
-         <div className='type-label'>{type}</div>
-         {priority &&
-            <p className="emoji">🔥</p>
-         }
-         <Link to="#"><p className="emoji">✍️</p></Link>
+         <div className="left-topic-card">
+            {priority &&
+               <img className="fire-picto" src={firePicto} alt="fire pictogram"/>
+            }
+            <div>
+               <p>{name}</p>
+               <div className='type-label'>{type}</div>
+            </div>
+         </div>
+         <div className="pen-picto-container">
+            <Link to="#"><img className="pen-picto" src={penPicto}/></Link>
+         </div>
       </div>
    )
 };
