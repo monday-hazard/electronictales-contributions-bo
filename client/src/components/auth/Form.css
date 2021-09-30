@@ -1,35 +1,42 @@
 .form-container{
-    padding-top: 5rem;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .form-wrapper{
-    width: 50%;
     background-color: var(--transparent-background);
-    margin: auto;
-    padding: 8rem 8rem;   
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8rem;   
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 35%;
 }
 
-.form-header-title{
-    font: italic normal 800 25px/30px Montserrat;
-    color: #FFFFFF;
-    margin-bottom: 1rem;
+.form-wrapper .form {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
 }
 
-.form-header-subtitle{
-    color: #949494; 
-    margin-bottom: 3rem;  
+.form-wrapper .form .input-container {
+    display: inline-flex;
 }
 
 .input-form{
     width: 100%;
-    background-color: var(--transparent-background);
-    color:#FFFFFF;
+    background-color: transparent;
+    color: var(--grey);
     border: 1px solid #949494;
     border-radius: 15px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    padding-left: 4.5rem;
 }
 
 .input-form:focus{
@@ -38,30 +45,44 @@
 .checkbox-container{
     display: flex;
     align-items: center;
-}
-
-.btn-checkbox-remember-me{
-    width: 1.8rem;
-    height: 1.8rem;
     position: relative;
 }
 
-.btn-checkbox-remember-me:checked{
-    appearance: none;
+.btn-checkbox-remember-me{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    width: 2rem;
+    background-color: var(--transparent-background);
+    border-radius: 5px;
+}
+
+.btn-checkbox-remember-me:checked ~ .checkmark{
     background-color:var(--pinkflashy);
 }
-.btn-checkbox-remember-me:checked:after {
+
+.btn-checkbox-remember-me:checked ~ .checkmark:after {
 	content: '\2714';
 	font-size: 14px;
 	position: absolute;
 	top: 0px;
-	left: 3px;
+	left: 5px;
 	color: #FFFFFF;
 }
 
 .text-checkbox-remember-me{
     font: normal normal normal 12px/15px Montserrat;
-    margin-left: 1rem;
+    margin-left: 3rem;
+    padding-top: .3rem;
 }
 
 .form-footer{
@@ -86,7 +107,44 @@
 .go-to-signin{
     font: normal normal normal 12px/15px Montserrat;
     text-align: center;
-    color: #949494;
-    margin-top: 5rem;
+    color: var(--grey);
+    margin-top: 4rem;
 }
 
+label {
+    display: inline-flex;
+    width: 100%;
+}
+
+.picto {
+    position: relative;
+}
+
+.picto:before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: -12px;
+    bottom: 0;
+    width: 15px;
+}
+
+.email-picto::before {
+    background: url("../../resources/img/icons/mail.svg") center / contain no-repeat;
+}
+
+.password-picto::before {
+    background: url("../../resources/img/icons/key.svg") center / contain no-repeat;
+}
+
+.slack-picto::before {
+    background: url("../../resources/img/icons/slack.svg") center / contain no-repeat;
+}
+
+.account-picto::before {
+    background: url("../../resources/img/icons/account.svg") center / contain no-repeat;
+}
+
+.validate-picto::before {
+    background: url("../../resources/img/icons/validate.svg") center / contain no-repeat;
+}
