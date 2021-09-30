@@ -27,7 +27,7 @@ const PageSection = ({
                 ? <Fragment>
                     <TextSection textSection="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at maximus ante. Morbi pretium vel diam in dignissim. Etiam auctor turpis quis justo sodales mattis. Phasellus tristique tincidunt quam, ac." />
                     <TextSection textSection="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at maximus ante. Morbi pretium vel diam in dignissim. Etiam auctor turpis quis justo sodales mattis. Phasellus tristique tincidunt quam, ac." />
-                    <Link to="/">
+                    <Link to="/post-topic">
                         <Button>Let's go !</Button>
                     </Link>
                 </Fragment>
