@@ -2,6 +2,7 @@
    --pinkflashy: #FF4093;
    --pinkpale: #EC567C;
    --transparent-background: rgba(255, 255, 255, 0.05);
+   --grey: #949494;
 }
 
 *:focus {
@@ -15,7 +16,8 @@ body {
 }
 
 body {
-   background-color: #121212;
+   background-image: url('../src/resources/img/background.png');
+   background-size: cover;
    color: #e9e9e9;
    font-family: 'Montserrat', sans-serif;
 }
