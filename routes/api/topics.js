@@ -12,7 +12,7 @@ const User = require('../../models/User');
 router.post('/',
    [
       check('name', 'Uuuh... We need your topic ఠ ͟ಠ').not().isEmpty(),
-      check('emailContributor', 'Uuuh... We need the contributor\'s email  ఠ ͟ಠ').not().isEmpty(),
+      check('emailContributor', 'Uuuh... We need the contributor\'s email ఠ ͟ಠ').not().isEmpty(),
       check('type', 'Uuuh... We need the type of topic ఠ ͟ಠ').not().isEmpty()
    ],
    async (req, res) => {
