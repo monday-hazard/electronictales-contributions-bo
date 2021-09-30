@@ -43,7 +43,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
       } 
       else {
 */
-         postTopic({ name, emailContributor, slackContributor, type, lockedBy });
+         postTopic({ name, emailContributor, slackContributor, type: selectedTopicType, lockedBy });
 
          if (isAuthenticated) {
             // openModal(); In fact, we could open the modal in the dashboard once authenticated :/
