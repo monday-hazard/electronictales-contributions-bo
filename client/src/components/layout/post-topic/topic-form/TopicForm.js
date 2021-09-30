@@ -17,19 +17,16 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
       emailContributor: '',
       slackContributor: '',
       type: 'any',
-      lockedBy: 'false'
+      lockedBy: false,
    })
    const [selectedTopicType, selectTopicType] = useState('any');
-   const { name, emailContributor, slackContributor, type, lockedBy } = formData;
+   const [lockedBy, setLockedBy] = useState(false);
+   const { name, emailContributor, slackContributor } = formData;
 
    const onChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
       console.log(e.target);
    };
-
-   useEffect(() => {
-      setFormData({ ...formData, ['type']: selectedTopicType });
-   }, [selectedTopicType]);
 
    const handleTopicTypeChange = (selected) => {
       selectTopicType(selected);
@@ -39,8 +36,6 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
    const onSubmit = e => {
       e.preventDefault();
 
-      console.log('isLocked ?:', isLocked);
-      console.log('formData:', formData);
 /* TODO : check if there are errors
       let errors = false;
       if ( errors ) {
@@ -48,16 +43,17 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
       } 
       else {
 */
-         // postTopic({ name, emailContributor, slackContributor, type, lockedBy });
+         postTopic({ name, emailContributor, slackContributor, type, lockedBy });
 
-         // if (isAuthenticated) {
-         //    // openModal(); In fact, we could open the modal in the dashboard once authenticated :/
-         //    return <Redirect to="/dashboard" />
-         // } else {
-         //    <Redirect to='/' />
-         // }
+         if (isAuthenticated) {
+            // openModal(); In fact, we could open the modal in the dashboard once authenticated :/
+            return <Redirect to="/dashboard" />
+         } else {
+            <Redirect to='/' />
+         }
       // }
    }
+
 
    return (
       <form className='topic-form form' onSubmit={e => onSubmit(e)} >
@@ -128,7 +124,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
             </div>
             {/* TODO : CHECKBOX HERE */}
             <Input
-               type='text'
+               type='checkbox'
                name='lockedBy'
                placeholder='Oui ou non ?'
                value={lockedBy}
