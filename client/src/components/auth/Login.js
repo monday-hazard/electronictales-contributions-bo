@@ -7,6 +7,7 @@ import { login } from '../../redux/actions/auth';
 import './Form.css';
 
 import { check, checkSchema } from 'express-validator';
+import TitleSection from '../elements/page-section/title-section/TitleSection';
 
 const Login = ({ login, isAuthenticated }) => {
 
@@ -40,30 +41,33 @@ const Login = ({ login, isAuthenticated }) => {
 
    return (
       <Fragment>
-         <div className='form-container'>
+         <section className='form-container'>
             <div className='form-wrapper'>
-               <div className='form-header-title'>Se connecter</div>
-               <div className='form-header-subtitle'>Connecte-toi pour accéder à ton espace personnel</div>
+               <TitleSection title="Se connecter" subtitle="Connecte-toi pour accéder à ton espace personnel"/>
                <form className='form' onSubmit={e => onSubmit(e)} >
-                  <div className='email'>
+                  <div className='input-container email'>
+                     <label className="picto email-picto">
                      <input
                         className='input-form'
                         type='email'
                         name='email'
-                        placeholder='Ton Mail'
+                        placeholder='email'
                         value={email}
                         onChange={(e) => onChange(e)}
                      />
+                     </label>
                   </div>
-                  <div className='form-group'>
+                  <div className='input-container form-group'>
+                     <label className="picto password-picto">
                      <input
                         className='input-form'
                         type='password'
                         name='password'
-                        placeholder='Ton Password'
+                        placeholder='password'
                         value={password}
                         onChange={(e) => onChange(e)}
                      />
+                     </label>
                   </div>
                   <div>
                      <label className='checkbox-container'>
@@ -72,6 +76,7 @@ const Login = ({ login, isAuthenticated }) => {
                         checked={rememberMe}
                         onChange={rememberMeAfterLogin}
                         />
+                        <span class="checkmark"></span>
                         <div className='text-checkbox-remember-me'>Se souvenir de moi</div>
                      </label>
                   </div>
@@ -85,10 +90,10 @@ const Login = ({ login, isAuthenticated }) => {
                   </div>
                </form>
             </div>
-         </div>
-         <p className='go-to-signin'>
-            Tu n'as pas de compte ? <Link to="/register">Inscris toi</Link>
-         </p>
+            <p className='go-to-signin'>
+               Tu n'as pas de compte ? <Link to="/register">Inscris toi</Link>
+            </p>
+         </section>
       </Fragment>
    );
 }
