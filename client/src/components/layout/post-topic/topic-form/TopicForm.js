@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { postTopic } from '../../../../redux/actions/topic';
@@ -16,18 +16,31 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
       name: '',
       emailContributor: '',
       slackContributor: '',
-      type: '',
-      lockedBy: ''
+      type: 'any',
+      lockedBy: 'false'
    })
    const [selectedTopicType, selectTopicType] = useState('any');
    const { name, emailContributor, slackContributor, type, lockedBy } = formData;
 
-   const onChange = (e) =>
+   const onChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
+      console.log(e.target);
+   };
+
+   useEffect(() => {
+      setFormData({ ...formData, ['type']: selectedTopicType });
+   }, [selectedTopicType]);
+
+   const handleTopicTypeChange = (selected) => {
+      selectTopicType(selected);
+      setFormData({ ...formData, ['type']: selected });
+   }
 
    const onSubmit = e => {
       e.preventDefault();
 
+      console.log('isLocked ?:', isLocked);
+      console.log('formData:', formData);
 /* TODO : check if there are errors
       let errors = false;
       if ( errors ) {
@@ -35,21 +48,17 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
       } 
       else {
 */
-         postTopic({ name, emailContributor, slackContributor, type, lockedBy });
+         // postTopic({ name, emailContributor, slackContributor, type, lockedBy });
 
-         if (isAuthenticated) {
-            // openModal(); In fact, we could open the modal in the dashboard once authenticated :/
-            return <Redirect to="/dashboard" />
-         } else {
-            <Redirect to='/' />
-         }
+         // if (isAuthenticated) {
+         //    // openModal(); In fact, we could open the modal in the dashboard once authenticated :/
+         //    return <Redirect to="/dashboard" />
+         // } else {
+         //    <Redirect to='/' />
+         // }
       // }
    }
 
-   const handleTopicTypeChange = (selectedTopicType) => {
-      selectTopicType(selectedTopicType);
-      console.log('topic type is set to:', selectedTopicType);
-   }
    return (
       <form className='topic-form form' onSubmit={e => onSubmit(e)} >
             <Input
@@ -75,7 +84,6 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                placeholder='Ton pseudo sur notre slack'
                value={slackContributor}
                onChange={(e) => onChange(e)}
-               required
             />
             <label className="topic-type-label" htmlFor="type">
                Le type de contenu que tu imagines
@@ -87,7 +95,10 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                   name="type"
                   value="TLTA"
                   checked={selectedTopicType === "TLTA"}
-                  // onChange={handleTopicTypeChange("TLTA")}
+                  onClick={
+                     (selectedTopicType !== "TLTA") 
+                        ? () => handleTopicTypeChange('TLTA')
+                        : undefined }
                   label={{ htmlFor: "typeChoiceTLTA", labelText: "Too Late Too Ask" }}
                />
                <Input 
@@ -96,7 +107,10 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                   name="type"
                   value="regular"
                   checked={selectedTopicType === "regular"}
-                  // onChange={handleTopicTypeChange("regular")}
+                  onClick={  
+                     (selectedTopicType !== "regular") 
+                        ? () => handleTopicTypeChange('regular') 
+                        : undefined }
                   label={{ htmlFor: "typeChoiceRegular", labelText: "Article" }}
                />
                <Input 
@@ -105,7 +119,10 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                   name="type"
                   value="any"
                   checked={selectedTopicType === "any"}
-                  // onChange={handleTopicTypeChange("any")}
+                  onClick={  
+                     (selectedTopicType !== "any") 
+                        ? () => handleTopicTypeChange('any') 
+                        : undefined }
                   label={{ htmlFor: 'typeChoiceAny', labelText: "Peu m'importe" }}
                />
             </div>
@@ -115,7 +132,7 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
                name='lockedBy'
                placeholder='Oui ou non ?'
                value={lockedBy}
-               onChange={(e) => onChange(e)}
+               onChange={undefined}
                required
                label={{
                   htmlFor: 'lockedBy',

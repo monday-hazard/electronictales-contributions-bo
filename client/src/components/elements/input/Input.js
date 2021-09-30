@@ -5,7 +5,8 @@ import './Input.css';
 
 const Input = ({ label = {}, onlyText, checked, ...props }) => {
     return (
-        <div className="input-wrapper">
+        <div className="input-wrapper" onClick={props.onClick}>
+            <div></div>
             {label && label.position === 'before' && (
                 <label htmlFor={label.htmlFor}>{label.labelText}</label>
             )}
