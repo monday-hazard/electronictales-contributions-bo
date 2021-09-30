@@ -8,6 +8,7 @@ import { setAlert } from '../../redux/actions/alert';
 import { register } from '../../redux/actions/auth';
 import { REGISTER_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 
+import './Form.css';
 
 const Register = ({ isAuthenticated, openModal, setAlert, register }) => {
    const [formData, setFormData] = useState({
@@ -39,69 +40,72 @@ const Register = ({ isAuthenticated, openModal, setAlert, register }) => {
 
    return (
       <Fragment>
-         <div className='form-header'>Inscris-toi</div>
-         <form className='form' onSubmit={e => onSubmit(e)} >
-            <div className='form-group'>
-               <label htmlFor='userName'>Ton nom préféré (ce sera ton nom d'utilisateur&#xB7;ice)&nbsp;:</label>
-               <input
-                  type='text'
-                  name='userName'
-                  placeholder='captainAnonymous'
-                  value={userName}
-                  onChange={(e) => onChange(e)}
-               />
+         <div className='form-container'>
+            <div className='form-wrapper'>
+               <div className='form-header-title'>S'inscrire</div>
+               <div className='form-header-subtitle'>Inscris-toi et créé ton espace personnel</div>
+               <form className='form-login' onSubmit={e => onSubmit(e)} >
+                  <div className='form-group'>
+                     <input
+                     className='input-form'
+                        type='text'
+                        name='userName'
+                        placeholder="Ton nom d'utilisateur préféré"
+                        value={userName}
+                        onChange={(e) => onChange(e)}
+                     />
+                  </div>
+                  <div className='email'>
+                     <input
+                        className='input-form'
+                        type='email'
+                        name='email'
+                        placeholder='Ton Mail'
+                        value={email}
+                        onChange={(e) => onChange(e)}
+                     />
+                  </div>
+                  <div className='slackname'>
+                     <input
+                        className='input-form'
+                        type='text'
+                        name='slackname'
+                        placeholder='Ton pseudo sur notre forum Slack'
+                        value={slackname}
+                        onChange={(e) => onChange(e)}
+                     />
+                  </div>
+                  <div className='form-group'>
+                     <input
+                        className='input-form'
+                        type='password'
+                        name='password'
+                        placeholder='Un mot de passe complexe'
+                        value={password}
+                        onChange={(e) => onChange(e)}
+                     />
+                  </div>
+                  <div className='form-group'>
+                     <input
+                        className='input-form'
+                        type='password'
+                        name='confirm_password'
+                        placeholder='Le même mot de passe (si, si)'
+                        value={confirm_password}
+                        onChange={(e) => onChange(e)}
+                     />
+                  </div>
+                  <div className='form-footer'>
+                     <input
+                        type='submit'
+                        value="Zou, je m'inscris !"
+                        className='btn-form'
+                     />
+                  </div>
+               </form>
             </div>
-            <div className='email'>
-               <label htmlFor='email'>Ton courriel&nbsp;:</label>
-               <input
-                  type='email'
-                  name='email'
-                  placeholder='email'
-                  value={email}
-                  onChange={(e) => onChange(e)}
-               />
-            </div>
-            <div className='slackname'>
-               <label htmlFor='slackname'>Ton pseudo sur notre slack&nbsp;:</label>
-               <input
-                  type='text'
-                  name='slackname'
-                  placeholder='Gigi93'
-                  value={slackname}
-                  onChange={(e) => onChange(e)}
-               />
-            </div>
-            <div className='form-group'>
-               <label htmlFor='password'>Un mot de passe complexe&nbsp;:</label>
-               <input
-                  type='password'
-                  name='password'
-                  placeholder='Moi1234'
-                  value={password}
-                  onChange={(e) => onChange(e)}
-               />
-            </div>
-            <div className='form-group'>
-               <label htmlFor='confirm_password'>
-                  Sauras-tu confirmer ton mot de passe&nbsp;?
-               </label>
-               <input
-                  type='password'
-                  name='confirm_password'
-                  placeholder='Le même mot de passe (si, si)'
-                  value={confirm_password}
-                  onChange={(e) => onChange(e)}
-               />
-            </div>
-            <div className='form-footer'>
-               <input
-                  type='submit'
-                  value="Zou, je m'inscris !"
-                  className='button'
-               />
-            </div>
-         </form>
-         <p className='gotosignup'>
+         </div>
+         <p className='go-to-signin'>
             Déjà inscrit ? <Link to="/login">Connecte toi</Link>
          </p>
          <Modal content={REGISTER_MODAL_CONTENT} />

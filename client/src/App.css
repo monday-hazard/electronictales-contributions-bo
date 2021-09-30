@@ -5,6 +5,10 @@
    --grey: #949494;
 }
 
+*:focus {
+   outline: none;
+}
+
 html,
 body {
    margin: 0;
