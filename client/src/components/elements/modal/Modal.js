@@ -1,10 +1,12 @@
 import React, { Fragment, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { closeModal } from '../../../redux/actions/modal';
+
 import './Modal.css';
 
-const Modal = ({ content, openModal, closeModal }) => {
+const Modal = ({ content, redirectPath, openModal, closeModal }) => {
    const { title, body, links } = content;
 
    // Source: https://stackoverflow.com/a/42234988
@@ -28,6 +30,7 @@ const Modal = ({ content, openModal, closeModal }) => {
 
    const close = () => {
       closeModal();
+      <Redirect to={redirectPath} />
    }
 
    return (

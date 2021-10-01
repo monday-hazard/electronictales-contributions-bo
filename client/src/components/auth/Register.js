@@ -1,18 +1,17 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Modal from '../elements/modal/Modal';
 import { connect } from 'react-redux';
-import { openModal } from '../../redux/actions/modal';
 import { setAlert } from '../../redux/actions/alert';
 import { register } from '../../redux/actions/auth';
-import { REGISTER_MODAL_CONTENT } from '../../dictionnary/modalContentList';
+import { REGISTER_SUCCESS_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 
 import './Form.css';
 import TitleSection from '../elements/page-section/title-section/TitleSection';
 import Input from '../elements/input/Input';
 
-const Register = ({ isAuthenticated, openModal, setAlert, register }) => {
+const Register = ({ setAlert, register }) => {
    const [formData, setFormData] = useState({
       userName: '',
       email: '',
@@ -29,22 +28,23 @@ const Register = ({ isAuthenticated, openModal, setAlert, register }) => {
    const onSubmit = e => {
       e.preventDefault();
       if (password !== confirm_password) {
-         setAlert('Your passwords don\'t match 😱', 'error')
+         console.log('erreur sur les mdp');
+         setAlert('Your passwords don\'t match 😱', 'error');
       } else {
          register({ userName, slackname, email, password });
       }
    }
 
-   if (isAuthenticated) {
-      // openModal(); In fact, we could open the modal in the dashboard once authenticated :/
-      return <Redirect to="/dashboard" />
-   }
+   // if (isAuthenticated) {
+   //    // openModal(); In fact, we could open the modal in the dashboard once authenticated :/
+   //    return 
+   // }
 
    return (
-      <Fragment>
+      <>
          <section className='form-container'>
             <div className='form-wrapper'>
-               <TitleSection title="S'inscrire" subtitle="Inscris-toi et créé ton espace personnel"/>
+               <TitleSection title="S'inscrire" subtitle="Inscris-toi et crée ton espace personnel"/>
                <form className='form' onSubmit={e => onSubmit(e)} >
                   <Input
                      label={{className: "picto account-picto", position: "before"}}
@@ -106,20 +106,21 @@ const Register = ({ isAuthenticated, openModal, setAlert, register }) => {
                Déjà inscrit ? <Link to="/login">Connecte toi</Link>
             </p>
          </section>
-         <Modal content={REGISTER_MODAL_CONTENT} />
-      </Fragment>
+         <Modal
+            content={REGISTER_SUCCESS_MODAL_CONTENT}
+            redirectPath='/login'
+         />
+      </>
    );
 };
 
 Register.propTypes = {
-   openModal: PropTypes.func.isRequired,
    setAlert: PropTypes.func.isRequired,
-   register: PropTypes.func.isRequired,
-   isAuthenticated: PropTypes.bool
+   register: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
    isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps, { openModal, setAlert, register })(Register);
+export default connect(mapStateToProps, { setAlert, register })(Register);
