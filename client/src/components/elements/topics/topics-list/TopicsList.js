@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getTopics } from '../../../../redux/actions/topic';
-import Loading from '../../loading/Loading';
+import Loading from '../../loader/Loader';
 import TopicCard from '../TopicCard';
 
 
