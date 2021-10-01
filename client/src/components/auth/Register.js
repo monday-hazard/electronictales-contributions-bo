@@ -10,6 +10,7 @@ import { REGISTER_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 
 import './Form.css';
 import TitleSection from '../elements/page-section/title-section/TitleSection';
+import Input from '../elements/input/Input';
 
 const Register = ({ isAuthenticated, openModal, setAlert, register }) => {
    const [formData, setFormData] = useState({
@@ -45,73 +46,60 @@ const Register = ({ isAuthenticated, openModal, setAlert, register }) => {
             <div className='form-wrapper'>
                <TitleSection title="S'inscrire" subtitle="Inscris-toi et créé ton espace personnel"/>
                <form className='form' onSubmit={e => onSubmit(e)} >
-                  <div className='form-group input-container'>
-                     <label className="picto account-picto">
-                     <input
+                  <Input
+                     label={{className: "picto account-picto", position: "before"}}
                      className='input-form'
-                        type='text'
-                        name='userName'
-                        placeholder="username"
-                        value={userName}
-                        onChange={(e) => onChange(e)}
-                     />
-                     </label>
-                  </div>
-                  <div className='email input-container'>
-                     <label className="picto email-picto">
-                     <input
-                        className='input-form'
-                        type='email'
-                        name='email'
-                        placeholder='email'
-                        value={email}
-                        onChange={(e) => onChange(e)}
-                     />
-                     </label>
-                  </div>
-                  <div className='slackname input-container'>
-                     <label className="picto slack-picto">
-                     <input
-                        className='input-form'
-                        type='text'
-                        name='slackname'
-                        placeholder='slackname'
-                        value={slackname}
-                        onChange={(e) => onChange(e)}
-                     />
-                     </label>
-                  </div>
-                  <div className='form-group input-container'>
-                     <label className="picto password-picto">
-                     <input
-                        className='input-form'
-                        type='password'
-                        name='password'
-                        placeholder='password'
-                        value={password}
-                        onChange={(e) => onChange(e)}
-                     />
-                     </label>
-                  </div>
-                  <div className='form-group input-container'>
-                     <label className="picto validate-picto">
-                     <input
-                        className='input-form'
-                        type='password'
-                        name='confirm_password'
-                        placeholder='confirm password'
-                        value={confirm_password}
-                        onChange={(e) => onChange(e)}
-                     />
-                     </label>
-                  </div>
-                  <div className='form-footer'>
-                     <input
-                        type='submit'
-                        value="Zou, je m'inscris !"
-                        className='btn-form'
-                     />
-                  </div>
+                     type='text'
+                     name='userName'
+                     placeholder="username"
+                     value={userName}
+                     onChange={(e) => onChange(e)}
+                     required
+                  />
+                  <Input
+                     label={{className: "picto email-picto", position: "before"}}
+                     className='input-form'
+                     type='email'
+                     name='email'
+                     placeholder='email'
+                     value={email}
+                     onChange={(e) => onChange(e)}
+                     required
+                  />
+                  <Input
+                     label={{className: "picto slack-picto", position: "before"}}
+                     className='input-form'
+                     type='text'
+                     name='slackname'
+                     placeholder='slackname'
+                     value={slackname}
+                     onChange={(e) => onChange(e)}
+                  />
+                  <Input
+                     label={{className: "picto password-picto", position: "before"}}
+                     className='input-form'
+                     type='password'
+                     name='password'
+                     placeholder='password'
+                     value={password}
+                     onChange={(e) => onChange(e)}
+                     required
+                  />
+                  <Input
+                     label={{className: "picto validate-picto", position: "before"}}
+                     className='input-form'
+                     type='password'
+                     name='confirm_password'
+                     placeholder='confirm password'
+                     value={confirm_password}
+                     onChange={(e) => onChange(e)}
+                     required
+                  />
+                  <Input
+                     type='submit'
+                     value="Zou, je m'inscris !"
+                     className='btn-form'
+                  />
                </form>
             </div>
             <p className='go-to-signin'>

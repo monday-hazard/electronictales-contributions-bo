@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import './Input.css';
 
+
 const Input = ({ label = {}, onlyText, checked, ...props }) => {
+
+    let containerCssClass = '';
+
+    switch (props.type) {
+        case "submit":
+            containerCssClass = 'form-footer'
+            break;
+        case "checkbox":
+            containerCssClass = 'checkbox-container'
+            break;
+        default:
+            containerCssClass = 'form-group input-container'
+    }
+
     return (
-        <div className="input-wrapper" onClick={props.onClick}>
-            <div></div>
+        
+        <div className={containerCssClass} onClick={props.onClick}>
             {label && label.position === 'before' && (
-                <label htmlFor={label.htmlFor}>{label.labelText}</label>
+                <label className={label.className} htmlFor={label.htmlFor}>{label.labelText}</label>
             )}
             {props.type === 'radio' && (
                 <span className="radio-button-icon">
@@ -21,8 +36,14 @@ const Input = ({ label = {}, onlyText, checked, ...props }) => {
                 className={'input' + `${!onlyText ? ' styled-input' : ''}`}
                 {...props}
             />
-            {label && label.position !== 'before' && (
-                <label htmlFor={label.htmlFor}>{label.labelText}</label>
+            {props.type === 'checkbox' && (
+                <Fragment>
+                    <span class="checkmark"></span>
+                    <div className='text-checkbox-remember-me'>Se souvenir de moi</div>
+                </Fragment>
+            )}
+            {label && label.position === 'after' && (
+                <label className={label.className} htmlFor={label.htmlFor}>{label.labelText}</label>
             )}
         </div>
     );
