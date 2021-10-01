@@ -8,6 +8,7 @@ import './Form.css';
 
 import { check, checkSchema } from 'express-validator';
 import TitleSection from '../elements/page-section/title-section/TitleSection';
+import Input from '../elements/input/Input';
 
 const Login = ({ login, isAuthenticated }) => {
 
@@ -45,49 +46,39 @@ const Login = ({ login, isAuthenticated }) => {
             <div className='form-wrapper'>
                <TitleSection title="Se connecter" subtitle="Connecte-toi pour accéder à ton espace personnel"/>
                <form className='form' onSubmit={e => onSubmit(e)} >
-                  <div className='input-container email'>
-                     <label className="picto email-picto">
-                     <input
-                        className='input-form'
-                        type='email'
-                        name='email'
-                        placeholder='email'
-                        value={email}
-                        onChange={(e) => onChange(e)}
-                     />
-                     </label>
-                  </div>
-                  <div className='input-container form-group'>
-                     <label className="picto password-picto">
-                     <input
-                        className='input-form'
-                        type='password'
-                        name='password'
-                        placeholder='password'
-                        value={password}
-                        onChange={(e) => onChange(e)}
-                     />
-                     </label>
-                  </div>
-                  <div>
-                     <label className='checkbox-container'>
-                        <input className='btn-checkbox-remember-me' 
-                        type="checkbox"
-                        checked={rememberMe}
-                        onChange={rememberMeAfterLogin}
-                        />
-                        <span class="checkmark"></span>
-                        <div className='text-checkbox-remember-me'>Se souvenir de moi</div>
-                     </label>
-                  </div>
-                  <div className='form-footer'>
-                     
-                     <input
-                        type='submit'
-                        value="Zou, je me connecte !"
-                        className='btn-form'
-                     />
-                  </div>
+                  <Input
+                     label={{className: "picto email-picto", position: "before"}}
+                     className='input-form'
+                     type='email'
+                     name='email'
+                     placeholder='email'
+                     value={email}
+                     onChange={(e) => onChange(e)}
+                     required
+                  />
+                  <Input
+                     label={{className: "picto password-picto", position: "before"}}
+                     className='input-form'
+                     type='password'
+                     name='password'
+                     placeholder='password'
+                     value={password}
+                     onChange={(e) => onChange(e)}
+                     required
+                  />
+                  <Input
+                     label={{position: "before"}}
+                     className='btn-checkbox-remember-me' 
+                     type="checkbox"
+                     checked={rememberMe}
+                     onChange={rememberMeAfterLogin}
+                     required
+                  />
+                  <Input
+                     type='submit'
+                     value="Zou, je me connecte !"
+                     className='btn-form'
+                  />
                </form>
             </div>
             <p className='go-to-signin'>

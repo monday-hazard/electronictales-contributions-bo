@@ -5,6 +5,7 @@
     border-radius: 50px;
     transition: .3s ease;
     margin: .5rem;
+    font-size: 1.2rem;
 }
 
 .btn:hover {
