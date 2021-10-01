@@ -1,5 +1,6 @@
 .form-container{
-    min-height: 90vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,8 +53,9 @@
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 0;
-    width: 0;
+    height: 2rem;
+    width: 2rem;
+    z-index: 5;
 }
 
 .checkmark {
@@ -113,7 +115,6 @@
 
 label {
     display: inline-flex;
-    width: 100%;
 }
 
 .picto {
