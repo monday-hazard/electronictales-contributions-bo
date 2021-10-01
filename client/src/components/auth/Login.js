@@ -18,7 +18,7 @@ const Login = ({ login, isAuthenticated }) => {
 
    const { email, password } = formData;
 
-   const onChange = e =>{
+   const onChange = e => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
    }
 
@@ -30,9 +30,9 @@ const Login = ({ login, isAuthenticated }) => {
    };
 
    const [rememberMe, setRemeberMer] = React.useState(false);
-   const rememberMeAfterLogin =  () => {
+   const rememberMeAfterLogin = () => {
       setRemeberMer(!rememberMe)
-   } 
+   }
 
    //Redirect if logged in
    if (isAuthenticated) {
@@ -43,45 +43,45 @@ const Login = ({ login, isAuthenticated }) => {
       <Fragment>
          <section className='form-container'>
             <div className='form-wrapper'>
-               <TitleSection title="Se connecter" subtitle="Connecte-toi pour accéder à ton espace personnel"/>
+               <TitleSection title="Se connecter" subtitle="Connecte-toi pour accéder à ton espace personnel" />
                <form className='form' onSubmit={e => onSubmit(e)} >
                   <div className='input-container email'>
                      <label className="picto email-picto">
-                     <input
-                        className='input-form'
-                        type='email'
-                        name='email'
-                        placeholder='email'
-                        value={email}
-                        onChange={(e) => onChange(e)}
-                     />
+                        <input
+                           className='input-form'
+                           type='email'
+                           name='email'
+                           placeholder='email'
+                           value={email}
+                           onChange={(e) => onChange(e)}
+                        />
                      </label>
                   </div>
                   <div className='input-container form-group'>
                      <label className="picto password-picto">
-                     <input
-                        className='input-form'
-                        type='password'
-                        name='password'
-                        placeholder='password'
-                        value={password}
-                        onChange={(e) => onChange(e)}
-                     />
+                        <input
+                           className='input-form'
+                           type='password'
+                           name='password'
+                           placeholder='password'
+                           value={password}
+                           onChange={(e) => onChange(e)}
+                        />
                      </label>
                   </div>
                   <div>
                      <label className='checkbox-container'>
-                        <input className='btn-checkbox-remember-me' 
-                        type="checkbox"
-                        checked={rememberMe}
-                        onChange={rememberMeAfterLogin}
+                        <input className='btn-checkbox-remember-me'
+                           type="checkbox"
+                           checked={rememberMe}
+                           onChange={rememberMeAfterLogin}
                         />
-                        <span class="checkmark"></span>
+                        <span className="checkmark"></span>
                         <div className='text-checkbox-remember-me'>Se souvenir de moi</div>
                      </label>
                   </div>
                   <div className='form-footer'>
-                     
+
                      <input
                         type='submit'
                         value="Zou, je me connecte !"

@@ -5,7 +5,7 @@ import Dashboard from './components/layout/dashboard/Dashboard';
 import PostTopic from './components/layout/post-topic/PostTopic';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-
+import PrivateRoute from './components/routing/PrivateRoute';
 import Alert from './components/elements/alert/Alert';
 import Navbar from './components/elements/navbar/Navbar';
 
@@ -39,7 +39,7 @@ const App = () => {
                   <Switch>
                      <Route exact path="/register" component={Register} />
                      <Route exact path="/login" component={Login} />
-                     <Route exact path="/dashboard" component={Dashboard} />
+                     <PrivateRoute exact path="/dashboard" component={Dashboard} />
                      <Route exact path="/post-topic" component={PostTopic} />
                   </Switch>
                </div>
