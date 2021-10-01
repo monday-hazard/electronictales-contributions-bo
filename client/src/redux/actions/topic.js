@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../../utils/api';
 import { setAlert } from './alert';
 import {
    GET_TOPICS,
@@ -10,18 +10,19 @@ import {
 // Get Topics
 export const getTopics = () => async dispatch => {
    try {
-      const res = await axios.get('/api/topics');
+      const res = await api.get('/topics');
 
       dispatch({
          type: GET_TOPICS,
          payload: res.data
       });
    } catch (error) {
+      console.log(error)
       dispatch({
          type: TOPICS_ERROR,
          payload: {
             msg: error.response.statusText,
-            status: error.response.status
+            status: 'ok'
          }
       });
    }
@@ -30,7 +31,7 @@ export const getTopics = () => async dispatch => {
 // Delete topic
 export const deleteTopic = id => async dispatch => {
    try {
-      await axios.delete(`/api/topics/${id}`);
+      await api.delete(`/topics/${id}`);
 
       dispatch({
          type: DELETE_TOPIC,
@@ -59,7 +60,7 @@ export const postTopic = formData => async dispatch => {
    }
 
    try {
-      const res = await axios.post(`/api/topics`, formData, config);
+      const res = await api.post(`/topics`, formData, config);
 
       dispatch({
          type: POST_TOPIC,
