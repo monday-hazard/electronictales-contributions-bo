@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Hero from '../../elements/hero/Hero';
 import PageSection from '../../elements/page-section/PageSection';
 import homeImg1 from '../../../resources/img/imghome1.png';
-import homeImg2 from '../../../resources/img/imghome2.png';
+import homeImg2 from '../../../resources/img/imghome2.png';  
 
 import './Landing.css';
 

@@ -1,4 +1,45 @@
 .card-content {
     height: 100%;
     text-align: center;
+    font-size: 1.2rem;
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.card-content .title-contribution {
+    text-transform: none;
+    font-size: 1.9rem;
+    font-weight: 800;
+    font-style: italic;
+    font-family: 'Montserrat';
+}
+
+.card-content .text-contribution {
+    margin-top: 1.5rem;
+}
+
+.card-content img {
+    margin-top: 1.5rem;
+    width: 18rem;
+    height: 18rem;
+    object-fit: cover;
+}
+
+.text-contribution {
+    margin-bottom: 6rem;
+}
+
+.card-content a{
+    font-size: 1.4rem;
+    font-style: italic;
+    position: absolute;
+    bottom: 2.5rem;
+    transition: .3s ease;
+}
+
+.card-content a:hover {
+    transform: translateY(-3px);
 }

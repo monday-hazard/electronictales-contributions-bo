@@ -6,11 +6,12 @@ import "./TopicExample.css";
 const TopicExample = ({
     imgQuestionSrc,
     text,
-    additionnalCssClass
+    additionnalCssClass,
+    urlExample
 }) => {
     return (
         <div className={`question ${additionnalCssClass}`}>
-            <p>{text}</p>
+            <a target="_blank" href={urlExample}>{text}</a>
             <img src={imgQuestionSrc} />
         </div>
     )
@@ -18,7 +19,9 @@ const TopicExample = ({
 
 TopicExample.propTypes = {
     imgQuestionSrc: PropTypes.string,
-    textSrc: PropTypes.string
+    textSrc: PropTypes.string,
+    additionnalCssClass: PropTypes.string,
+    urlExample: PropTypes.string
 }
 
 export default TopicExample;

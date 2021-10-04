@@ -2,16 +2,20 @@
     padding: 0 0 5rem;
 }
 
-.topic-info {
-    display: inline-grid;
+.post-topic .topic-info {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 100%;
+    align-items: center;
     column-gap: 5rem;
 }
 
-.topic-info > :first-child {
-    justify-self: end;
-}
-
-.post-topic-form {
+.post-topic .topic-info .contrib-option {
+    color: var(--blue);
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: -webkit-linear-gradient(var(--blue), var(--darkblue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
