@@ -6,7 +6,6 @@ import './Card.css';
 const Card = ({ title, isSquare, ...props }) => {
     return (
         <div className={'card' + `${isSquare ? ' square' : ''}`}>
-            <span className="card-title">{title}</span>
             {props.children}
         </div>
     );

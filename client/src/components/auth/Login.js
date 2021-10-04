@@ -67,12 +67,11 @@ const Login = ({ login, isAuthenticated }) => {
                      required
                   />
                   <Input
-                     label={{position: "before"}}
+                     label={{position: "before", labelText: "Se souvenir de moi", className: "text-checkbox-remember-me"}}
                      className='btn-checkbox-remember-me' 
                      type="checkbox"
                      checked={rememberMe}
                      onChange={rememberMeAfterLogin}
-                     required
                   />
                   <Input
                      type='submit'

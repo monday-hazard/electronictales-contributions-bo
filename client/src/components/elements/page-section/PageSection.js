@@ -17,7 +17,7 @@ const PageSection = ({
 }) => {
     return (
         <section className="container section-home">
-            {imgLeft && <RichImage imgSrc={imgSrc}/>}
+            {imgLeft && <RichImage isTopicSection imgSrc={imgSrc} />}
             <div className="text-content">
                 {isTopic 
                 ? <TitleSection title="Proposer un topic" subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
