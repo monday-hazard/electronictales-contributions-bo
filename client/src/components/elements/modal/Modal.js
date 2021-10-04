@@ -36,9 +36,11 @@ const Modal = ({ content, redirectPath, openModal, closeModal }) => {
    return (
       <>
          {openModal && (
-            <div className="modal" ref={wrapperRef}>
-               <h2>{title}</h2>
-               <p>{body}</p>
+            <div className="modal-overlay">
+               <div className="modal" ref={wrapperRef}>
+                  <h2>{title}</h2>
+                  <p>{body}</p>
+               </div>
             </div>
          )}
          {redirect && (
