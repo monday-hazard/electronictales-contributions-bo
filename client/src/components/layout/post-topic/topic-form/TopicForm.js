@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { postTopic } from '../../../../redux/actions/topic';
 import { setAlert } from '../../../../redux/actions/alert';
-import { Redirect } from 'react-router';
 
 import Input from '../../../elements/input/Input';
 
@@ -31,123 +30,125 @@ const TopicForm = ({ postTopic }) => {
       setFormData({ ...formData, ['type']: selected });
    }
 
-   const lockedByAfterSubmit =  () => {
+   const lockedByAfterSubmit = () => {
       setLockedBy(!lockedBy);
    }
 
    const onSubmit = e => {
       e.preventDefault();
 
-/* TODO : check if there are errors
-      let errors = false;
-      if ( errors ) {
-         setAlert('Message 😱', 'error');
-      } 
-      else {
-*/
-         postTopic({ name, emailContributor, slackContributor, type: selectedTopicType, lockedBy });
+      /* TODO : check if there are errors
+            let errors = false;
+            if ( errors ) {
+               setAlert('Message 😱', 'error');
+            } 
+            else {
+      */
+      postTopic({ name, emailContributor, slackContributor, type: selectedTopicType, lockedBy });
       // }
    }
 
 
    return (
       <section className='form-container'>
-            <div className='form-wrapper topic-form-container'>
-               <form className='form' onSubmit={e => onSubmit(e)} >
+         <div className='form-wrapper topic-form-container'>
+            <form className='form' onSubmit={e => onSubmit(e)} >
+               <Input
+                  label={{ className: "picto idea-picto", position: "before" }}
+                  className='input-form input-form-white'
+                  type='text'
+                  name='name'
+                  placeholder='Ton super sujet'
+                  value={name}
+                  onChange={(e) => onChange(e)}
+                  required
+                  maxLength={73}
+               />
+               <Input
+                  label={{ className: "picto email-picto", position: "before" }}
+                  className='input-form input-form-white'
+                  type='email'
+                  name='emailContributor'
+                  placeholder='email'
+                  value={emailContributor}
+                  onChange={(e) => onChange(e)}
+                  required
+               />
+               <Input
+                  label={{ className: "picto password-picto", position: "before" }}
+                  className='input-form input-form-white'
+                  type='text'
+                  name='slackContributor'
+                  placeholder='slackname'
+                  value={slackContributor}
+                  onChange={(e) => onChange(e)}
+               />
+               <p className="topic-type-label" htmlFor="type">
+                  Le type de contenu que tu imagines pour ce sujet
+               </p>
+               <div className="topic-type-choice-group">
                   <Input
-                     label={{className: "picto idea-picto", position: "before"}}
-                     className='input-form input-form-white'
-                     type='text'
-                     name='name'
-                     placeholder='Ton super sujet'
-                     value={name}
-                     onChange={(e) => onChange(e)}
-                     required
-                     maxLength={73}
+                     className="styled-input"
+                     type="radio"
+                     id="typeChoiceTLTA"
+                     name="type"
+                     value="TLTA"
+                     checked={selectedTopicType === "TLTA"}
+                     onClick={
+                        (selectedTopicType !== "TLTA")
+                           ? () => handleTopicTypeChange('TLTA')
+                           : undefined}
+                     label={{ htmlFor: "typeChoiceTLTA", labelText: "Too Late Too Ask" }}
                   />
                   <Input
-                     label={{className: "picto email-picto", position: "before"}}
-                     className='input-form input-form-white'
-                     type='email'
-                     name='emailContributor'
-                     placeholder='email'
-                     value={emailContributor}
-                     onChange={(e) => onChange(e)}
-                     required
+                     className="styled-input"
+                     type="radio"
+                     id="typeChoiceRegular"
+                     name="type"
+                     value="regular"
+                     checked={selectedTopicType === "regular"}
+                     onClick={
+                        (selectedTopicType !== "regular")
+                           ? () => handleTopicTypeChange('regular')
+                           : undefined}
+                     label={{ htmlFor: "typeChoiceRegular", labelText: "Article" }}
                   />
                   <Input
-                     label={{className: "picto password-picto", position: "before"}}
-                     className='input-form input-form-white'
-                     type='text'
-                     name='slackContributor'
-                     placeholder='slackname'
-                     value={slackContributor}
-                     onChange={(e) => onChange(e)}
+                     className="styled-input"
+                     type="radio"
+                     id="typeChoiceAny"
+                     name="type"
+                     value="any"
+                     checked={selectedTopicType === "any"}
+                     onClick={
+                        (selectedTopicType !== "any")
+                           ? () => handleTopicTypeChange('any')
+                           : undefined}
+                     label={{ htmlFor: 'typeChoiceAny', labelText: "Peu m'importe" }}
                   />
-                  <p className="topic-type-label" htmlFor="type">
-                     Le type de contenu que tu imagines pour ce sujet
-                  </p>
-                  <div className="topic-type-choice-group">
-                     <Input
-                        className="styled-input"
-                        type="radio"
-                        id="typeChoiceTLTA"
-                        name="type"
-                        value="TLTA"
-                        checked={selectedTopicType === "TLTA"}
-                        onClick={
-                           (selectedTopicType !== "TLTA") 
-                              ? () => handleTopicTypeChange('TLTA')
-                              : undefined }
-                        label={{ htmlFor: "typeChoiceTLTA", labelText: "Too Late Too Ask"}}
-                     />
-                     <Input
-                        className="styled-input"
-                        type="radio"
-                        id="typeChoiceRegular"
-                        name="type"
-                        value="regular"
-                        checked={selectedTopicType === "regular"}
-                        onClick={  
-                           (selectedTopicType !== "regular") 
-                              ? () => handleTopicTypeChange('regular') 
-                              : undefined }
-                        label={{ htmlFor: "typeChoiceRegular", labelText: "Article"}}
-                     />
-                     <Input
-                        className="styled-input"
-                        type="radio"
-                        id="typeChoiceAny"
-                        name="type"
-                        value="any"
-                        checked={selectedTopicType === "any"}
-                        onClick={  
-                           (selectedTopicType !== "any") 
-                              ? () => handleTopicTypeChange('any') 
-                              : undefined }
-                        label={{ htmlFor: 'typeChoiceAny', labelText: "Peu m'importe" }}
-                     />
-                  </div>
-                  <Input
-                     label={{htmlFor: 'lockedBy',
+               </div>
+               <Input
+                  label={{
+                     htmlFor: 'lockedBy',
                      labelText: 'Souhaites-tu écrire l\'article toi-même ?',
-                     position: 'before', className: "text-checkbox-remember-me"}}
-                     className='btn-checkbox-remember-me' 
-                     type="checkbox"
-                     name='lockedBy'
-                     placeholder='Oui ou non ?'
-                     value={lockedBy}
-                     onChange={lockedByAfterSubmit}
-                  />
-                  <Input
-                     onlyText
-                     type='submit'
-                     value="Zou, j'envoie !"
-                     className='btn-form'
-                  />
-               </form>
-            </div>
-         </section>
+                     position: 'before', className: "text-checkbox-remember-me"
+                  }}
+                  className='btn-checkbox-remember-me'
+                  type="checkbox"
+                  name='lockedBy'
+                  placeholder='Oui ou non ?'
+                  value={lockedBy}
+                  onChange={lockedByAfterSubmit}
+               />
+               <Input
+                  onlyText
+                  type='submit'
+                  value="Zou, j'envoie !"
+                  className='btn-form'
+               />
+            </form>
+         </div>
+      </section>
    );
 };
 

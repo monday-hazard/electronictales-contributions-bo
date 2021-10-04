@@ -4,24 +4,25 @@ import "./TopicExample.css";
 
 
 const TopicExample = ({
-    imgQuestionSrc,
-    text,
-    additionnalCssClass,
-    urlExample
+   imgQuestionSrc,
+   imgAlt,
+   text,
+   additionnalCssClass,
+   urlExample
 }) => {
-    return (
-        <div className={`question ${additionnalCssClass}`}>
-            <a target="_blank" href={urlExample}>{text}</a>
-            <img src={imgQuestionSrc} />
-        </div>
-    )
+   return (
+      <div className={`question ${additionnalCssClass}`}>
+         <a href={urlExample} target="_blank" rel="noreferrer">{text}</a>
+         <img src={imgQuestionSrc} alt={imgAlt} />
+      </div>
+   )
 }
 
 TopicExample.propTypes = {
-    imgQuestionSrc: PropTypes.string,
-    textSrc: PropTypes.string,
-    additionnalCssClass: PropTypes.string,
-    urlExample: PropTypes.string
+   imgQuestionSrc: PropTypes.string,
+   textSrc: PropTypes.string,
+   additionnalCssClass: PropTypes.string,
+   urlExample: PropTypes.string
 }
 
 export default TopicExample;

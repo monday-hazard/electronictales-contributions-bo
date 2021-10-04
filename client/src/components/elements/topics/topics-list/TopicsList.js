@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getTopicsOpen } from '../../../../redux/actions/topic';
@@ -17,15 +17,15 @@ const TopicsList = ({ getTopicsOpen, topic: { topics, loading } }) => {
    return loading ? <Loading /> :
       <div className="topics-list">
          {topics
-         .sort((a, b) => b.priority - a.priority)
-         .map(topic => (
-            <TopicCard key={topic._id} topic={topic} />
-         ))}
+            .sort((a, b) => b.priority - a.priority)
+            .map(topic => (
+               <TopicCard key={topic._id} topic={topic} />
+            ))}
       </div>
 }
 
 TopicsList.propTypes = {
-   getTopics: PropTypes.func.isRequired,
+   getTopicsOpen: PropTypes.func.isRequired,
    topic: PropTypes.object.isRequired
 }
 

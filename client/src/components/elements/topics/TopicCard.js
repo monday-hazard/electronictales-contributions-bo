@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -11,7 +11,7 @@ const TopicCard = ({ topic: { _id, name, type, priority } }) => {
       <div className="topic-card">
          <div className="left-topic-card">
             {priority &&
-               <img className="fire-picto" src={firePicto} alt="fire pictogram"/>
+               <img className="fire-picto" src={firePicto} alt="fire pictogram" />
             }
             <div>
                <p>{name}</p>
@@ -19,7 +19,7 @@ const TopicCard = ({ topic: { _id, name, type, priority } }) => {
             </div>
          </div>
          <div className="pen-picto-container">
-            <Link to="#"><img className="pen-picto" src={penPicto}/></Link>
+            <Link to="#"><img className="pen-picto" src={penPicto} alt="A pen" /></Link>
          </div>
       </div>
    )
