@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Loading.css';
+import './Loader.css';
 
 const Loading = props => {
    return (

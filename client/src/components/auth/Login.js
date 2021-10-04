@@ -19,7 +19,7 @@ const Login = ({ login, isAuthenticated }) => {
 
    const { email, password } = formData;
 
-   const onChange = e =>{
+   const onChange = e => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
    }
 
@@ -31,9 +31,9 @@ const Login = ({ login, isAuthenticated }) => {
    };
 
    const [rememberMe, setRemeberMer] = React.useState(false);
-   const rememberMeAfterLogin =  () => {
+   const rememberMeAfterLogin = () => {
       setRemeberMer(!rememberMe)
-   } 
+   }
 
    //Redirect if logged in
    if (isAuthenticated) {
@@ -44,10 +44,10 @@ const Login = ({ login, isAuthenticated }) => {
       <Fragment>
          <section className='form-container'>
             <div className='form-wrapper'>
-               <TitleSection title="Se connecter" subtitle="Connecte-toi pour accéder à ton espace personnel"/>
+               <TitleSection title="Se connecter" subtitle="Connecte-toi pour accéder à ton espace personnel" />
                <form className='form' onSubmit={e => onSubmit(e)} >
                   <Input
-                     label={{className: "picto email-picto", position: "before"}}
+                     label={{ className: "picto email-picto", position: "before" }}
                      className='input-form'
                      type='email'
                      name='email'
@@ -57,7 +57,7 @@ const Login = ({ login, isAuthenticated }) => {
                      required
                   />
                   <Input
-                     label={{className: "picto password-picto", position: "before"}}
+                     label={{ className: "picto password-picto", position: "before" }}
                      className='input-form'
                      type='password'
                      name='password'
