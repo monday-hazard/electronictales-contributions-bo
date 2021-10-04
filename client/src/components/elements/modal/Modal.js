@@ -10,13 +10,11 @@ const Modal = ({ content, redirectPath, openModal, closeModal }) => {
    const { title, body, links } = content;
    const [redirect, setRedirect] = useState(false);
 
-   // Source: https://stackoverflow.com/a/42234988
+   // Inspiration : https://stackoverflow.com/a/42234988
    const useOutsideCloser = (ref) => {
       useEffect(() => {
-         const handleClickOutside = (event) => {
-            if (ref.current && !ref.current.contains(event.target)) {
-               close();
-            }
+         const handleClickOutside = () => {
+            if (ref.current) close();
          }
          document.addEventListener("mousedown", handleClickOutside);
          return () => {
@@ -30,7 +28,7 @@ const Modal = ({ content, redirectPath, openModal, closeModal }) => {
    useOutsideCloser(wrapperRef);
 
    const close = () => {
-      // TODO : loader during redirection
+      // TODO : add spinner loader during redirection
       setRedirect(true);
       closeModal();
    }
