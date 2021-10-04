@@ -7,7 +7,7 @@ import { closeModal } from '../../../redux/actions/modal';
 import './Modal.css';
 
 const Modal = ({ content, redirectPath, openModal, closeModal }) => {
-   const { title, body, links } = content;
+   const { title, body } = content;
    const [redirect, setRedirect] = useState(false);
 
    // Inspiration : https://stackoverflow.com/a/42234988

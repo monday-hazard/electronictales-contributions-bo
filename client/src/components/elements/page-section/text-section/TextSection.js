@@ -1,18 +1,18 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./TextSection.css";
 
 
 const TextSection = ({
-    textSection,
+   textSection,
 }) => {
-    return (
-        <p className="text">{textSection}</p>
-    )
+   return (
+      <p className="text">{textSection}</p>
+   )
 }
 
 TextSection.propTypes = {
-    textSection: PropTypes.string,
+   textSection: PropTypes.string,
 }
 
 export default TextSection;

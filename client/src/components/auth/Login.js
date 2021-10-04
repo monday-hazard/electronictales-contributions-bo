@@ -6,7 +6,6 @@ import { login } from '../../redux/actions/auth';
 
 import './Form.css';
 
-import { check, checkSchema } from 'express-validator';
 import TitleSection from '../elements/page-section/title-section/TitleSection';
 import Input from '../elements/input/Input';
 
@@ -67,8 +66,8 @@ const Login = ({ login, isAuthenticated }) => {
                      required
                   />
                   <Input
-                     label={{position: "before", labelText: "Se souvenir de moi", className: "text-checkbox-remember-me"}}
-                     className='btn-checkbox-remember-me' 
+                     label={{ position: "before", labelText: "Se souvenir de moi", className: "text-checkbox-remember-me" }}
+                     className='btn-checkbox-remember-me'
                      type="checkbox"
                      checked={rememberMe}
                      onChange={rememberMeAfterLogin}

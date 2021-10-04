@@ -28,7 +28,7 @@ export const getTopics = () => async dispatch => {
    }
 }
 
-// Get Topics Open
+// Get Topics with status "open"
 export const getTopicsOpen = () => async dispatch => {
    try {
       const res = await axios.get('/api/topics/open');
