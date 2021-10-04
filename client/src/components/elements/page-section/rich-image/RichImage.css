@@ -5,3 +5,10 @@
     flex-direction: column;
     align-items: center;
 }
+
+.picture-content .image-section {
+    width: 47.4rem;
+    height: 47.9rem;
+    object-fit: cover;
+    border-radius: 15px;
+}

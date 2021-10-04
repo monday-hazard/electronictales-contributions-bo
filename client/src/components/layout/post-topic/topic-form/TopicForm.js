@@ -8,7 +8,6 @@ import { Redirect } from 'react-router';
 import Input from '../../../elements/input/Input';
 
 import './TopicForm.css';
-import Button from '../../../elements/button/Button';
 
 
 const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
@@ -25,12 +24,15 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
 
    const onChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
-      console.log(e.target);
    };
 
    const handleTopicTypeChange = (selected) => {
       selectTopicType(selected);
       setFormData({ ...formData, ['type']: selected });
+   }
+
+   const lockedByAfterSubmit =  () => {
+      setLockedBy(!lockedBy);
    }
 
    const onSubmit = e => {
@@ -56,94 +58,103 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
 
 
    return (
-      <form className='topic-form form' onSubmit={e => onSubmit(e)} >
-            <Input
-               type='text'
-               name='name'
-               placeholder='Ton super sujet'
-               value={name}
-               onChange={(e) => onChange(e)}
-               required
-               maxLength={73}
-            />
-            <Input
-               type='email'
-               name='emailContributor'
-               placeholder='Ton email'
-               value={emailContributor}
-               onChange={(e) => onChange(e)}
-               required
-            />
-            <Input
-               type='text'
-               name='slackContributor'
-               placeholder='Ton pseudo sur notre slack'
-               value={slackContributor}
-               onChange={(e) => onChange(e)}
-            />
-            <label className="topic-type-label" htmlFor="type">
-               Le type de contenu que tu imagines
-            </label>
-            <div className="topic-type-choice-group">
-               <Input
-                  type="radio"
-                  id="typeChoiceTLTA"
-                  name="type"
-                  value="TLTA"
-                  checked={selectedTopicType === "TLTA"}
-                  onClick={
-                     (selectedTopicType !== "TLTA") 
-                        ? () => handleTopicTypeChange('TLTA')
-                        : undefined }
-                  label={{ htmlFor: "typeChoiceTLTA", labelText: "Too Late Too Ask" }}
-               />
-               <Input 
-                  type="radio"
-                  id="typeChoiceRegular"
-                  name="type"
-                  value="regular"
-                  checked={selectedTopicType === "regular"}
-                  onClick={  
-                     (selectedTopicType !== "regular") 
-                        ? () => handleTopicTypeChange('regular') 
-                        : undefined }
-                  label={{ htmlFor: "typeChoiceRegular", labelText: "Article" }}
-               />
-               <Input 
-                  type="radio"
-                  id="typeChoiceAny"
-                  name="type"
-                  value="any"
-                  checked={selectedTopicType === "any"}
-                  onClick={  
-                     (selectedTopicType !== "any") 
-                        ? () => handleTopicTypeChange('any') 
-                        : undefined }
-                  label={{ htmlFor: 'typeChoiceAny', labelText: "Peu m'importe" }}
-               />
+      <section className='form-container'>
+            <div className='form-wrapper topic-form-container'>
+               <form className='form' onSubmit={e => onSubmit(e)} >
+                  <Input
+                     label={{className: "picto idea-picto", position: "before"}}
+                     className='input-form input-form-white'
+                     type='text'
+                     name='name'
+                     placeholder='Ton super sujet'
+                     value={name}
+                     onChange={(e) => onChange(e)}
+                     required
+                     maxLength={73}
+                  />
+                  <Input
+                     label={{className: "picto email-picto", position: "before"}}
+                     className='input-form input-form-white'
+                     type='email'
+                     name='emailContributor'
+                     placeholder='email'
+                     value={emailContributor}
+                     onChange={(e) => onChange(e)}
+                     required
+                  />
+                  <Input
+                     label={{className: "picto password-picto", position: "before"}}
+                     className='input-form input-form-white'
+                     type='text'
+                     name='slackContributor'
+                     placeholder='slackname'
+                     value={slackContributor}
+                     onChange={(e) => onChange(e)}
+                  />
+                  <p className="topic-type-label" htmlFor="type">
+                     Le type de contenu que tu imagines pour ce sujet
+                  </p>
+                  <div className="topic-type-choice-group">
+                     <Input
+                        className="styled-input"
+                        type="radio"
+                        id="typeChoiceTLTA"
+                        name="type"
+                        value="TLTA"
+                        checked={selectedTopicType === "TLTA"}
+                        onClick={
+                           (selectedTopicType !== "TLTA") 
+                              ? () => handleTopicTypeChange('TLTA')
+                              : undefined }
+                        label={{ htmlFor: "typeChoiceTLTA", labelText: "Too Late Too Ask"}}
+                     />
+                     <Input
+                        className="styled-input"
+                        type="radio"
+                        id="typeChoiceRegular"
+                        name="type"
+                        value="regular"
+                        checked={selectedTopicType === "regular"}
+                        onClick={  
+                           (selectedTopicType !== "regular") 
+                              ? () => handleTopicTypeChange('regular') 
+                              : undefined }
+                        label={{ htmlFor: "typeChoiceRegular", labelText: "Article"}}
+                     />
+                     <Input
+                        className="styled-input"
+                        type="radio"
+                        id="typeChoiceAny"
+                        name="type"
+                        value="any"
+                        checked={selectedTopicType === "any"}
+                        onClick={  
+                           (selectedTopicType !== "any") 
+                              ? () => handleTopicTypeChange('any') 
+                              : undefined }
+                        label={{ htmlFor: 'typeChoiceAny', labelText: "Peu m'importe" }}
+                     />
+                  </div>
+                  <Input
+                     label={{htmlFor: 'lockedBy',
+                     labelText: 'Souhaites-tu écrire l\'article toi-même ?',
+                     position: 'before', className: "text-checkbox-remember-me"}}
+                     className='btn-checkbox-remember-me' 
+                     type="checkbox"
+                     name='lockedBy'
+                     placeholder='Oui ou non ?'
+                     value={lockedBy}
+                     onChange={lockedByAfterSubmit}
+                  />
+                  <Input
+                     onlyText
+                     type='submit'
+                     value="Zou, j'envoie !"
+                     className='btn-form'
+                  />
+               </form>
             </div>
-            {/* TODO : CHECKBOX HERE */}
-            <Input
-               type='checkbox'
-               name='lockedBy'
-               placeholder='Oui ou non ?'
-               value={lockedBy}
-               onChange={undefined}
-               required
-               label={{
-                  htmlFor: 'lockedBy',
-                  labelText: 'Souhaites-tu écrire l\'article toi-même ?',
-                  position: 'before',
-               }}
-            />
-            <Button>
-               <Input
-                  onlyText
-                  type='submit'
-                  value="Zou, j'envoie !"
-               />
-            </Button>
-      </form>
+         </section>
    );
 };
 

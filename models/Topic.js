@@ -29,7 +29,8 @@ const TopicSchema = new mongoose.Schema({
       default: false
    },
    lockedBy: {
-      type: String
+      type: Boolean,
+      default: false
    }
 });
 

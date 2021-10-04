@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import imgTltaSmallWording from "../../../resources/img/tlta-small-wording.png";
+import imgRegularSmallWording from "../../../resources/img/regular-small-wording.png"
+import imgAnySmallWording from "../../../resources/img/any.png"
 
 import './Input.css';
 
@@ -20,26 +23,25 @@ const Input = ({ label = {}, onlyText, checked, ...props }) => {
     }
 
     return (
+
         
         <div className={containerCssClass} onClick={props.onClick}>
             {label && label.position === 'before' && (
                 <label className={label.className} htmlFor={label.htmlFor}>{label.labelText}</label>
             )}
-            {props.type === 'radio' && (
-                <span className="radio-button-icon">
-                    <span
-                        className={`${checked ? 'checked' : 'unchecked'}`}
-                    ></span>
-                </span>
-            )}
+            {props.type === 'radio' && props.value === 'TLTA'  
+                    ? <img src={imgTltaSmallWording} className={`imgContrib ${checked ? 'checked' : 'unchecked'}`} />
+                    : (props.value === 'regular') ? <img src={imgRegularSmallWording} className={`imgContrib ${checked ? 'checked' : 'unchecked'}`} />
+                    : (props.value === 'any') ? <img src={imgAnySmallWording} className={`imgContrib ${checked ? 'checked' : 'unchecked'}`} />
+                    : ''
+                    }
             <input
-                className={'input' + `${!onlyText ? ' styled-input' : ''}`}
                 {...props}
             />
             {props.type === 'checkbox' && (
                 <Fragment>
                     <span class="checkmark"></span>
-                    <div className='text-checkbox-remember-me'>Se souvenir de moi</div>
+                    <p className='text-checkbox-remember-me'>{props.labelText}</p>
                 </Fragment>
             )}
             {label && label.position === 'after' && (
