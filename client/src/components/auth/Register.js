@@ -35,11 +35,6 @@ const Register = ({ setAlert, register }) => {
       }
    }
 
-   // if (isAuthenticated) {
-   //    // openModal(); In fact, we could open the modal in the dashboard once authenticated :/
-   //    return 
-   // }
-
    return (
       <>
          <section className='form-container'>

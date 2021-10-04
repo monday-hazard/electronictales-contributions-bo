@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -8,6 +8,7 @@ import './Modal.css';
 
 const Modal = ({ content, redirectPath, openModal, closeModal }) => {
    const { title, body, links } = content;
+   const [redirect, setRedirect] = useState(false);
 
    // Source: https://stackoverflow.com/a/42234988
    const useOutsideCloser = (ref) => {
@@ -29,19 +30,23 @@ const Modal = ({ content, redirectPath, openModal, closeModal }) => {
    useOutsideCloser(wrapperRef);
 
    const close = () => {
+      // TODO : loader during redirection
+      setRedirect(true);
       closeModal();
-      <Redirect to={redirectPath} />
    }
 
    return (
-      <Fragment>
-         {openModal ?
+      <>
+         {openModal && (
             <div className="modal" ref={wrapperRef}>
                <h2>{title}</h2>
                <p>{body}</p>
-            </div> :
-            null}
-      </Fragment>
+            </div>
+         )}
+         {redirect && (
+            <Redirect to={redirectPath} />
+         )}
+      </>
    )
 }
 
