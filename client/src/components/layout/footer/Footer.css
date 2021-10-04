@@ -1,51 +1,27 @@
-/* -------- General -------- */
-
 footer {
-  background-color: #303237;
-  text-align: center;
-  padding: 0.5% 2%;
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 0.5fr;
-}
-
-footer a {
-  color: #ffffffdc;
-  margin: 0 4%;
-}
-
-footer a:hover {
-  color: #ffffff;
+   background-color: #303237;
+   text-align: center;
+   padding: 1rem 2rem;
+   display: flex;
+   justify-content: space-between;
 }
 
 footer p {
-  margin: 0;
+   font-size: 1.2rem;
 }
 
-footer i.icon {
-  font-size: 0.7em;
+.social-list {
+   display: flex;
+   align-items: center;
 }
 
-footer p,
-footer a {
-  font-size: 0.8em;
+.social-icon-footer {
+   width: 1.2rem;
+   margin: 0.6rem;
+   transition: 0.3s;
+   margin-left: 0.8rem;
 }
 
-.linkedin.icon,
-.instagram.icon,
-.facebook.icon {
-  font-size: 1.3em;
-}
-
-/* ==== Mobile Version ==== */
-
-@media only screen and (max-width: 768px) {
-  footer {
-    display: flex;
-    flex-direction: column;
-  }
-
-  footer p {
-    margin-top: 2%;
-    margin-bottom: 2%;
-  }
+.social-icon-footer:hover {
+   transform: translateY(-1px);
 }
