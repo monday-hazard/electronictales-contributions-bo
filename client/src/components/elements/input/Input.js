@@ -40,7 +40,7 @@ const Input = ({ label = {}, onlyText, checked, ...props }) => {
             />
             {props.type === 'checkbox' && (
                 <Fragment>
-                    <span class="checkmark"></span>
+                    <span className="checkmark"></span>
                     <p className='text-checkbox-remember-me'>{props.labelText}</p>
                 </Fragment>
             )}
