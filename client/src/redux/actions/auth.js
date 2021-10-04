@@ -42,6 +42,7 @@ export const register = ({ userName, slackName, email, password }) => async disp
    }
    const body = JSON.stringify({ userName, slackName, email, password });
    try {
+      // eslint-disable-next-line
       const res = await axios.post('/api/users', body, config);
       dispatch({
          type: REGISTER_SUCCESS
