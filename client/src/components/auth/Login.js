@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../redux/actions/auth';
 
-import './Form.css';
-
 import TitleSection from '../elements/page-section/title-section/TitleSection';
 import Input from '../elements/input/Input';
+
+import './Form.css';
+
 
 const Login = ({ login, isAuthenticated }) => {
 

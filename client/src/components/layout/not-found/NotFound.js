@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from '../../elements/card/Card'
 import ghost from '../../../resources/img/icons/ghost.png'
 
 import './NotFound.css';

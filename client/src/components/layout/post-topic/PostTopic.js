@@ -6,11 +6,9 @@ import Card from '../../elements/card/Card';
 import CardContent from '../../elements/card/CardContent';
 import Hero from '../../elements/hero/Hero';
 import Modal from '../../elements/modal/Modal';
-
 import TopicForm from './topic-form/TopicForm';
 
 import { POST_TOPIC_SUCCESS_MODAL_CONTENT } from '../../../dictionnary/modalContentList';
-
 import TltaSmall from '../../../resources/img/tlta-small-wording.png';
 import RegularSmall from '../../../resources/img/regular-small-wording.png';
 

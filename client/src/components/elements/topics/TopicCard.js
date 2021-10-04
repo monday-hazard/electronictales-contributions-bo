@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import firePicto from '../../../resources/img/icons/fire.svg';
 import penPicto from '../../../resources/img/icons/pen.svg';
+
+import './TopicCard.css'
 
 const TopicCard = ({ topic: { _id, name, type, priority } }) => {
    return (

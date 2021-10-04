@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Modal from '../elements/modal/Modal';
 import { connect } from 'react-redux';
 import { setAlert } from '../../redux/actions/alert';
 import { register } from '../../redux/actions/auth';
+
+import Modal from '../elements/modal/Modal';
+import TitleSection from '../elements/page-section/title-section/TitleSection';
+import Input from '../elements/input/Input';
 import { REGISTER_SUCCESS_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 
 import './Form.css';
-import TitleSection from '../elements/page-section/title-section/TitleSection';
-import Input from '../elements/input/Input';
 
 const Register = ({ setAlert, register }) => {
    const [formData, setFormData] = useState({

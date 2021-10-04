@@ -1,13 +1,14 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import "./PageSection.css";
+
 import RichImage from "./rich-image/RichImage";
 import Button from "../button/Button";
-import { Link } from "react-router-dom";
 import TitleSection from "./title-section/TitleSection";
 import TextSection from "./text-section/TextSection";
 import TopicsList from "../topics/topics-list/TopicsList";
 
+import "./PageSection.css";
 
 const PageSection = ({
    imgSrc,
@@ -27,7 +28,7 @@ const PageSection = ({
                ? <Fragment>
                   <TextSection textSection="Il y a des questions qu'on n'ose plus poser après un certain temps (d'une durée tout à fait aléatoire). Ici, tu peux proposer sous pseudo 🥸 (et sans système de notation) un sujet que tu aimerais voir abordé avec clarté." />
                   <TextSection textSection="Tu peux aussi être d'humeur 🛌🏽 ... velléitaire (si, si, ça arrive). Propose un sujet 
-                   et laisse quelqu\'un·e d\'inspiré·e se charger de rédiger un contenu à retrouver sur notre plateforme. Et oui, on a pensé à toi (et à nous)." />
+                   et laisse quelqu'un·e d'inspiré·e se charger de rédiger un contenu à retrouver sur notre plateforme. Et oui, on a pensé à toi (et à nous)." />
                   <Link to="/post-topic">
                      <Button>Let's go !</Button>
                   </Link>
