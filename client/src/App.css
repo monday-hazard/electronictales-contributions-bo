@@ -1,10 +1,10 @@
 :root {
-   --pinkflashy: #FF4093;
-   --pinkpale: #EC567C;
+   --pinkflashy: #ff4093;
+   --pinkpale: #ec567c;
    --transparent-background: rgba(255, 255, 255, 0.05);
    --grey: #bebebe;
-   --blue: #14C8E6;
-   --darkblue: #437E88;
+   --blue: #14c8e6;
+   --darkblue: #437e88;
 }
 
 *:focus {
