@@ -7,7 +7,7 @@ import { logout } from '../../../redux/actions/auth';
 import './Navbar.css';
 
 import logo from '../../../resources/img/logo-transparent-350.png';
-import Button from '../button/Button';
+import Button from '../../elements/button/Button';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
    const { pathname } = useLocation();
