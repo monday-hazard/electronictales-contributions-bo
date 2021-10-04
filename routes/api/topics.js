@@ -6,6 +6,8 @@ const { check, validationResult } = require('express-validator');
 const Topic = require('../../models/Topic');
 const User = require('../../models/User');
 
+const { confirmMailPostTopic } = require('../../mailer/sendMailer');
+
 // @route   POST api/topics
 // @desc    Create a new Topic
 // @access  Public
@@ -36,6 +38,9 @@ router.post('/',
          const topic = await newTopic.save();
 
          res.json(topic);
+
+         confirmMailPostTopic(emailContributor, name);
+
       } catch (err) {
          console.error(err.message);
          res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
