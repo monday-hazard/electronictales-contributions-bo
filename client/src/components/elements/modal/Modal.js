@@ -1,19 +1,20 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { closeModal } from '../../../redux/actions/modal';
+
 import './Modal.css';
 
-const Modal = ({ content, openModal, closeModal }) => {
+const Modal = ({ content, redirectPath, openModal, closeModal }) => {
    const { title, body, links } = content;
+   const [redirect, setRedirect] = useState(false);
 
-   // Source: https://stackoverflow.com/a/42234988
+   // Inspiration : https://stackoverflow.com/a/42234988
    const useOutsideCloser = (ref) => {
       useEffect(() => {
-         const handleClickOutside = (event) => {
-            if (ref.current && !ref.current.contains(event.target)) {
-               close();
-            }
+         const handleClickOutside = () => {
+            if (ref.current) close();
          }
          document.addEventListener("mousedown", handleClickOutside);
          return () => {
@@ -27,18 +28,25 @@ const Modal = ({ content, openModal, closeModal }) => {
    useOutsideCloser(wrapperRef);
 
    const close = () => {
+      // TODO : add spinner loader during redirection
+      setRedirect(true);
       closeModal();
    }
 
    return (
-      <Fragment>
-         {openModal ?
-            <div className="modal" ref={wrapperRef}>
-               <h2>{title}</h2>
-               <p>{body}</p>
-            </div> :
-            null}
-      </Fragment>
+      <>
+         {openModal && (
+            <div className="modal-overlay">
+               <div className="modal" ref={wrapperRef}>
+                  <h2>{title}</h2>
+                  <p>{body}</p>
+               </div>
+            </div>
+         )}
+         {redirect && (
+            <Redirect to={redirectPath} />
+         )}
+      </>
    )
 }
 

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
+import { openModal } from './modal';
 import {
    GET_TOPICS,
    TOPICS_ERROR,
@@ -66,7 +67,7 @@ export const postTopic = formData => async dispatch => {
          payload: res.data
       });
 
-      dispatch(setAlert('Topic created', 'success'));
+      dispatch(openModal());
 
    } catch (error) {
       dispatch({
@@ -76,5 +77,6 @@ export const postTopic = formData => async dispatch => {
             status: error.response.status
          }
       });
+      dispatch(setAlert('Topic not created', 'error'));
    }
 }
