@@ -31,7 +31,7 @@ const Register = ({ setAlert, register }) => {
    const onSubmit = e => {
       e.preventDefault();
       if (password !== confirm_password) {
-         setAlert(REGISTER_ERROR_PASSWORD_ALERT_CONTENT, 'error');
+         setAlert(REGISTER_ERROR_PASSWORD_ALERT_CONTENT.message, 'error');
       } else {
          register({ userName, slackname, email, password });
       }
