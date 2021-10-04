@@ -51,13 +51,15 @@ export const register = ({ userName, slackName, email, password }) => async disp
 
    } catch (err) {
       const errors = err.response.data.errors;
-      if (errors) {
+      if (errors && err.response.status !== 500) {
          errors.forEach(error => dispatch(setAlert(error.msg, 'error')));
+      }
+      else { // Error 500 case
+         dispatch(setAlert('L\'inscription a échoué :-('), 'error');
       }
       dispatch({
          type: REGISTER_FAIL
       })
-      dispatch(setAlert());
    }
 }
 

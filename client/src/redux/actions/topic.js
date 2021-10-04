@@ -59,6 +59,7 @@ export const deleteTopic = id => async dispatch => {
          payload: id
       });
 
+      /* TODO : Modal instead of Alert */
       dispatch(setAlert('Topic has been removed', 'success'));
 
    } catch (error) {
