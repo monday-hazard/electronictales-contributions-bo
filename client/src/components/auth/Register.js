@@ -39,53 +39,53 @@ const Register = ({ setAlert, register }) => {
       <>
          <section className='form-container'>
             <div className='form-wrapper'>
-               <TitleSection title="S'inscrire" subtitle="Inscris-toi et crée ton espace personnel"/>
+               <TitleSection title="S'inscrire" subtitle="Inscris-toi et crée ton espace personnel" />
                <form className='form' onSubmit={e => onSubmit(e)} >
                   <Input
-                     label={{className: "picto account-picto", position: "before"}}
+                     label={{ className: "picto account-picto", position: "before" }}
                      className='input-form'
                      type='text'
                      name='userName'
-                     placeholder="username"
+                     placeholder="Ton pseudo *"
                      value={userName}
                      onChange={(e) => onChange(e)}
                      required
                   />
                   <Input
-                     label={{className: "picto email-picto", position: "before"}}
+                     label={{ className: "picto email-picto", position: "before" }}
                      className='input-form'
                      type='email'
                      name='email'
-                     placeholder='email'
+                     placeholder='Ton email *'
                      value={email}
                      onChange={(e) => onChange(e)}
                      required
                   />
                   <Input
-                     label={{className: "picto slack-picto", position: "before"}}
+                     label={{ className: "picto slack-picto", position: "before" }}
                      className='input-form'
                      type='text'
                      name='slackname'
-                     placeholder='slackname'
+                     placeholder='Ton pseudo sur notre slack ?'
                      value={slackname}
                      onChange={(e) => onChange(e)}
                   />
                   <Input
-                     label={{className: "picto password-picto", position: "before"}}
+                     label={{ className: "picto password-picto", position: "before" }}
                      className='input-form'
                      type='password'
                      name='password'
-                     placeholder='password'
+                     placeholder='Un mot de passe *'
                      value={password}
                      onChange={(e) => onChange(e)}
                      required
                   />
                   <Input
-                     label={{className: "picto validate-picto", position: "before"}}
+                     label={{ className: "picto validate-picto", position: "before" }}
                      className='input-form'
                      type='password'
                      name='confirm_password'
-                     placeholder='confirm password'
+                     placeholder='Confirme ton mot de passe *'
                      value={confirm_password}
                      onChange={(e) => onChange(e)}
                      required
@@ -98,7 +98,7 @@ const Register = ({ setAlert, register }) => {
                </form>
             </div>
             <p className='go-to-signin'>
-               Déjà inscrit ? <Link to="/login">Connecte toi</Link>
+               Déjà inscrit·e ? <Link to="/login">Connecte-toi</Link>
             </p>
          </section>
          <Modal

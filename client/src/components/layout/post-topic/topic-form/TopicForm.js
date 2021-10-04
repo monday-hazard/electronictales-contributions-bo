@@ -58,7 +58,7 @@ const TopicForm = ({ postTopic }) => {
                   className='input-form input-form-white'
                   type='text'
                   name='name'
-                  placeholder='Ton super sujet'
+                  placeholder='Ton super sujet *'
                   value={name}
                   onChange={(e) => onChange(e)}
                   required
@@ -69,7 +69,7 @@ const TopicForm = ({ postTopic }) => {
                   className='input-form input-form-white'
                   type='email'
                   name='emailContributor'
-                  placeholder='email'
+                  placeholder='Ton email *'
                   value={emailContributor}
                   onChange={(e) => onChange(e)}
                   required
@@ -79,12 +79,12 @@ const TopicForm = ({ postTopic }) => {
                   className='input-form input-form-white'
                   type='text'
                   name='slackContributor'
-                  placeholder='slackname'
+                  placeholder='Tu as un pseudo sur notre Slack ?'
                   value={slackContributor}
                   onChange={(e) => onChange(e)}
                />
                <p className="topic-type-label" htmlFor="type">
-                  Le type de contenu que tu imagines pour ce sujet
+                  Le type de contenu que tu imagines pour ce sujet :
                </p>
                <div className="topic-type-choice-group">
                   <Input
