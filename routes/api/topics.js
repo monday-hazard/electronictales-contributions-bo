@@ -56,6 +56,21 @@ router.get('/', async (req, res) => {
    }
 })
 
+
+// @route   GET api/topics/open
+// @desc    get all open topics
+// @access  Public
+router.get('/open', [], async (req, res) => {
+   try {
+      const topics = await Topic.find({status: "open", lockedBy: false});
+      res.json(topics);
+   } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
+   }
+});
+
+
 // @route   GET api/topics/:id
 // @desc    get Topic by ID
 // @access  Private

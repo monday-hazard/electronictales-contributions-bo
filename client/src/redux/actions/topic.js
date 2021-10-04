@@ -28,6 +28,27 @@ export const getTopics = () => async dispatch => {
    }
 }
 
+// Get Topics Open
+export const getTopicsOpen = () => async dispatch => {
+   try {
+      const res = await axios.get('/api/topics/open');
+
+      dispatch({
+         type: GET_TOPICS,
+         payload: res.data
+      });
+   } catch (error) {
+      dispatch({
+         type: TOPICS_ERROR,
+         payload: {
+            msg: error.response.statusText,
+            status: error.response.status
+         }
+      });
+   }
+}
+
+
 // Delete topic
 export const deleteTopic = id => async dispatch => {
    try {
