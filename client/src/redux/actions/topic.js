@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
+import { openModal } from './modal';
 import {
    GET_TOPICS,
    TOPICS_ERROR,
@@ -26,6 +27,27 @@ export const getTopics = () => async dispatch => {
       });
    }
 }
+
+// Get Topics Open
+export const getTopicsOpen = () => async dispatch => {
+   try {
+      const res = await axios.get('/api/topics/open');
+
+      dispatch({
+         type: GET_TOPICS,
+         payload: res.data
+      });
+   } catch (error) {
+      dispatch({
+         type: TOPICS_ERROR,
+         payload: {
+            msg: error.response.statusText,
+            status: error.response.status
+         }
+      });
+   }
+}
+
 
 // Delete topic
 export const deleteTopic = id => async dispatch => {
@@ -66,7 +88,7 @@ export const postTopic = formData => async dispatch => {
          payload: res.data
       });
 
-      dispatch(setAlert('Topic created', 'success'));
+      dispatch(openModal());
 
    } catch (error) {
       dispatch({
@@ -76,5 +98,6 @@ export const postTopic = formData => async dispatch => {
             status: error.response.status
          }
       });
+      dispatch(setAlert('Topic not created', 'error'));
    }
 }

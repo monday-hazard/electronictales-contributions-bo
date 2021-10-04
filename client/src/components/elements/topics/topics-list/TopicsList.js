@@ -1,21 +1,24 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getTopics } from '../../../../redux/actions/topic';
+import { getTopicsOpen } from '../../../../redux/actions/topic';
 import Loading from '../../loader/Loader';
 import TopicCard from '../TopicCard';
 
 
 import './TopicsList.css';
 
-const TopicsList = ({ getTopics, topic: { topics, loading } }) => {
+const TopicsList = ({ getTopicsOpen, topic: { topics, loading } }) => {
    useEffect(() => {
-      getTopics();
-   }, [getTopics]);
+      getTopicsOpen();
+   }, [getTopicsOpen]);
+
 
    return loading ? <Loading /> :
       <div className="topics-list">
-         {topics.map(topic => (
+         {topics
+         .sort((a, b) => b.priority - a.priority)
+         .map(topic => (
             <TopicCard key={topic._id} topic={topic} />
          ))}
       </div>
@@ -30,4 +33,4 @@ const mapStateToProps = state => ({
    topic: state.topic
 })
 
-export default connect(mapStateToProps, { getTopics })(TopicsList);
+export default connect(mapStateToProps, { getTopicsOpen })(TopicsList);

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setAlert } from "./alert";
+import { openModal } from './modal';
 import {
    REGISTER_SUCCESS,
    REGISTER_FAIL,
@@ -43,11 +44,9 @@ export const register = ({ userName, slackName, email, password }) => async disp
    try {
       const res = await axios.post('/api/users', body, config);
       dispatch({
-         type: REGISTER_SUCCESS,
-         payload: res.data
+         type: REGISTER_SUCCESS
       })
-
-      dispatch(loadUser());
+      dispatch(openModal());
 
    } catch (err) {
       const errors = err.response.data.errors;
@@ -57,6 +56,7 @@ export const register = ({ userName, slackName, email, password }) => async disp
       dispatch({
          type: REGISTER_FAIL
       })
+      dispatch(setAlert());
    }
 }
 

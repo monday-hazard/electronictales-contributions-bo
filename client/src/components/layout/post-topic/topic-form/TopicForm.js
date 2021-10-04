@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { postTopic } from '../../../../redux/actions/topic';
 import { setAlert } from '../../../../redux/actions/alert';
-import Alert from '../../../elements/alert/Alert';
 import { Redirect } from 'react-router';
+
 import Input from '../../../elements/input/Input';
 
 import './TopicForm.css';
 
 
-const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
+const TopicForm = ({ postTopic }) => {
    const [formData, setFormData] = useState({
       name: '',
       emailContributor: '',
@@ -46,13 +46,6 @@ const TopicForm = ({ isAuthenticated, postTopic, setAlert }) => {
       else {
 */
          postTopic({ name, emailContributor, slackContributor, type: selectedTopicType, lockedBy });
-
-         if (isAuthenticated) {
-            // openModal(); In fact, we could open the modal in the dashboard once authenticated :/
-            return <Redirect to="/dashboard" />
-         } else {
-            <Redirect to='/' />
-         }
       // }
    }
 
