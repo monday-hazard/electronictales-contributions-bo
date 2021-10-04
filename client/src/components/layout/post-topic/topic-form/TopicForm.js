@@ -37,7 +37,7 @@ const TopicForm = ({ postTopic }) => {
    const onSubmit = e => {
       e.preventDefault();
 
-      /* TODO : check if there are errors
+      /* TODO : check if there are errors prior to API call
             let errors = false;
             if ( errors ) {
                setAlert('Message 😱', 'error');
