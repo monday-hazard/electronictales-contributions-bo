@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
+import ghostIcon from '../../../resources/img/icons/ghost.png'
 import './Alert.css';
 
 const Alert = ({ alerts }) => alerts !== null && alerts.length > 0 && alerts.map(alert => (
    <div key={alert.id} className={`alert alert-${alert.alertType}`}>
+      {alert.alertType === 'error' && 
+         (<img className="ghost-icon" src={ghostIcon} alt=""/>)}
       {alert.msg}
    </div>
 ))
