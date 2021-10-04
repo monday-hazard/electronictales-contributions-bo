@@ -1,0 +1,51 @@
+/* -------- General -------- */
+
+footer {
+  background-color: #303237;
+  text-align: center;
+  padding: 0.5% 2%;
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr;
+}
+
+footer a {
+  color: #ffffffdc;
+  margin: 0 4%;
+}
+
+footer a:hover {
+  color: #ffffff;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer i.icon {
+  font-size: 0.7em;
+}
+
+footer p,
+footer a {
+  font-size: 0.8em;
+}
+
+.linkedin.icon,
+.instagram.icon,
+.facebook.icon {
+  font-size: 1.3em;
+}
+
+/* ==== Mobile Version ==== */
+
+@media only screen and (max-width: 768px) {
+  footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer p {
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}

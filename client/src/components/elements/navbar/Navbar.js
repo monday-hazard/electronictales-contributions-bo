@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { logout } from '../../../redux/actions/auth'
+import { logout } from '../../../redux/actions/auth';
 
 import './Navbar.css';
 
@@ -10,6 +10,9 @@ import logo from '../../../resources/img/logo-transparent-350.png';
 import Button from '../button/Button';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+   const { pathname } = useLocation();
+   const pathsWithoutNavbar = ['/dashboard'];
+
    const authLinks = (
       <ul>
          <li>
@@ -36,7 +39,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
    )
 
    return (
-      <nav>
+      !pathsWithoutNavbar.includes(pathname)
+      && <nav>
          <div id="logo">
             <Link to="/">
                <img src={logo} alt="Electronic&nbsp;Tales logo" />
