@@ -62,8 +62,8 @@ router.post(
                res.json({ token });
             }
          );
-         
-         confirmMailNewUser(email, userName);
+
+         confirmMailNewUser(email, userName, slackName);
 
       } catch (err) {
          console.error(err.message);

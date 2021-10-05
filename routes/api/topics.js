@@ -39,7 +39,7 @@ router.post('/',
 
          res.json(topic);
 
-         confirmMailPostTopic(emailContributor, name);
+         confirmMailPostTopic(emailContributor, name, slackContributor);
 
       } catch (err) {
          console.error(err.message);

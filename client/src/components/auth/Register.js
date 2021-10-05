@@ -15,12 +15,12 @@ const Register = ({ setAlert, register }) => {
    const [formData, setFormData] = useState({
       userName: '',
       email: '',
-      slackname: '',
+      slackName: '',
       password: '',
       confirm_password: '',
    });
 
-   const { userName, email, slackname, password, confirm_password } = formData;
+   const { userName, email, slackName, password, confirm_password } = formData;
 
    const onChange = (e) =>
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,7 +31,7 @@ const Register = ({ setAlert, register }) => {
          console.log('erreur sur les mdp');
          setAlert('Your passwords don\'t match 😱', 'error');
       } else {
-         register({ userName, slackname, email, password });
+         register({ userName, slackName, email, password });
       }
    }
 
@@ -65,9 +65,9 @@ const Register = ({ setAlert, register }) => {
                      label={{className: "picto slack-picto", position: "before"}}
                      className='input-form'
                      type='text'
-                     name='slackname'
-                     placeholder='slackname'
-                     value={slackname}
+                     name='slackName'
+                     placeholder='slackName'
+                     value={slackName}
                      onChange={(e) => onChange(e)}
                   />
                   <Input

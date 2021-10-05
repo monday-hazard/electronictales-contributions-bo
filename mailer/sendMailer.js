@@ -1,7 +1,6 @@
 const nodemailer = require('nodemailer');
-const authMailerparameter = require('./authMailer')
-
-// TODO alimenter le readme => npm install nodemailer
+const authMailerparameter = require('./authMailer');
+const hbs = require('nodemailer-express-handlebars');
 
 
 let transporter = nodemailer.createTransport({
@@ -18,21 +17,35 @@ let transporter = nodemailer.createTransport({
   }
 });
 
-function confirmMailPostTopic(userEmail, topicName){
+transporter.use('compile' , hbs({
+  viewPath: './mailer/views/',
+  viewEngine: 'express-handlebars'
+}))
+
+
+function confirmMailPostTopic(userEmail, topicName, slackContributor){
   transporter.sendMail({
     from: `"${authMailerparameter.webSiteName}" <${authMailerparameter.webSiteMail}>`,
     to: userEmail,
-    subject: `Merci pour ta contribution !`,
-    html: `<p>Ehi ! Ton topic <strong>"${topicName}"</strong> a été ajouté</p>`,
+    subject: `Merci pour ta suggestion !`,
+    template: 'newTopic',
+    context:{
+      topicName: topicName,
+      slackContributor: slackContributor
+    }
   });
 }
 
-function confirmMailNewUser(userEmail, userName){
+function confirmMailNewUser(userEmail, userName, slackName){
   transporter.sendMail({
     from: `"${authMailerparameter.webSiteName}" <${authMailerparameter.webSiteMail}>`,
     to: userEmail,
-    subject: `Welcome ${userName} !`,
-    html: `<p>Hello <strong>${userName}</strong> et bienvenue dans la communauté ! </p>`,
+    subject: `Welcome !`,
+    template: 'newUser',
+    context:{
+      userName: userName,
+      slackName: slackName,
+    }
   });
 }
 
@@ -40,8 +53,12 @@ function confirmMailPostArticle(currentUserEmail, currentUserName, articleTitle)
   transporter.sendMail({
     from: `"${authMailerparameter.webSiteName}" <${authMailerparameter.webSiteMail}>`,
     to: currentUserEmail,
-    subject: `Merci pour ton article ${currentUserName}!`,
-    html: `<p>Ton article ayant pour titre <strong>${articleTitle}</strong> a bien été enregistré</p>`,
+    subject: `Merci pour ta contribution !`,
+    template: 'newArticle',
+    context:{
+      currentUserName: currentUserName,
+      articleTitle: articleTitle,
+    }
   });
 }
 

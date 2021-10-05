@@ -85,7 +85,6 @@ router.post(
             const { type, title, originalContent, richLinks, topicId } =
                 req.body;
 
-            console.log(req.user);
             const newArticle = new Article({
                 type,
                 title,
