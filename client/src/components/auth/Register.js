@@ -138,6 +138,14 @@ const Register = ({ setAlert, register }) => {
                   {passwordNotStrong && (
                      <span className="error-label">{REGISTER_FORM.errors.password_not_strong}</span>
                   )}
+                  <div className="password-requirements">Le mot de passe doit comporter
+                     <ul className="password-requirements-list">
+                        <li className="password-requirements-item">au moins 12 caractères</li>
+                        <li className="password-requirements-item">au moins 1 minuscule et 1 majuscule</li>
+                        <li className="password-requirements-item">au moins 1 chiffre</li>
+                        <li className="password-requirements-item">au moins 1 caractère spécial</li>
+                     </ul>
+                  </div>
                   <Input
                      required
                      label={{ className: "picto validate-picto", position: "before" }}
