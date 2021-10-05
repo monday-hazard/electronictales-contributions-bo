@@ -9,6 +9,7 @@ import Input from '../elements/input/Input';
 import Modal from '../elements/modal/Modal';
 import TitleSection from '../elements/page-section/title-section/TitleSection';
 
+import { REGISTER_FORM } from '../../dictionnary/RegisterList';
 import { REGISTER_SUCCESS_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 import { REGISTER_ERROR_ALERT_CONTENT } from '../../dictionnary/alertContentList';
 
@@ -96,7 +97,7 @@ const Register = ({ setAlert, register }) => {
                      minLength={2}
                   />
                   {userNameNotValid && (
-                     <span className="error-label">Le username n'est pas valide</span>
+                     <span className="error-label">{REGISTER_FORM.errors.invalid_username}</span>
                   )}
                   <Input
                      required
@@ -111,7 +112,7 @@ const Register = ({ setAlert, register }) => {
                      onChange={(e) => onChange(e)}
                   />
                   {emailNotValid && (
-                     <span className="error-label">L'email n'est pas valide</span>
+                     <span className="error-label">{REGISTER_FORM.errors.invalid_email}</span>
                   )}
                   <Input
                      label={{ className: "picto slack-picto", position: "before" }}
@@ -135,7 +136,7 @@ const Register = ({ setAlert, register }) => {
                      onChange={(e) => onChange(e)}
                   />
                   {passwordNotStrong && (
-                     <span className="error-label">Le mot de passe n'est pas assez fort</span>
+                     <span className="error-label">{REGISTER_FORM.errors.password_not_strong}</span>
                   )}
                   <Input
                      required
@@ -151,7 +152,7 @@ const Register = ({ setAlert, register }) => {
                      onChange={(e) => onChange(e)}
                   />
                   {unmatchingPasswords && (
-                     <span className="error-label">Les mots de passe ne correspondent pas</span>
+                     <span className="error-label">{REGISTER_FORM.errors.unmatching_passwords}</span>
                   )}
                   <Input
                      type='submit'
