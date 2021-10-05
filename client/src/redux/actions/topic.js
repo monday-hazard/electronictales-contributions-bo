@@ -8,6 +8,11 @@ import {
    POST_TOPIC
 } from './types';
 
+import { 
+   CREATE_TOPIC_ERROR_FAIL_ALERT_CONTENT,
+   DELETE_TOPIC_ERROR_FAIL_ALERT_CONTENT
+} from '../../dictionnary/alertContentList';
+
 // Get Topics
 export const getTopics = () => async dispatch => {
    try {
@@ -58,8 +63,7 @@ export const deleteTopic = id => async dispatch => {
          type: DELETE_TOPIC,
          payload: id
       });
-
-      dispatch(setAlert('Topic has been removed', 'success'));
+      dispatch(openModal());
 
    } catch (error) {
       dispatch({
@@ -69,6 +73,10 @@ export const deleteTopic = id => async dispatch => {
             status: error.response.status
          }
       });
+      dispatch(setAlert(
+         DELETE_TOPIC_ERROR_FAIL_ALERT_CONTENT.message,
+         'error'
+      ));
    }
 }
 
@@ -87,7 +95,6 @@ export const postTopic = formData => async dispatch => {
          type: POST_TOPIC,
          payload: res.data
       });
-
       dispatch(openModal());
 
    } catch (error) {
@@ -98,6 +105,9 @@ export const postTopic = formData => async dispatch => {
             status: error.response.status
          }
       });
-      dispatch(setAlert('Topic not created', 'error'));
+      dispatch(setAlert(
+         CREATE_TOPIC_ERROR_FAIL_ALERT_CONTENT.message,
+         'error'
+      ));
    }
 }
