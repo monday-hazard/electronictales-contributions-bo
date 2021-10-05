@@ -1,5 +1,5 @@
-export const REGISTER_ERROR_PASSWORD_ALERT_CONTENT = {
-    message: 'Les mots de passe ne correspondent pas 😱'
+export const REGISTER_ERROR_ALERT_CONTENT = {
+    message: 'Il y a des erreurs dans le formulaire 😱 Vérifie les champs stp'
 }
 
 export const REGISTER_ERROR_FAIL_ALERT_CONTENT = {

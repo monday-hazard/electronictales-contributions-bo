@@ -10,7 +10,7 @@ import Modal from '../elements/modal/Modal';
 import TitleSection from '../elements/page-section/title-section/TitleSection';
 
 import { REGISTER_SUCCESS_MODAL_CONTENT } from '../../dictionnary/modalContentList';
-import { REGISTER_ERROR_PASSWORD_ALERT_CONTENT } from '../../dictionnary/alertContentList';
+import { REGISTER_ERROR_ALERT_CONTENT } from '../../dictionnary/alertContentList';
 
 import { passwordCheckingRegex, emailCheckingRegex } from '../../utils/regex';
 
@@ -65,9 +65,10 @@ const Register = ({ setAlert, register }) => {
 
    const onSubmit = e => {
       e.preventDefault();
-      if (unmatchingPasswords) {
+      const formErrors = userNameNotValid || emailNotValid || passwordNotStrong || unmatchingPasswords;
+      if (formErrors) {
          setAlert(
-            REGISTER_ERROR_PASSWORD_ALERT_CONTENT.message,
+            REGISTER_ERROR_ALERT_CONTENT.message,
             'error'
          );
       } else {
@@ -113,7 +114,6 @@ const Register = ({ setAlert, register }) => {
                      <span className="error-label">L'email n'est pas valide</span>
                   )}
                   <Input
-                     required
                      label={{ className: "picto slack-picto", position: "before" }}
                      className='input-form'
                      type='text'
@@ -133,7 +133,6 @@ const Register = ({ setAlert, register }) => {
                      placeholder='Un mot de passe *'
                      value={password}
                      onChange={(e) => onChange(e)}
-                     minLength={6}
                   />
                   {passwordNotStrong && (
                      <span className="error-label">Le mot de passe n'est pas assez fort</span>
@@ -150,7 +149,6 @@ const Register = ({ setAlert, register }) => {
                      placeholder='Confirme ton mot de passe *'
                      value={confirm_password}
                      onChange={(e) => onChange(e)}
-                     minLength={6}
                   />
                   {unmatchingPasswords && (
                      <span className="error-label">Les mots de passe ne correspondent pas</span>
