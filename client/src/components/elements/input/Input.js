@@ -23,8 +23,6 @@ const Input = ({ label = {}, onlyText, checked, forwardedRef, ...props }) => {
    }
 
    return (
-
-
       <div className={containerCssClass} onClick={props.onClick} ref={forwardedRef}>
          {label && label.position === 'before' && (
             <label className={label.className} htmlFor={label.htmlFor}>{label.labelText}</label>
