@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+
 import facebookIcon from '../../../resources/img/icons/social-icons/facebook.svg';
 import twitterIcon from '../../../resources/img/icons/social-icons/twitter.svg';
 import githubIcon from '../../../resources/img/icons/social-icons/github.svg';
