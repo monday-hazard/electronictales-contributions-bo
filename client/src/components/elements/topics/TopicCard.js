@@ -2,10 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import firePicto from '../../../resources/img/icons/fire.svg';
 import penPicto from '../../../resources/img/icons/pen.svg';
 
+import './TopicCard.css'
+
 const TopicCard = ({ topic: { _id, name, type, priority } }) => {
+   const contentType = type === 'any' ? 'Au choix' : type === 'regular' ? 'Article' : 'TLTA';
+
    return (
       // TODO : add write-article route to Link
       <div className="topic-card">
@@ -15,7 +20,7 @@ const TopicCard = ({ topic: { _id, name, type, priority } }) => {
             }
             <div>
                <p>{name}</p>
-               <div className='type-label'>{type}</div>
+               <div className='type-label'>{contentType}</div>
             </div>
          </div>
          <div className="pen-picto-container">

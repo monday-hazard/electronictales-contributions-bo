@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import "./RichImage.css";
+import TopicExample from "./topic-example/TopicExample";
 import homeImgPen from '../../../../resources/img/imgpen.png'
 import homeImgOrdi from '../../../../resources/img/imgordi.png'
-import TopicExample from "./topic-example/TopicExample";
 
+import "./RichImage.css";
 
 const RichImage = ({
    imgSrc,
