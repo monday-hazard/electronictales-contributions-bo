@@ -9,12 +9,10 @@ import penPicto from '../../../resources/img/icons/pen.svg';
 import './TopicCard.css'
 
 const TopicCard = ({ topic: { _id, name, type, priority } }) => {
-<<<<<<< HEAD
    const { pathname } = useLocation();
    const topicCardLink = pathname === "/" ? "/login" : '/post-article';
-=======
+
    const contentType = type === 'any' ? 'Au choix' : type === 'regular' ? 'Article' : 'TLTA';
->>>>>>> dev
 
    return (
       // TODO : add write-article route to Link
