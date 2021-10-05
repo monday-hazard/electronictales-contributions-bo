@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -8,10 +8,12 @@ import { setAlert } from '../../redux/actions/alert';
 import Input from '../elements/input/Input';
 import Modal from '../elements/modal/Modal';
 import TitleSection from '../elements/page-section/title-section/TitleSection';
+import Tooltip from '../elements/tootltip/Tooltip';
 
 import { REGISTER_FORM } from '../../dictionnary/RegisterList';
 import { REGISTER_SUCCESS_MODAL_CONTENT } from '../../dictionnary/modalContentList';
 import { REGISTER_ERROR_ALERT_CONTENT } from '../../dictionnary/alertContentList';
+import { TOOLTIP_CONTENT } from '../../dictionnary/TooltipList';
 
 import { passwordCheckingRegex, emailCheckingRegex } from '../../utils/regex';
 
@@ -31,6 +33,7 @@ const Register = ({ setAlert, register }) => {
    const [emailNotValid, setEmailNotValid] = useState(undefined);
    const [passwordNotStrong, setPasswordNotStrong] = useState(undefined);
    const [unmatchingPasswords, setUnmatchingPasswords] = useState(undefined);
+   const tooltipRef = useRef(null);
 
    const onChange = (e) => {
       switch (e.target.name) {
@@ -55,8 +58,10 @@ const Register = ({ setAlert, register }) => {
             password !== e.target.value
                ? setUnmatchingPasswords(true)
                : setUnmatchingPasswords(false);
+            break;
          case 'slackname':
             e.target.value = e.target.value.trim();
+            break;
          default:
             break;
          }
@@ -134,18 +139,14 @@ const Register = ({ setAlert, register }) => {
                      placeholder='Un mot de passe *'
                      value={password}
                      onChange={(e) => onChange(e)}
+                     forwardedRef={tooltipRef}
                   />
                   {passwordNotStrong && (
                      <span className="error-label">{REGISTER_FORM.errors.password_not_strong}</span>
                   )}
-                  <div className="password-requirements">Le mot de passe doit comporter
-                     <ul className="password-requirements-list">
-                        <li className="password-requirements-item">au moins 12 caractères</li>
-                        <li className="password-requirements-item">au moins 1 minuscule et 1 majuscule</li>
-                        <li className="password-requirements-item">au moins 1 chiffre</li>
-                        <li className="password-requirements-item">au moins 1 caractère spécial</li>
-                     </ul>
-                  </div>
+                  <Tooltip 
+                     content={TOOLTIP_CONTENT.password_requirements}
+                     tooltipRef={tooltipRef} />
                   <Input
                      required
                      label={{ className: "picto validate-picto", position: "before" }}

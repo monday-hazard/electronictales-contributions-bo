@@ -3,15 +3,3 @@
     font-style: italic;
     color: #ff4d4d;
 }
-
-.password-requirements {
-    margin-bottom: 1.5rem;
-}
-
-.password-requirements-item {
-    padding-left: 1rem;
-}
-
-.password-requirements-item:before {
-    content: "- ";
-}
