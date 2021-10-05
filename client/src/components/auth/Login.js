@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../redux/actions/auth';
 
-import './Form.css';
-
 import TitleSection from '../elements/page-section/title-section/TitleSection';
 import Input from '../elements/input/Input';
+
+import './Form.css';
+
 
 const Login = ({ login, isAuthenticated }) => {
 
@@ -25,8 +26,6 @@ const Login = ({ login, isAuthenticated }) => {
    const onSubmit = async e => {
       e.preventDefault();
       login(email, password);
-      console.log(formData)
-      console.log(e)
    };
 
    const [rememberMe, setRemeberMer] = React.useState(false);
@@ -50,7 +49,7 @@ const Login = ({ login, isAuthenticated }) => {
                      className='input-form'
                      type='email'
                      name='email'
-                     placeholder='email'
+                     placeholder='Email'
                      value={email}
                      onChange={(e) => onChange(e)}
                      required
@@ -60,7 +59,7 @@ const Login = ({ login, isAuthenticated }) => {
                      className='input-form'
                      type='password'
                      name='password'
-                     placeholder='password'
+                     placeholder='Password'
                      value={password}
                      onChange={(e) => onChange(e)}
                      required
@@ -80,7 +79,7 @@ const Login = ({ login, isAuthenticated }) => {
                </form>
             </div>
             <p className='go-to-signin'>
-               Tu n'as pas de compte ? <Link to="/register">Inscris toi</Link>
+               Tu n'as pas de compte ? <Link to="/register">Inscris-toi</Link>
             </p>
          </section>
       </Fragment>
