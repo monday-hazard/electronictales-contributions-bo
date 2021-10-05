@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from '../../../elements/card/Card';
 import CardContent from '../../../elements/card/CardContent';
 import Button from '../../../elements/button/Button';
@@ -7,8 +7,6 @@ import TltaSmall from '../../../../resources/img/tlta-small-wording.png';
 import RegularSmall from '../../../../resources/img/regular-small-wording.png';
 
 const ArticleTypeChoice = ({ chooseType }) => {
-   const [chosenType, setChosenType] = useState('');
-   // console.log(chosenType)
 
    const introTLTA = 'C\'est une question qu\'on n\'ose plus poser et qui appelle un contenu court destiné au "Tinder du dev" : explicite, imagé mais surtout court.';
    const introRegular = 'Il s\'agit d\'articles au format somme toute assez classique : sans contraintes sur la longueur, ils peuvent contenir des liens, il sont explicatifs mais surtout explicites.';

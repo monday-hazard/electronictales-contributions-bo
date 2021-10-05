@@ -5,6 +5,7 @@ import { getSelectedTopic } from '../../../redux/actions/topic';
 
 import Hero from '../../elements/hero/Hero';
 import ArticleTypeChoice from './article-type-choice/ArticleTypeChoice';
+import ContentDescription from './tlta-description/ContentDescription';
 
 
 import './PostArticle.css';
@@ -19,19 +20,21 @@ const PostArticle = ({
    }, [getSelectedTopic]);
 
    const { type, name } = selectedTopic;
+   console.log(type)
    const titleText = name;
 
    const [chosenType, setChosenType] = useState('');
-
    const chooseType = newType => {
       setChosenType(newType);
    }
 
-   const subtitleText = `Salut ${user ? user.userName : ''}, tu as choisi de rédiger un contenu de type ${chosenType ? chosenType
-      : type === 'any' ? '"au choix"'
-         : type === 'regular' ? 'article'
-            : 'Too Late To Ask'
-      }. Bonne rédaction !`;
+   const subtitleText =
+      `Salut ${user ? user.userName : ''}, tu as choisi de rédiger un contenu de type 
+         ${chosenType ? chosenType
+         : type === 'any' ? '"au choix"'
+            : type === 'regular' ? 'article'
+               : 'Too Late To Ask'}
+               . Bonne rédaction !`;
 
    // A l'envoi, 
    // - annuler selected topic et 
@@ -46,6 +49,10 @@ const PostArticle = ({
 
          {type === 'any' && !chosenType &&
             <ArticleTypeChoice chooseType={chooseType} />
+         }
+
+         {type === 'any' && !chosenType ||
+            < ContentDescription type={type} chosenType={chosenType} />
          }
          {/*
          <section className="container-topic topic-info">
