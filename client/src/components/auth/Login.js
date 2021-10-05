@@ -28,9 +28,9 @@ const Login = ({ login, isAuthenticated }) => {
       login(email, password);
    };
 
-   const [rememberMe, setRemeberMer] = React.useState(false);
+   const [rememberMe, setRemeberMe] = React.useState(false);
    const rememberMeAfterLogin = () => {
-      setRemeberMer(!rememberMe)
+      setRemeberMe(!rememberMe)
    }
 
    //Redirect if logged in

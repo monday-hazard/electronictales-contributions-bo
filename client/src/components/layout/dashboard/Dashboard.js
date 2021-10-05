@@ -4,6 +4,7 @@ import { logout } from '../../../redux/actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '../../elements/button/Button';
+import TopicsList from '../../elements/topics/topics-list/TopicsList'
 
 import './Dashboard.css';
 
@@ -12,6 +13,7 @@ const Dashboard = ({ auth: { isAuthenticated, loading }, logout }) => {
       <div className="dashboard">
          <h2>Dashboard</h2>
          <Link to="/">
+            <TopicsList />
             <Button onClick={logout} buttonStyle="btn-outline">Se déconnecter</Button>
          </Link>
       </div>

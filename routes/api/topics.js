@@ -62,7 +62,7 @@ router.get('/', async (req, res) => {
 // @access  Public
 router.get('/open', [], async (req, res) => {
    try {
-      const topics = await Topic.find({status: "open", lockedBy: false});
+      const topics = await Topic.find({ status: "open", lockedBy: false });
       res.json(topics);
    } catch (err) {
       console.error(err.message);

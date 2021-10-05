@@ -1,0 +1,21 @@
+.post-article {
+   padding: 0 0 5rem;
+}
+
+.post-article .topic-info {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   align-items: center;
+   column-gap: 5rem;
+}
+
+.post-article .topic-info .contrib-option {
+   color: var(--blue);
+   text-align: center;
+   font-size: 5rem;
+   font-weight: 800;
+   text-transform: uppercase;
+   background: -webkit-linear-gradient(var(--blue), var(--darkblue));
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}

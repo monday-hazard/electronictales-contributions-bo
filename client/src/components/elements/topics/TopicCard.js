@@ -14,6 +14,11 @@ const TopicCard = ({ topic: { _id, name, type, priority } }) => {
 
    const contentType = type === 'any' ? 'Au choix' : type === 'regular' ? 'Article' : 'TLTA';
 
+   const handleSelectTopic = e => {
+      e.preventDefault();
+      localStorage.setItem('topicId', _id);
+   }
+
    return (
       // TODO : add write-article route to Link
       <div className="topic-card">
@@ -26,7 +31,7 @@ const TopicCard = ({ topic: { _id, name, type, priority } }) => {
                <div className='type-label'>{contentType}</div>
             </div>
          </div>
-         <div className="pen-picto-container">
+         <div className="pen-picto-container" onClick={e => handleSelectTopic(e)}>
             <Link to={topicCardLink}><img className="pen-picto" src={penPicto} alt="A pen" /></Link>
          </div>
       </div>
