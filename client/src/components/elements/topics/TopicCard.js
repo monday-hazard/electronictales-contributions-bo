@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import firePicto from '../../../resources/img/icons/fire.svg';
 import penPicto from '../../../resources/img/icons/pen.svg';
 
 const TopicCard = ({ topic: { _id, name, type, priority } }) => {
+   const { pathname } = useLocation();
+   const topicCardLink = pathname === "/" ? "/login" : '/post-article';
+
    return (
       // TODO : add write-article route to Link
       <div className="topic-card">
@@ -19,7 +22,7 @@ const TopicCard = ({ topic: { _id, name, type, priority } }) => {
             </div>
          </div>
          <div className="pen-picto-container">
-            <Link to="#"><img className="pen-picto" src={penPicto} alt="A pen" /></Link>
+            <Link to={topicCardLink}><img className="pen-picto" src={penPicto} alt="A pen" /></Link>
          </div>
       </div>
    )
