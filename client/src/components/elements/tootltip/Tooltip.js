@@ -9,15 +9,16 @@ const Tooltip = ({ content, tooltipRef }) => {
     const useTooltip = (ref) => {
         useEffect(() => {
             const tooltipTarget = ref.current;
-            const tooltipElement = document.getElementsByClassName('tooltip-wrapper')[0];
+            const tooltipElement =
+                document.getElementsByClassName('tooltip-wrapper')[0];
             const handleHover = () => {
                 if (tooltipTarget) {
                     setDisplay(true);
                     window.onmousemove = function (e) {
                         var x = e.clientX,
                             y = e.clientY;
-                        tooltipElement.style.top = (y - 50) + 'px';
-                        tooltipElement.style.left = (x + 20) + 'px';
+                        tooltipElement.style.top = y - 50 + 'px';
+                        tooltipElement.style.left = x + 20 + 'px';
                     };
                 }
             };
@@ -39,6 +40,7 @@ const Tooltip = ({ content, tooltipRef }) => {
     useTooltip(tooltipRef);
 
     return (
+        // eslint-disable-next-line
         <div className={'tooltip-wrapper' + `${display ? ' show' : ''}`}>
             {content}
         </div>

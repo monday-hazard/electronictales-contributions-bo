@@ -36,16 +36,16 @@
     padding-left: 4.5rem;
 }
 
+.input-form-white {
+    border: 1px solid #fff;
+}
+
 .invalid-input {
     border: solid 1px #ff4d4d;
 }
 
 .valid-input {
     border: solid 1px #47d147;
-}
-
-.input-form-white {
-    border: 1px solid #fff;
 }
 
 .input-form:focus{

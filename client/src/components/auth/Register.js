@@ -29,10 +29,14 @@ const Register = ({ setAlert, register }) => {
       confirm_password: '',
    });
    const { userName, email, slackname, password, confirm_password } = formData;
+   
+   // Errors
    const [userNameNotValid, setUserNameNotValid] = useState(undefined);
    const [emailNotValid, setEmailNotValid] = useState(undefined);
    const [passwordNotStrong, setPasswordNotStrong] = useState(undefined);
    const [unmatchingPasswords, setUnmatchingPasswords] = useState(undefined);
+   
+   // Tooltip
    const tooltipRef = useRef(null);
 
    const onChange = (e) => {
