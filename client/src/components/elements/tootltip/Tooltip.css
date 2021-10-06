@@ -1,0 +1,17 @@
+.tooltip-wrapper {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    background-color: black;
+    color: white;
+    align-items: center;
+    padding: 1rem;
+    border: solid 1px #666666;
+    background-color: #222222;
+    border-radius: 0.5rem;
+    white-space: pre;
+}
+
+.show {
+    display: flex;
+}

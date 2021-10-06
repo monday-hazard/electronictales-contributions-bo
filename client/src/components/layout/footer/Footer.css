@@ -1,0 +1,27 @@
+footer {
+   background-color: #303237;
+   text-align: center;
+   padding: 1rem 2rem;
+   display: flex;
+   justify-content: space-between;
+}
+
+footer p {
+   font-size: 1.2rem;
+}
+
+.social-list {
+   display: flex;
+   align-items: center;
+}
+
+.social-icon-footer {
+   width: 1.2rem;
+   margin: 0.6rem;
+   transition: 0.3s;
+   margin-left: 0.8rem;
+}
+
+.social-icon-footer:hover {
+   transform: translateY(-1px);
+}

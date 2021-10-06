@@ -6,11 +6,9 @@ import Card from '../../elements/card/Card';
 import CardContent from '../../elements/card/CardContent';
 import Hero from '../../elements/hero/Hero';
 import Modal from '../../elements/modal/Modal';
-
 import TopicForm from './topic-form/TopicForm';
 
 import { POST_TOPIC_SUCCESS_MODAL_CONTENT } from '../../../dictionnary/modalContentList';
-
 import TltaSmall from '../../../resources/img/tlta-small-wording.png';
 import RegularSmall from '../../../resources/img/regular-small-wording.png';
 
@@ -19,11 +17,11 @@ import './PostTopic.css';
 const PostTopic = ({ isAuthenticated }) => {
    const titleText = 'Proposer un sujet';
    const subtitleText =
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, quidem accusamus totam incidunt quod a labore rerum rem nihil deleniti!';
+      'Propose un sujet par et pour la communauté Electronic Tales. Tu peux penser à un type de contenu en particulier. Il y en a deux :';
    const introTLTA =
-      'C\'est un contenu pour le Tinder du dev : court, explicatif, imagé mais surtout court.';
+      'C\'est une question qu\'on n\'ose plus poser et qui appelle un contenu court destiné au "Tinder du dev" : explicite, imagé mais surtout court.';
    const introRegular =
-      'C\'est un article plus long sans contraintes de longueur : long, détaillé, explicatif mais surtout long.';
+      'Il s\'agit d\'articles au format somme toute assez classique : sans contraintes sur la longueur, ils peuvent contenir des liens, il sont explicatifs mais surtout explicites.';
 
    // TODO Créer URL example TLTA & Regular
    const urlTlta = 'https://platform.electronictales.io/modern-world/articles/le-code-coverage-cest-quoi'

@@ -3,7 +3,7 @@ nav {
    position: sticky;
    z-index: 10;
    top: 0;
-   background-color: #303435;
+   background-color: #303237;
    /* background-color: var(--transparent-background); */
    display: flex;
    justify-content: space-between;
@@ -21,20 +21,4 @@ nav ul {
 
 #logo img {
    width: 80%;
-}
-
-
-/* ==== Mobile Version ==== */
-
-@media only screen and (max-width: 768px) {
-   nav {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-   }
-
-   nav img {
-      width: 10em;
-      margin: 0 auto;
-      grid-column: 2;
-   }
 }
