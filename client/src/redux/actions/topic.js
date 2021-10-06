@@ -5,7 +5,8 @@ import {
    GET_TOPICS,
    TOPICS_ERROR,
    DELETE_TOPIC,
-   POST_TOPIC
+   POST_TOPIC,
+   GET_SELECTED_TOPIC
 } from './types';
 
 import { 
@@ -52,7 +53,6 @@ export const getTopicsOpen = () => async dispatch => {
       });
    }
 }
-
 
 // Delete topic
 export const deleteTopic = id => async dispatch => {
@@ -109,5 +109,25 @@ export const postTopic = formData => async dispatch => {
          CREATE_TOPIC_ERROR_FAIL_ALERT_CONTENT.message,
          'error'
       ));
+   }
+}
+
+// Select One Topic
+export const getSelectedTopic = id => async dispatch => {
+   try {
+      const res = await axios.get(`/api/topics/${id}`);
+
+      dispatch({
+         type: GET_SELECTED_TOPIC,
+         payload: res.data
+      });
+   } catch (error) {
+      dispatch({
+         type: TOPICS_ERROR,
+         payload: {
+            msg: error.response.statusText,
+            status: error.response.status
+         }
+      });
    }
 }

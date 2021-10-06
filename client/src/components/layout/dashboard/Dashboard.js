@@ -14,12 +14,12 @@ import './Dashboard.css';
 
 import DashboardHome from './contents/home';
 
-const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
+const Dashboard = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
    const [activeTab, setActiveTab] = useState('dashboard');
 
    const introTLTA =
-   'C\'est un contenu pour le Tinder du dev : court, explicatif, imagé mais surtout court.';
+      'C\'est un contenu pour le Tinder du dev : court, explicatif, imagé mais surtout court.';
    const introRegular =
       'C\'est un article plus long sans contraintes de longueur : long, détaillé, explicatif mais surtout long.';
 
@@ -28,32 +28,32 @@ const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
 
    return (
       loading ? <Loader /> :
-      <div className="dashboard">
-         <div className="dashboard-sidebar">
-            <div className="user-information">
-               <div>
-                  <img className="usermane-img" src={ghostAvatar} alt='petit fantome' />
+         <div className="dashboard">
+            <div className="dashboard-sidebar">
+               <div className="user-information">
+                  <div>
+                     <img className="usermane-img" src={ghostAvatar} alt='petit fantome' />
+                  </div>
+                  <p className="username">{user ? user.userName : "(｡◕‿◕｡)"}</p>
                </div>
-               <p className="username">{user ? user.userName : "(｡◕‿◕｡)"}</p>
-            </div>
-            <ul className="dashboard-navigation">
-               <li className={`dashboard-title${activeTab === "dashboard" ? ' active' : ''}`} onClick={activeTab !== "dashboard" ? () => setActiveTab('dashboard') : undefined}>Dashboard</li>
-               <li className={`activity-title${activeTab === "activity" ? ' active' : ''}`} onClick={activeTab !== "activity" ? () => setActiveTab('activity') : undefined}>Activité</li>
-               <li className={`settings-title${activeTab === "settings" ? ' active' : ''}`} onClick={activeTab !== "settings" ? () => setActiveTab('settings') : undefined}>Settings</li>
-            </ul>
-         </div>
-         <div className="dashboard-content">
-            <div className="top-content">
-               <h2 className="pink-neon title-dashboard">Dashboard</h2>
-               <ul className="dashboard-icons-nav">
-                  {/* NOTIFICATION/BUTTON */}
-                  {/* <li><a href="#"><img src={notificationPicto} /></a></li> */}
-                  <li><Link onClick={logout} to="/"><img alt="Picto porte" src={logoutPicto} /></Link></li>
+               <ul className="dashboard-navigation">
+                  <li className={`dashboard-title${activeTab === "dashboard" ? ' active' : ''}`} onClick={activeTab !== "dashboard" ? () => setActiveTab('dashboard') : undefined}>Dashboard</li>
+                  <li className={`activity-title${activeTab === "activity" ? ' active' : ''}`} onClick={activeTab !== "activity" ? () => setActiveTab('activity') : undefined}>Activité</li>
+                  <li className={`settings-title${activeTab === "settings" ? ' active' : ''}`} onClick={activeTab !== "settings" ? () => setActiveTab('settings') : undefined}>Settings</li>
                </ul>
             </div>
-            {activeTab === "dashboard" && <DashboardHome />}
+            <div className="dashboard-content">
+               <div className="top-content">
+                  <h2 className="pink-neon title-dashboard">Dashboard</h2>
+                  <ul className="dashboard-icons-nav">
+                     {/* NOTIFICATION/BUTTON */}
+                     {/* <li><a href="#"><img src={notificationPicto} /></a></li> */}
+                     <li><Link onClick={logout} to="/"><img alt="Picto porte" src={logoutPicto} /></Link></li>
+                  </ul>
+               </div>
+               {activeTab === "dashboard" && <DashboardHome />}
+            </div>
          </div>
-      </div>
    );
 };
 

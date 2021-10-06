@@ -13,3 +13,6 @@ export const GET_TOPICS = 'GET_TOPICS';
 export const TOPICS_ERROR = 'TOPICS_ERROR';
 export const POST_TOPIC = 'POST_TOPIC';
 export const DELETE_TOPIC = 'DELETE_TOPIC';
+export const GET_SELECTED_TOPIC = 'GET_SELECTED_TOPIC';
+export const POST_ARTICLE = 'POST_ARTICLE';
+export const ARTICLE_ERROR = 'ARTICLE_ERROR';

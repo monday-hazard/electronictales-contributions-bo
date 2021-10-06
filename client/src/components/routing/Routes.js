@@ -7,6 +7,7 @@ import Alert from '../elements/alert/Alert';
 import Dashboard from '../layout/dashboard/Dashboard';
 import PrivateRoute from './PrivateRoute';
 import PostTopic from '../layout/post-topic/PostTopic';
+import PostArticle from '../layout/post-article/PostArticle';
 import NotFound from '../layout/not-found/NotFound';
 
 const Routes = () => {
@@ -18,6 +19,7 @@ const Routes = () => {
             <Route exact path="/login" component={Login} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/post-topic" component={PostTopic} />
+            <PrivateRoute exact path="/post-article" component={PostArticle} />
             <Route component={NotFound} />
          </Switch>
       </div>
