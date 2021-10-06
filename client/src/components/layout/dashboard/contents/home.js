@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { logout } from '../../../../redux/actions/auth';
 import TopicsList from '../../../elements/topics/topics-list/TopicsList';
-
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getTopicsByUser } from '../../../../redux/actions/topic';
 import TltaSmall from '../../../../resources/img/tlta.svg';
 import RegularSmall from '../../../../resources/img/regular.svg';
 
 // Notification pictogramme
 // import notificationPicto from '../../../../resources/img/icons/notification.svg';
-import logoutPicto from '../../../../resources/img/icons/logout.svg';
 import ideaPicto from '../../../../resources/img/icons/idea.svg';
 
 // Social Icons
@@ -24,8 +24,14 @@ import emailIcon from '../../../../resources/img/icons/social-icons/email.svg';
 import TitleSection from '../../../elements/page-section/title-section/TitleSection';
 import Card from '../../../elements/card/Card';
 import CardContent from '../../../elements/card/CardContent';
+import TopicCard from '../../../elements/topics/TopicCard';
 
-const DashboardHome = () => {
+const DashboardHome = ({userEmail, getTopicsByUser, topic: { topicsByUser }}) => {
+
+    useEffect(() => {
+        getTopicsByUser(userEmail);
+    }, [getTopicsByUser]);
+
     const introTLTA =
         "C'est un contenu pour le Tinder du dev : court, explicatif, imagé mais surtout court.";
     const introRegular =
@@ -162,11 +168,26 @@ const DashboardHome = () => {
                             title="Activity"
                             subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                         />
+                        <div>
+                        {topicsByUser
+                            .map(topic => (
+                            <TopicCard key={topic._id} topic={topic} />
+                        ))}
+                        </div>
                     </div>
                 </div>
             </div>
         </>
-    );
-};
+    )
 
-export default DashboardHome;
+}
+
+DashboardHome.propTypes = {
+    getTopicsByUser: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => ({
+    topic: state.topic
+})
+
+export default connect(mapStateToProps, { getTopicsByUser })(DashboardHome);

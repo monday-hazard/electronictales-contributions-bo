@@ -2,11 +2,13 @@ import {
    GET_TOPICS,
    TOPICS_ERROR,
    DELETE_TOPIC,
-   POST_TOPIC
+   POST_TOPIC,
+   GET_TOPICS_BY_USER
 } from '../actions/types';
 
 const initialState = {
    topics: [],
+   topicsByUser: [],
    topic: null,
    loading: true,
    error: {}
@@ -21,6 +23,12 @@ export default function (state = initialState, action) {
          return {
             ...state,
             topics: payload,
+            loading: false
+         };
+      case GET_TOPICS_BY_USER:
+         return {
+            ...state,
+            topicsByUser: payload,
             loading: false
          };
       case POST_TOPIC:

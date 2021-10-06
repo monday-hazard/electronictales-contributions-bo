@@ -16,6 +16,8 @@ import DashboardHome from './contents/home';
 
 const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
 
+   const userEmail = user.email;
+
    const [activeTab, setActiveTab] = useState('dashboard');
    const [tabTitle, setTabTitle] = useState('dashboard');
 
@@ -57,7 +59,7 @@ const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
                   <li><Link onClick={logout} to="/"><img alt="Picto porte" src={logoutPicto} /></Link></li>
                </ul>
             </div>
-            {activeTab === "dashboard" && <DashboardHome />}
+            {activeTab === "dashboard" && <DashboardHome userEmail={userEmail}/>}
          </div>
       </div>
    );

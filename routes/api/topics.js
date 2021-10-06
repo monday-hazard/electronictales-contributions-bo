@@ -75,6 +75,19 @@ router.get('/open', [], async (req, res) => {
    }
 });
 
+// @route   GET api/topics/:useremail
+// @desc    get all topics by user
+// @access  Public
+router.get('/:useremail', [], async (req, res) => {
+   try {
+      const topics = await Topic.find({emailContributor: req.params.useremail});
+      res.json(topics);
+   } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
+   }
+});
+
 
 // @route   GET api/topics/:id
 // @desc    get Topic by ID
