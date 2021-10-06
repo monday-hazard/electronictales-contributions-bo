@@ -57,6 +57,19 @@
     display: block;
     content: ' ';
     background-image: url('../../../resources/img/icons/dashboard.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 24px;
+    width: 24px;
+    margin-right: 2rem;
+}
+
+.dashboard .dashboard-sidebar .dashboard-navigation .activity-title::before{
+    display: block;
+    content: ' ';
+    background-image: url('../../../resources/img/icons/activity.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
     height: 24px;
     width: 24px;
     margin-right: 2rem;
@@ -66,6 +79,8 @@
     display: block;
     content: ' ';
     background-image: url('../../../resources/img/icons/settings.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
     height: 24px;
     width: 24px;
     margin-right: 2rem;
