@@ -57,6 +57,19 @@
     display: block;
     content: ' ';
     background-image: url('../../../resources/img/icons/dashboard.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 24px;
+    width: 24px;
+    margin-right: 2rem;
+}
+
+.dashboard .dashboard-sidebar .dashboard-navigation .activity-title::before{
+    display: block;
+    content: ' ';
+    background-image: url('../../../resources/img/icons/activity.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
     height: 24px;
     width: 24px;
     margin-right: 2rem;
@@ -66,6 +79,8 @@
     display: block;
     content: ' ';
     background-image: url('../../../resources/img/icons/settings.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
     height: 24px;
     width: 24px;
     margin-right: 2rem;
@@ -196,6 +211,7 @@
 .dashboard .dashboard-content .bottom-content .right-content .top .social-icons .social-icons-container{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .dashboard .dashboard-content .bottom-content .right-content .top .social-icons .social-icons-container > a{
@@ -233,4 +249,16 @@
 
 .dashboard .dashboard-content .bottom-content .right-content .top .topic-contrib a > div:hover{
     background: linear-gradient(to left, var(--pinkpale), var(--pinkflashy)); 
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1850px) {
+    .dashboard .dashboard-content .bottom-content .right-content {
+        grid-template-rows: 1fr 1fr;
+    }
+    .dashboard .dashboard-content .bottom-content {
+        grid-template-columns: 1fr;
+        column-gap: 30px;
+        row-gap: 20px;
+    }
 }
