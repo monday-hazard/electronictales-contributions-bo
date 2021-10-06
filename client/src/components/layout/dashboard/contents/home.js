@@ -70,8 +70,8 @@ const DashboardHome = () => {
                     <TopicsList />
                 </div>
                 <div className="right-content">
-                    <div class="top">
-                        <div class="topic-contrib">
+                    <div className="top">
+                        <div className="topic-contrib">
                             <TitleSection
                                 inDashboard
                                 title="Topic"
@@ -90,7 +90,7 @@ const DashboardHome = () => {
                                 </div>
                             </Link>
                         </div>
-                        <div class="social-icons">
+                        <div className="social-icons">
                             <div className="social-text-container">
                                 <TitleSection
                                     inDashboard
@@ -150,7 +150,7 @@ const DashboardHome = () => {
                                 </a>
                             </div>
                         </div>
-                        <div class="easter-egg">
+                        <div className="easter-egg">
                             <a target="_blank" href="https://guthib.com/">
                                 Ne cliquez pas ici
                             </a>

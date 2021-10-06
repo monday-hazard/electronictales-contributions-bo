@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { logout } from '../../../redux/actions/auth';
 import { connect } from 'react-redux';
@@ -17,14 +17,20 @@ import DashboardHome from './contents/home';
 const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
 
    const [activeTab, setActiveTab] = useState('dashboard');
+   const [tabTitle, setTabTitle] = useState('dashboard');
 
-   const introTLTA =
-   'C\'est un contenu pour le Tinder du dev : court, explicatif, imagé mais surtout court.';
-   const introRegular =
-      'C\'est un article plus long sans contraintes de longueur : long, détaillé, explicatif mais surtout long.';
-
-   const urlTlta = 'https://platform.electronictales.io/modern-world/articles/le-code-coverage-cest-quoi'
-   const urlRegular = "https://platform.electronictales.io/modern-world/articles/pourquoi-jai-envie-de-quitter-le-monde-de-la-tech-environ-dix-fois-par-mois"
+   useEffect(() => {
+      switch (activeTab) {
+         case "activity":
+            setTabTitle('activite')
+            break;
+         case "settings":
+            setTabTitle('settings')
+            break;
+         default:
+            setTabTitle('dashboard');
+      }
+   }, [activeTab])
 
    return (
       loading ? <Loader /> :
@@ -44,7 +50,7 @@ const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
          </div>
          <div className="dashboard-content">
             <div className="top-content">
-               <h2 className="pink-neon title-dashboard">Dashboard</h2>
+               <h2 className="pink-neon title-dashboard">{tabTitle}</h2>
                <ul className="dashboard-icons-nav">
                   {/* NOTIFICATION/BUTTON */}
                   {/* <li><a href="#"><img src={notificationPicto} /></a></li> */}
