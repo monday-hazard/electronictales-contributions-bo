@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { logout } from '../../../redux/actions/auth';
 import { connect } from 'react-redux';
@@ -16,15 +16,23 @@ import DashboardHome from './contents/home';
 
 const Dashboard = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
+   const userEmail = user ? user.email : "(｡◕‿◕｡)"
+
    const [activeTab, setActiveTab] = useState('dashboard');
+   const [tabTitle, setTabTitle] = useState('dashboard');
 
-   const introTLTA =
-      'C\'est un contenu pour le Tinder du dev : court, explicatif, imagé mais surtout court.';
-   const introRegular =
-      'C\'est un article plus long sans contraintes de longueur : long, détaillé, explicatif mais surtout long.';
-
-   const urlTlta = 'https://platform.electronictales.io/modern-world/articles/le-code-coverage-cest-quoi'
-   const urlRegular = "https://platform.electronictales.io/modern-world/articles/pourquoi-jai-envie-de-quitter-le-monde-de-la-tech-environ-dix-fois-par-mois"
+   useEffect(() => {
+      switch (activeTab) {
+         case "activity":
+            setTabTitle('activite')
+            break;
+         case "settings":
+            setTabTitle('settings')
+            break;
+         default:
+            setTabTitle('dashboard');
+      }
+   }, [activeTab])
 
    return (
       loading ? <Loader /> :
@@ -35,25 +43,25 @@ const Dashboard = ({ auth: { isAuthenticated, loading, user }, logout }) => {
                      <img className="usermane-img" src={ghostAvatar} alt='petit fantome' />
                   </div>
                   <p className="username">{user ? user.userName : "(｡◕‿◕｡)"}</p>
-               </div>
-               <ul className="dashboard-navigation">
-                  <li className={`dashboard-title${activeTab === "dashboard" ? ' active' : ''}`} onClick={activeTab !== "dashboard" ? () => setActiveTab('dashboard') : undefined}>Dashboard</li>
-                  <li className={`activity-title${activeTab === "activity" ? ' active' : ''}`} onClick={activeTab !== "activity" ? () => setActiveTab('activity') : undefined}>Activité</li>
-                  <li className={`settings-title${activeTab === "settings" ? ' active' : ''}`} onClick={activeTab !== "settings" ? () => setActiveTab('settings') : undefined}>Settings</li>
+            </div>
+            <ul className="dashboard-navigation">
+               <li className={`dashboard-title${activeTab === "dashboard" ? ' active' : ''}`} onClick={activeTab !== "dashboard" ? () => setActiveTab('dashboard') : undefined}>Dashboard</li>
+               <li className={`activity-title${activeTab === "activity" ? ' active' : ''}`} onClick={activeTab !== "activity" ? () => setActiveTab('activity') : undefined}>Activité</li>
+               <li className={`settings-title${activeTab === "settings" ? ' active' : ''}`} onClick={activeTab !== "settings" ? () => setActiveTab('settings') : undefined}>Settings</li>
+            </ul>
+         </div>
+         <div className="dashboard-content">
+            <div className="top-content">
+               <h2 className="pink-neon title-dashboard">{tabTitle}</h2>
+               <ul className="dashboard-icons-nav">
+                  {/* NOTIFICATION/BUTTON */}
+                  {/* <li><a href="#"><img src={notificationPicto} /></a></li> */}
+                  <li><Link onClick={logout} to="/"><img alt="Picto porte" src={logoutPicto} /></Link></li>
                </ul>
             </div>
-            <div className="dashboard-content">
-               <div className="top-content">
-                  <h2 className="pink-neon title-dashboard">Dashboard</h2>
-                  <ul className="dashboard-icons-nav">
-                     {/* NOTIFICATION/BUTTON */}
-                     {/* <li><a href="#"><img src={notificationPicto} /></a></li> */}
-                     <li><Link onClick={logout} to="/"><img alt="Picto porte" src={logoutPicto} /></Link></li>
-                  </ul>
-               </div>
-               {activeTab === "dashboard" && <DashboardHome />}
-            </div>
+            {activeTab === "dashboard" && <DashboardHome userEmail={userEmail}/>}
          </div>
+      </div>
    );
 };
 

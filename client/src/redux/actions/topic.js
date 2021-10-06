@@ -3,6 +3,7 @@ import { setAlert } from './alert';
 import { openModal } from './modal';
 import {
    GET_TOPICS,
+   GET_TOPICS_BY_USER,
    TOPICS_ERROR,
    DELETE_TOPIC,
    POST_TOPIC,
@@ -53,6 +54,27 @@ export const getTopicsOpen = () => async dispatch => {
       });
    }
 }
+
+// Get Topics by User
+export const getTopicsByUser = useremail => async dispatch => {
+   try {
+      const res = await axios.get(`/api/topics/${useremail}`);
+
+      dispatch({
+         type: GET_TOPICS_BY_USER,
+         payload: res.data
+      });
+   } catch (error) {
+      dispatch({
+         type: TOPICS_ERROR,
+         payload: {
+            msg: error.response.statusText,
+            status: error.response.status
+         }
+      });
+   }
+}
+
 
 // Delete topic
 export const deleteTopic = id => async dispatch => {

@@ -3,11 +3,13 @@ import {
    TOPICS_ERROR,
    DELETE_TOPIC,
    POST_TOPIC,
+   GET_TOPICS_BY_USER,
    GET_SELECTED_TOPIC,
 } from '../actions/types';
 
 const initialState = {
    topics: [],
+   topicsByUser: [],
    topic: null,
    loading: true,
    error: {},
@@ -25,6 +27,12 @@ export default function (state = initialState, action) {
             topics: payload,
             loading: false
          };
+      case GET_TOPICS_BY_USER:
+         return {
+            ...state,
+            topicsByUser: payload,
+            loading: false
+      };
       case GET_SELECTED_TOPIC:
          return {
             ...state,
