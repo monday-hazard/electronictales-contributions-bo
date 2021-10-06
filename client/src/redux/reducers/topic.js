@@ -3,7 +3,8 @@ import {
    TOPICS_ERROR,
    DELETE_TOPIC,
    POST_TOPIC,
-   GET_TOPICS_BY_USER
+   GET_TOPICS_BY_USER,
+   GET_SELECTED_TOPIC,
 } from '../actions/types';
 
 const initialState = {
@@ -11,7 +12,8 @@ const initialState = {
    topicsByUser: [],
    topic: null,
    loading: true,
-   error: {}
+   error: {},
+   selectedTopic: {}
 }
 
 // eslint-disable-next-line
@@ -29,6 +31,12 @@ export default function (state = initialState, action) {
          return {
             ...state,
             topicsByUser: payload,
+            loading: false
+      };
+      case GET_SELECTED_TOPIC:
+         return {
+            ...state,
+            selectedTopic: payload,
             loading: false
          };
       case POST_TOPIC:

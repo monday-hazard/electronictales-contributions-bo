@@ -14,7 +14,7 @@ import './Dashboard.css';
 
 import DashboardHome from './contents/home';
 
-const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
+const Dashboard = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
    const userEmail = user.email;
 
@@ -36,13 +36,13 @@ const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
 
    return (
       loading ? <Loader /> :
-      <div className="dashboard">
-         <div className="dashboard-sidebar">
-            <div className="user-information">
-               <div>
-                  <img className="usermane-img" src={ghostAvatar} alt='petit fantome' />
-               </div>
-               <p className="username">{user ? user.userName : "(｡◕‿◕｡)"}</p>
+         <div className="dashboard">
+            <div className="dashboard-sidebar">
+               <div className="user-information">
+                  <div>
+                     <img className="usermane-img" src={ghostAvatar} alt='petit fantome' />
+                  </div>
+                  <p className="username">{user ? user.userName : "(｡◕‿◕｡)"}</p>
             </div>
             <ul className="dashboard-navigation">
                <li className={`dashboard-title${activeTab === "dashboard" ? ' active' : ''}`} onClick={activeTab !== "dashboard" ? () => setActiveTab('dashboard') : undefined}>Dashboard</li>
