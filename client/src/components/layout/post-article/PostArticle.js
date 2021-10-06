@@ -5,8 +5,7 @@ import { getSelectedTopic } from '../../../redux/actions/topic';
 
 import Hero from '../../elements/hero/Hero';
 import ArticleTypeChoice from './article-type-choice/ArticleTypeChoice';
-import ContentDescription from './tlta-description/ContentDescription';
-
+import ContentDescription from './content-description/ContentDescription';
 
 import './PostArticle.css';
 
