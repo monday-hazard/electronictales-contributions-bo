@@ -6,6 +6,7 @@ import { getSelectedTopic } from '../../../redux/actions/topic';
 import Hero from '../../elements/hero/Hero';
 import ArticleTypeChoice from './article-type-choice/ArticleTypeChoice';
 import ContentDescription from './content-description/ContentDescription';
+import ArticleForm from './article-form/ArticleForm'
 
 import './PostArticle.css';
 
@@ -18,8 +19,7 @@ const PostArticle = ({
       getSelectedTopic(localStorage.getItem('topicId'));
    }, [getSelectedTopic]);
 
-   const { type, name } = selectedTopic;
-   console.log(type)
+   const { _id, type, name } = selectedTopic;
    const titleText = name;
 
    const [chosenType, setChosenType] = useState('');
@@ -53,15 +53,9 @@ const PostArticle = ({
          {type === 'any' && !chosenType ||
             <ContentDescription type={type} chosenType={chosenType} />
          }
+
+         <ArticleForm topicType={chosenType ? chosenType : type} topicId={_id} />
          {/*
-         <section className="container-topic topic-info">
-            <Card isSquare>
-               <CardContent title="TooLateToAsk" text={introTLTA} srcImg={TltaSmall} alt="Pictogramme Smartphone" urlExample={urlTlta} />
-            </Card>
-            <Card isSquare>
-               <CardContent title="Regular" text={introRegular} srcImg={RegularSmall} alt="Pictogramme stylo" urlExample={urlRegular} />
-            </Card>
-         </section>
          <section className="container-topic"><TopicForm /></section>
          <Modal
             content={POST_TOPIC_SUCCESS_MODAL_CONTENT}

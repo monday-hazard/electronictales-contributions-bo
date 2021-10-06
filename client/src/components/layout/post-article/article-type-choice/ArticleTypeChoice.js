@@ -3,8 +3,8 @@ import Card from '../../../elements/card/Card';
 import CardContent from '../../../elements/card/CardContent';
 import Button from '../../../elements/button/Button';
 
-import TltaSmall from '../../../../resources/img/tlta-small-wording.png';
-import RegularSmall from '../../../../resources/img/regular-small-wording.png';
+import TltaSmall from '../../../../resources/img/tlta-wording.svg';
+import RegularSmall from '../../../../resources/img/regular-wording.svg';
 
 const ArticleTypeChoice = ({ chooseType }) => {
 
@@ -15,7 +15,7 @@ const ArticleTypeChoice = ({ chooseType }) => {
 
    const handleTltaClick = () => {
       chooseType('Too Late To Ask');
-      //setAlert 
+      //setAlert ?
    }
    const handleArticleClick = () => {
       chooseType('article');

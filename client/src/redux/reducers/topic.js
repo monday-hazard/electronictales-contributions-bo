@@ -3,7 +3,7 @@ import {
    TOPICS_ERROR,
    DELETE_TOPIC,
    POST_TOPIC,
-   GET_SELECTED_TOPIC
+   GET_SELECTED_TOPIC,
 } from '../actions/types';
 
 const initialState = {

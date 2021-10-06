@@ -1,0 +1,24 @@
+.ql-container {
+   border: 1px solid var(--pinkpale) !important;
+   border-radius: 1.5rem;
+}
+
+.ql-toolbar {
+   border: 1px solid var(--pinkpale) !important;
+   border-radius: 1.5rem;
+   margin-top: 2rem;
+   margin-bottom: 1rem;
+}
+
+.ql-toolbar:focus {
+   border: 1px solid var(--pinkpale) !important;
+   color: #fff;
+}
+
+.ql-editor {
+   min-height: 50rem !important;
+}
+
+.ql-formats {
+   color: #fff;
+}
