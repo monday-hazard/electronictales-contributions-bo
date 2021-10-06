@@ -16,7 +16,7 @@ import DashboardHome from './contents/home';
 
 const Dashboard = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
-   const userEmail = user.email;
+   const userEmail = user ? user.email : "(｡◕‿◕｡)"
 
    const [activeTab, setActiveTab] = useState('dashboard');
    const [tabTitle, setTabTitle] = useState('dashboard');
