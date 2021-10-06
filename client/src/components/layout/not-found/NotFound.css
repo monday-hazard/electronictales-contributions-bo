@@ -1,0 +1,14 @@
+.not-found-wrapper {
+   max-width: 70rem;
+   margin: 10rem auto;
+   text-align: center;
+}
+
+.not-found-img {
+   height: 25rem;
+   margin: 8rem auto;
+}
+
+.not-found-text {
+   font-size: 2rem;
+}

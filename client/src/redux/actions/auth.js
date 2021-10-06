@@ -12,6 +12,8 @@ import {
 } from './types';
 import setAuthToken from '../../utils/setAuthToken';
 
+import { REGISTER_ERROR_FAIL_ALERT_CONTENT } from '../../dictionnary/alertContentList';
+
 // Load user (check localStorage for user token)
 export const loadUser = () => async dispatch => {
    if (localStorage.token) {
@@ -51,13 +53,15 @@ export const register = ({ userName, slackName, email, password }) => async disp
 
    } catch (err) {
       const errors = err.response.data.errors;
-      if (errors) {
+      if (errors && err.response.status !== 500) {
          errors.forEach(error => dispatch(setAlert(error.msg, 'error')));
+      }
+      else { // Error 500 case
+         dispatch(setAlert(REGISTER_ERROR_FAIL_ALERT_CONTENT.message, 'error'));
       }
       dispatch({
          type: REGISTER_FAIL
       })
-      dispatch(setAlert());
    }
 }
 

@@ -26,8 +26,7 @@
     cursor: pointer;
 }
 
-
-.input-form{
+.input-form {
     width: 100%;
     background-color: transparent;
     color: #fff;
@@ -43,9 +42,18 @@
     border: 1px solid #fff;
 }
 
+.invalid-input {
+    border: solid 1px #ff4d4d;
+}
+
+.valid-input {
+    border: solid 1px #47d147;
+}
+
 .input-form:focus{
     border: 1px solid var(--pinkflashy);
 }
+
 .checkbox-container{
     display: flex;
     align-items: center;

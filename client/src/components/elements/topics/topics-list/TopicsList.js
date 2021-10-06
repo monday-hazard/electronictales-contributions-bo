@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import { getTopicsOpen } from '../../../../redux/actions/topic';
 import Loading from '../../loader/Loader';
 import TopicCard from '../TopicCard';
-
 
 import './TopicsList.css';
 

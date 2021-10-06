@@ -7,6 +7,8 @@ const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
 
+const { confirmMailNewUser } = require('../../mailer/sendMailer');
+
 // @route   POST api/users
 // @desc    Register user
 // @access  Public
@@ -21,7 +23,9 @@ router.post(
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
-         return res.status(400).json({ errors: errors.array() });
+         return res
+            .status(400)
+            .json({ errors: errors.array() });
       }
 
       const { userName, slackName, email, password } = req.body;
@@ -60,6 +64,8 @@ router.post(
                res.json({ token });
             }
          );
+
+         confirmMailNewUser(email, userName, slackName);
 
       } catch (err) {
          console.error(err.message);

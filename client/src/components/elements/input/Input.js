@@ -7,7 +7,7 @@ import imgAnySmallWording from "../../../resources/img/any.svg"
 import './Input.css';
 
 
-const Input = ({ label = {}, onlyText, checked, ...props }) => {
+const Input = ({ label = {}, onlyText, checked, forwardedRef, ...props }) => {
 
    let containerCssClass = '';
 
@@ -23,9 +23,7 @@ const Input = ({ label = {}, onlyText, checked, ...props }) => {
    }
 
    return (
-
-
-      <div className={containerCssClass} onClick={props.onClick}>
+      <div className={containerCssClass} onClick={props.onClick} ref={forwardedRef}>
          {label && label.position === 'before' && (
             <label className={label.className} htmlFor={label.htmlFor}>{label.labelText}</label>
          )}

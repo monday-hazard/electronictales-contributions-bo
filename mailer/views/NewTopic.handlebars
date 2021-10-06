@@ -1,0 +1,29 @@
+<div class="confirmMessage">
+    <p class="confirmText">
+    Ton Topic
+    <span class="referenceSubject">
+        " {{ topicName }} "
+    </span>
+    a bien été transmis et nous t'en remercions chaudement !
+    </p>
+    <p class="confirmText">
+        Il sera publié très vite après relecture de toute l'équipe
+    </p>
+</div>
+
+{{#if slackContributor}}
+    <div class="slackMessage">
+            <p class="slackText">
+                Mais en attendant <span class="slackName">{{ slackContributor }}</span> nous avons hate de te retrouver sur notre slack :
+            </p>
+            <p class="slackLink">
+                http://platform.electronictales.io/safe-space/chat
+            </p>
+    </div>
+{{/if}}
+
+<p class="signTeam">
+    La Team Electronic Tales
+</p>
+
+
