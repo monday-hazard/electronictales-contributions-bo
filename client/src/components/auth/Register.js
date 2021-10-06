@@ -24,7 +24,7 @@ const Register = ({ setAlert, register }) => {
    const [formData, setFormData] = useState({
       userName: '',
       email: '',
-      slackname: '',
+      slackName: '',
       password: '',
       confirm_password: '',
    });
@@ -82,7 +82,7 @@ const Register = ({ setAlert, register }) => {
             'error'
          );
       } else {
-         register({ userName, slackname, email, password });
+         register({ userName, slackName, email, password });
       }
    }
 

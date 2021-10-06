@@ -1,0 +1,32 @@
+<div class="confirmMessage">
+    <p class="confirmText confirmText-title">
+        Bonjour {{ userName }},
+    </p>
+    <p class="confirmText">
+        Toute l'équipe d'Electronic Tales te souhaite la bienvenue parmi nous !
+    </p>
+    <p class="confirmText">
+        Nous t'invitons à cliquer sur le lien ci-dessous pour valider ton inscription :
+    </p>
+    <p class="confirmLink">  
+        {{!-- TODO: Création du lien de confirmation  --}}
+    </p>
+    <p class="confirmText">
+        Et te disons très vite dans ton espace membre.
+    </p>
+</div>
+
+{{#if slackName}}
+    <div class="slackMessage">
+        <p class="slackText">
+            Mais en attendant <span class="slackName">{{ slackName }}</span> nous avons hate de te retrouver sur notre slack :
+        </p>
+        <p class="slackLink">
+            http://platform.electronictales.io/safe-space/chat
+        </p> 
+    </div>
+{{/if}}
+
+<p class="signTeam">
+    La Team Electronic Tales
+</p>
