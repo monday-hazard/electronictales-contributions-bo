@@ -15,7 +15,9 @@ import './Dashboard.css';
 import DashboardHome from './contents/home';
 import DashboardActivity from './contents/activity';
 
-const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
+const Dashboard = ({ auth: { isAuthenticated, loading, user }, logout }) => {
+
+   const userEmail = user ? user.email : "(｡◕‿◕｡)"
 
    const [activeTab, setActiveTab] = useState('dashboard');
    const [tabTitle, setTabTitle] = useState('dashboard');
@@ -35,13 +37,13 @@ const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
 
    return (
       loading ? <Loader /> :
-      <div className="dashboard">
-         <div className="dashboard-sidebar">
-            <div className="user-information">
-               <div>
-                  <img className="usermane-img" src={ghostAvatar} alt='petit fantome' />
-               </div>
-               <p className="username">{user ? user.userName : "(｡◕‿◕｡)"}</p>
+         <div className="dashboard">
+            <div className="dashboard-sidebar">
+               <div className="user-information">
+                  <div>
+                     <img className="usermane-img" src={ghostAvatar} alt='petit fantome' />
+                  </div>
+                  <p className="username">{user ? user.userName : "(｡◕‿◕｡)"}</p>
             </div>
             <ul className="dashboard-navigation">
                <li className={`dashboard-title${activeTab === "dashboard" ? ' active' : ''}`} onClick={activeTab !== "dashboard" ? () => setActiveTab('dashboard') : undefined}>Dashboard</li>
@@ -58,7 +60,7 @@ const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
                   <li><Link onClick={logout} to="/"><img alt="Picto porte" src={logoutPicto} /></Link></li>
                </ul>
             </div>
-            {activeTab === "dashboard" && <DashboardHome />}
+            {activeTab === "dashboard" && <DashboardHome userEmail={userEmail}/>}
             {activeTab === "activity" && <DashboardActivity userId={user._id}/>}
          </div>
       </div>

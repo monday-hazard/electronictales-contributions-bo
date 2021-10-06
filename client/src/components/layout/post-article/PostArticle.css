@@ -1,17 +1,15 @@
-.post-topic {
+.post-article {
    padding: 0 0 5rem;
 }
 
-.post-topic .topic-info,
-.left-content .topic-info {
+.post-article .topic-info {
    display: grid;
    grid-template-columns: 1fr 1fr;
    align-items: center;
-   column-gap: 1rem;
-   margin-bottom: 2rem;
+   column-gap: 5rem;
 }
 
-.post-topic .topic-info .contrib-option {
+.post-article .topic-info .contrib-option {
    color: var(--blue);
    text-align: center;
    font-size: 5rem;

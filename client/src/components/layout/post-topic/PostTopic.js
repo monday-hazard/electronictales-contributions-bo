@@ -35,7 +35,7 @@ const PostTopic = ({ isAuthenticated }) => {
                <CardContent title="TooLateToAsk" text={introTLTA} srcImg={TltaSmall} alt="Pictogramme Smartphone" urlExample={urlTlta} />
             </Card>
             <Card isSquare>
-               <CardContent title="Regular" text={introRegular} srcImg={RegularSmall} alt="Pictogramme stylo" urlExample={urlRegular} />
+               <CardContent title="Article" text={introRegular} srcImg={RegularSmall} alt="Pictogramme stylo" urlExample={urlRegular} />
             </Card>
          </section>
          <section className="container-topic"><TopicForm /></section>
