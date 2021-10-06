@@ -13,6 +13,32 @@ nav {
 
 nav ul {
    display: flex;
+   align-items: center;
+}
+
+nav ul .dashboard-icon {
+   width: 4rem;
+   height: 4rem;
+   background: linear-gradient(to left, var(--pinkpale), var(--pinkflashy)); 
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 1rem;
+   transition: .3s ease;
+   border: 2px solid transparent;
+   position: relative;
+   border: 2px solid var(--pinkflashy);
+   transition: .3s ease;
+}
+
+nav ul .dashboard-icon:hover {
+   transform: translateY(-3px);
+}
+
+
+nav ul .dashboard-icon img {
+   width: 2rem;
 }
 
 #logo {

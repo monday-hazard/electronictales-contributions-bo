@@ -4,6 +4,10 @@ footer {
    padding: 1rem 2rem;
    display: flex;
    justify-content: space-between;
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   left: 0;
 }
 
 footer p {

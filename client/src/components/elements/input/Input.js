@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import imgTltaSmallWording from "../../../resources/img/tlta-small-wording.png";
-import imgRegularSmallWording from "../../../resources/img/regular-small-wording.png"
-import imgAnySmallWording from "../../../resources/img/any.png"
+import imgTltaSmallWording from "../../../resources/img/tlta-wording.svg";
+import imgRegularSmallWording from "../../../resources/img/regular-wording.svg"
+import imgAnySmallWording from "../../../resources/img/any.svg"
 
 import './Input.css';
 

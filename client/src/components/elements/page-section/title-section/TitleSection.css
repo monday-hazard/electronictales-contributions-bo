@@ -6,6 +6,14 @@
     font-size: 2.5rem;
 }
 
+.h2-dashboard-style {
+    font-family: 'Dosis';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    text-transform: none;
+}
+
 .subtitle {
     color: var(--grey);
     font-size: 1.2rem;

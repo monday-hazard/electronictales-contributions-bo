@@ -2,11 +2,13 @@
    padding: 0 0 5rem;
 }
 
-.post-topic .topic-info {
+.post-topic .topic-info,
+.left-content .topic-info {
    display: grid;
    grid-template-columns: 1fr 1fr;
    align-items: center;
-   column-gap: 5rem;
+   column-gap: 1rem;
+   margin-bottom: 2rem;
 }
 
 .post-topic .topic-info .contrib-option {

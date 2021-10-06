@@ -7,7 +7,9 @@
 }
 
 .imgContrib {
-    object-fit: contain;
+    width: 18rem;
+    height: 18rem;
+    object-fit: cover;
     transition: .3s ease;
     padding: 6px 7px 6px 7px;
     border-radius: 15px;

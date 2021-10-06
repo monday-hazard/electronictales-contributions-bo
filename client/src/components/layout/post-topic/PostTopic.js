@@ -9,8 +9,9 @@ import Modal from '../../elements/modal/Modal';
 import TopicForm from './topic-form/TopicForm';
 
 import { POST_TOPIC_SUCCESS_MODAL_CONTENT } from '../../../dictionnary/modalContentList';
-import TltaSmall from '../../../resources/img/tlta-small-wording.png';
-import RegularSmall from '../../../resources/img/regular-small-wording.png';
+
+import TltaSmall from '../../../resources/img/tlta.svg';
+import RegularSmall from '../../../resources/img/regular.svg';
 
 import './PostTopic.css';
 
@@ -23,7 +24,6 @@ const PostTopic = ({ isAuthenticated }) => {
    const introRegular =
       'Il s\'agit d\'articles au format somme toute assez classique : sans contraintes sur la longueur, ils peuvent contenir des liens, il sont explicatifs mais surtout explicites.';
 
-   // TODO Créer URL example TLTA & Regular
    const urlTlta = 'https://platform.electronictales.io/modern-world/articles/le-code-coverage-cest-quoi'
    const urlRegular = "https://platform.electronictales.io/modern-world/articles/pourquoi-jai-envie-de-quitter-le-monde-de-la-tech-environ-dix-fois-par-mois"
 
