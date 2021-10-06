@@ -16,6 +16,7 @@ html,
 body {
    margin: 0;
    padding: 0;
+   position: relative;
 }
 
 body {
@@ -44,6 +45,11 @@ ul {
 .neon {
    text-shadow: rgb(0, 225, 255) 0px 0px 0.4em, rgb(0, 225, 255) 0px 0px 0.8em,
       rgb(0, 255, 255) 0px 0px 1.6rem;
+}
+
+.pink-neon {
+   text-shadow: var(--pinkflashy) 0px 0px 0.4em, var(--pinkflashy) 0px 0px 0.8em,
+   var(--pinkflashy) 0px 0px 1.6rem;
 }
 
 .flicker {

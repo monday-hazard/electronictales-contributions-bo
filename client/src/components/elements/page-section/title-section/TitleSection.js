@@ -5,11 +5,15 @@ import "./TitleSection.css";
 
 const TitleSection = ({
     title,
-    subtitle
+    subtitle,
+    inDashboard
 }) => {
     return (
         <Fragment>
-            <h2 className="h2-section-style">{title}</h2>
+            {inDashboard
+                ? <h2 className="h2-dashboard-style">{title}</h2>
+                : <h2 className="h2-section-style">{title}</h2>
+            }
             <p className="subtitle">{subtitle}</p>
         </Fragment>
     )
@@ -17,7 +21,8 @@ const TitleSection = ({
 
 TitleSection.propTypes = {
     title: PropTypes.string,
-    subtitle: PropTypes.string
+    subtitle: PropTypes.string,
+    inDashboard: PropTypes.bool
 }
 
 export default TitleSection;

@@ -1,0 +1,236 @@
+.dashboard {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 28.7rem 1fr;
+}
+
+/* DASHBOARD SIDEBAR */
+
+.dashboard .dashboard-sidebar {
+    background-color: var(--transparent-background);
+}
+
+.dashboard .dashboard-sidebar .user-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 60px;
+    padding-top: 60px;
+}
+
+.dashboard .dashboard-sidebar .user-information div {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.dashboard .dashboard-sidebar .user-information .username{
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.dashboard .dashboard-sidebar .user-information .username-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dashboard .dashboard-sidebar .dashboard-navigation li{
+    padding: 1.5rem 1.5rem 1.5rem 5rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.dashboard .dashboard-sidebar .dashboard-navigation .active{
+    background: linear-gradient(to left, var(--pinkpale), var(--pinkflashy)); 
+}
+
+.dashboard .dashboard-sidebar .dashboard-navigation li:hover{
+    background: linear-gradient(to left, var(--pinkpale), var(--pinkflashy)); 
+}
+
+.dashboard .dashboard-sidebar .dashboard-navigation .dashboard-title::before{
+    display: block;
+    content: ' ';
+    background-image: url('../../../resources/img/icons/dashboard.svg');
+    height: 24px;
+    width: 24px;
+    margin-right: 2rem;
+}
+
+.dashboard .dashboard-sidebar .dashboard-navigation .settings-title::before{
+    display: block;
+    content: ' ';
+    background-image: url('../../../resources/img/icons/settings.svg');
+    height: 24px;
+    width: 24px;
+    margin-right: 2rem;
+}
+
+/* DASHBOARD CONTENT */
+
+.dashboard .dashboard-content {
+    padding: 6rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 3.5rem;
+    grid-template-rows: 60px 1fr;
+}
+
+.dashboard .dashboard-content .top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard .dashboard-content .top-content .title-dashboard {
+    font-size: 4rem;
+    font-family: 'Monicas Salon';
+}
+
+.dashboard .dashboard-content .top-content .dashboard-icons-nav {
+    display: flex;
+}
+
+.dashboard .dashboard-content .top-content .dashboard-icons-nav li{
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--transparent-background);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    transition: .3s ease;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.dashboard .dashboard-content .top-content .dashboard-icons-nav li:before{
+    content: "Se déconnecter";
+    font-size: 1.2rem;
+    position: absolute;
+    right: 60px;
+    width: 100px;
+}
+
+.dashboard .dashboard-content .top-content .dashboard-icons-nav li:hover{
+    transform: translateY(-3px);
+    background: linear-gradient(to left, var(--pinkpale), var(--pinkflashy)); 
+    border: 2px solid var(--pinkflashy);
+}
+
+.dashboard .dashboard-content .top-content .dashboard-icons-nav .active{
+    transform: translateY(-3px);
+    background: linear-gradient(to left, var(--pinkpale), var(--pinkflashy)); 
+    border: 2px solid var(--pinkflashy);
+}
+
+.dashboard .dashboard-content .top-content .dashboard-icons-nav li > a{
+    width: 2rem;
+}
+
+.dashboard .dashboard-content .bottom-content {
+    background-color: var(--transparent-background);
+    border-radius: 15px;
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 30px;
+}
+
+
+.dashboard .dashboard-content .bottom-content .left-content {
+    background-color: var(--transparent-background);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.dashboard .dashboard-content .bottom-content .right-content {
+    display: grid;
+    grid-template-rows: 340px 1fr;
+    row-gap: 2rem;
+}
+
+.dashboard .dashboard-content .bottom-content .right-content .bottom {
+    background-color: var(--transparent-background);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.dashboard .dashboard-content .bottom-content .right-content .top {
+    background-color: var(--transparent-background);
+    border-radius: 15px;
+    padding: 2rem;
+    display: grid; 
+    gap: 20px 20px; 
+    grid-template-areas: 
+        "topic-contrib topic-contrib social-icons"
+        "topic-contrib topic-contrib easter-egg"
+        "topic-contrib topic-contrib easter-egg"
+        "topic-contrib topic-contrib easter-egg";
+}
+
+
+.dashboard .dashboard-content .bottom-content .right-content .top .topic-contrib{
+    grid-area: topic-contrib;
+    background-color: var(--transparent-background);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.dashboard .dashboard-content .bottom-content .right-content .top .social-icons{
+    grid-area: social-icons;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--transparent-background);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.dashboard .dashboard-content .bottom-content .right-content .top .social-icons .social-icons-container{
+    display: flex;
+    align-items: center;
+}
+
+.dashboard .dashboard-content .bottom-content .right-content .top .social-icons .social-icons-container > a{
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard .dashboard-content .bottom-content .right-content .top .easter-egg{
+    grid-area: easter-egg;
+    background-color: var(--transparent-background);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .dashboard-content .bottom-content .right-content .top .easter-egg a{
+    font-family: 'Dosis';
+}
+
+.dashboard .dashboard-content .bottom-content .right-content .top .topic-contrib a > div{
+    background-color: var(--transparent-background);
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard .dashboard-content .bottom-content .right-content .top .topic-contrib a > div > img{
+    width: 6rem;
+}
+
+.dashboard .dashboard-content .bottom-content .right-content .top .topic-contrib a > div:hover{
+    background: linear-gradient(to left, var(--pinkpale), var(--pinkflashy)); 
+}

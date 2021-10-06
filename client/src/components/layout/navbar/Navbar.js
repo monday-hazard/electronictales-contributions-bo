@@ -7,6 +7,7 @@ import { logout } from '../../../redux/actions/auth';
 import './Navbar.css';
 
 import logo from '../../../resources/img/logo-transparent-350.png';
+import pictoDashboard from '../../../resources/img/icons/dashboard.svg';
 import Button from '../../elements/button/Button';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
@@ -15,6 +16,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
    const authLinks = (
       <ul>
+         <Link to="/dashboard">
+         <li className="dashboard-icon">
+            <img alt="Picto porte" src={pictoDashboard}/>
+         </li>
+         </Link>
          <li>
             <Link to="/">
                <Button onClick={logout} buttonStyle="btn-outline">Se déconnecter</Button>

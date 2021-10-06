@@ -25,8 +25,6 @@ const Login = ({ login, isAuthenticated }) => {
    const onSubmit = async e => {
       e.preventDefault();
       login(email, password);
-      console.log(formData)
-      console.log(e)
    };
 
    const [rememberMe, setRemeberMer] = React.useState(false);
