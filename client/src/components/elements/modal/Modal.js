@@ -13,13 +13,13 @@ const Modal = ({ content, redirectPath, openModal, closeModal }) => {
    // Inspiration : https://stackoverflow.com/a/42234988
    const useOutsideCloser = (ref) => {
       useEffect(() => {
-         const handleClickOutside = () => {
+         const handleClick = () => {
             if (ref.current) close();
          }
-         document.addEventListener("mousedown", handleClickOutside);
+         document.addEventListener("mousedown", handleClick);
          return () => {
             // Unbind the event listener on clean up
-            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("mousedown", handleClick);
          };
       }, [ref]);
    }
