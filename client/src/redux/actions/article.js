@@ -1,6 +1,10 @@
 import axios from 'axios';
+
 import { setAlert } from './alert';
+import { openModal } from './modal';
+
 import { GET_ARTICLES, ARTICLES_ERROR } from './types';
+import { POST_ARTICLE, ARTICLE_ERROR } from './types';
 
 // Get Articles of one User
 export const getArticlesByUser = (userId) => async (dispatch) => {
@@ -21,8 +25,6 @@ export const getArticlesByUser = (userId) => async (dispatch) => {
         });
     }
 };
-import { openModal } from './modal';
-import { POST_ARTICLE, ARTICLE_ERROR } from './types';
 
 // TODO : send auth as well ?
 export const postArticle = (formData) => async (dispatch) => {
