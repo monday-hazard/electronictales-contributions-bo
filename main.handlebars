@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm mail</title>
+
+    <style>
+        .body{
+            background-color: #262626 ;
+            padding: 2rem;
+        }
+        .cardEmail{
+            padding: 1rem 2rem;
+            color: #fff;
+            border: 1px solid #FF4093;
+            border-radius: 30px;
+        }
+        .confirmMessage{
+            width: 100%;
+        }
+        .confirmText-title{
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .confirmText{
+            text-align: center;
+        }
+        .referenceSubject{
+            font-weight: bold;
+        }
+        .slackMessage{
+            width: 100%;
+            margin-top: 3rem;
+        }
+        .slackText{
+            text-align: center;
+        }
+        .slackName{
+            font-weight: bold;
+        }
+        a, a:hover {
+            color: inherit;
+        }
+        .slackLink{
+            text-align: center;
+        }
+        .slackLink>a{
+            color: cyan;
+        }
+        .slackLink>a:hover{
+            color: #FF4093;
+        }
+        .confirmLink{
+            text-align: center;
+            font-style: italic;
+            text-decoration: none;
+            color: cyan;
+        }
+    
+        .signTeam{
+            margin-top: 3rem;
+            font-weight: bold;
+            color: #FF4093;
+            text-align: right;
+        }
+    
+    </style>
+</head>
+
+<body class="body">
+    <section class="cardEmail">
+        {{{ body }}} 
+    </section>
+</body>
+</html>

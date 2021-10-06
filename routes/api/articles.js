@@ -7,6 +7,8 @@ const Article = require('../../models/Article');
 const Topic = require('../../models/Topic');
 const User = require('../../models/User');
 
+const { confirmMailPostArticle } = require('../../mailer/sendMailer');
+
 // @route  GET api/articles
 // @desc   Get all articles
 // @access Public
@@ -83,7 +85,6 @@ router.post(
             const { type, title, originalContent, richLinks, topicId } =
                 req.body;
 
-            console.log(req.user);
             const newArticle = new Article({
                 type,
                 title,
@@ -94,8 +95,14 @@ router.post(
             });
 
             const article = await newArticle.save();
+            const currentUser = await User.findById(req.user.id);
+            const currentUserEmail = currentUser.email
+            const currentUserName = currentUser.userName
 
             res.json(article);
+
+            confirmMailPostArticle(currentUserEmail, currentUserName, article.title);
+
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');

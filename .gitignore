@@ -6,6 +6,7 @@ node_modules/
 
 # our secrets
 config/default.json
+mailer/authMailer.js
 
 # For Mac
 .DS_Store
