@@ -13,6 +13,7 @@ import ghostAvatar from '../../../resources/img/avatarghost.png';
 import './Dashboard.css';
 
 import DashboardHome from './contents/home';
+import DashboardActivity from './contents/activity';
 
 const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
 
@@ -58,6 +59,7 @@ const Dashboard = ({ auth: { isAuthenticated, loading, user}, logout }) => {
                </ul>
             </div>
             {activeTab === "dashboard" && <DashboardHome />}
+            {activeTab === "activity" && <DashboardActivity userId={user._id}/>}
          </div>
       </div>
    );

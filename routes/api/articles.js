@@ -46,7 +46,49 @@ router.get('/:id', [], async (req, res) => {
     }
 });
 
-// @route  POST api/articles
+// @route  GET api/articles/user/:userId
+// @desc   Get articles by User
+// @access Private
+router.get('/user/:userId', auth, async (req, res) => {
+    try {
+        // Check if user requesting has rights to do it
+        const authenticatedUser = await User.findById(req.user.id);
+
+        // Authenticated user must be author user itself, admin or reviewer
+        if (
+            authenticatedUser.roles !== 'reviewer' &&
+            authenticatedUser.roles !== 'admin' &&
+            authenticatedUser.id !== req.params.userId
+        ) {
+            return res.status(401).json({ msg: 'User not authorized >:[ ' });
+        }
+
+        // Check if user requested exists
+        const user = await User.findById(req.params.userId);
+
+        if (!user) {
+            return res
+                .status(404)
+                .json({ msg: 'User author not found ! ┐(´д｀)┌' });
+        }
+
+        // Fetch all articles by the requested user
+        const articlesByUser = await Article.find({
+            authorId: req.params.userId,
+        });
+
+        res.json(articlesByUser);
+    } catch (err) {
+        console.error(err.message);
+
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({ msg: 'User ID not valid (°◇°)' });
+        }
+        res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
+    }
+});
+
+// @route  POST api/articles/
 // @desc   Submit new article
 // @access Private
 router.post(
@@ -96,13 +138,16 @@ router.post(
 
             const article = await newArticle.save();
             const currentUser = await User.findById(req.user.id);
-            const currentUserEmail = currentUser.email
-            const currentUserName = currentUser.userName
+            const currentUserEmail = currentUser.email;
+            const currentUserName = currentUser.userName;
 
             res.json(article);
 
-            confirmMailPostArticle(currentUserEmail, currentUserName, article.title);
-
+            confirmMailPostArticle(
+                currentUserEmail,
+                currentUserName,
+                article.title
+            );
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Oopsie doopsie, Server Error ! (◕_◕)');
