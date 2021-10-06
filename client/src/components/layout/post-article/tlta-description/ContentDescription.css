@@ -6,11 +6,25 @@
    font-weight: 500;
    letter-spacing: 0.075rem;
    text-align: center;
-   margin: 0 2rem;
+   margin: 2rem;
 }
 
 .description-text {
    margin: 0 4rem;
    margin-bottom: 1.5rem;
    text-align: center;
+}
+
+.last-child {
+   margin-bottom: 2rem;
+}
+
+.example-link {
+   font-size: 1.4rem;
+   font-style: italic;
+   transition: 0.3s ease;
+}
+
+.example-link:hover {
+   transform: translateY(-3px);
 }
