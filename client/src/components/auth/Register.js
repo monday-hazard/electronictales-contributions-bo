@@ -28,7 +28,7 @@ const Register = ({ setAlert, register }) => {
       password: '',
       confirm_password: '',
    });
-   const { userName, email, slackname, password, confirm_password } = formData;
+   const { userName, email, slackName, password, confirm_password } = formData;
    
    // Errors
    const [userNameNotValid, setUserNameNotValid] = useState(undefined);
@@ -63,7 +63,7 @@ const Register = ({ setAlert, register }) => {
                ? setUnmatchingPasswords(true)
                : setUnmatchingPasswords(false);
             break;
-         case 'slackname':
+         case 'slackName':
             e.target.value = e.target.value.trim();
             break;
          default:
@@ -127,9 +127,9 @@ const Register = ({ setAlert, register }) => {
                      label={{ className: "picto slack-picto", position: "before" }}
                      className='input-form'
                      type='text'
-                     name='slackname'
+                     name='slackName'
                      placeholder='Ton pseudo sur notre slack ?'
-                     value={slackname}
+                     value={slackName}
                      onChange={(e) => onChange(e)}
                   />
                   <Input
