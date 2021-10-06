@@ -52,7 +52,7 @@ const PostArticle = ({
          }
 
          {type === 'any' && !chosenType ||
-            < ContentDescription type={type} chosenType={chosenType} />
+            <ContentDescription type={type} chosenType={chosenType} />
          }
          {/*
          <section className="container-topic topic-info">
