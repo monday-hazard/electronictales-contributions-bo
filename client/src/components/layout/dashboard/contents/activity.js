@@ -24,9 +24,6 @@ const DashboardActivity = ({
         getTopicsByUser(userEmail);
     }, [getTopicsByUser]);
 
-    console.log('articles returned');
-    console.log(articlesByUser); // TODO
-
     return (
         <>
             <div className="bottom-content">
