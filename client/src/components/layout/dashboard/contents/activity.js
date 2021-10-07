@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const DashboardActivity = ({
     getArticlesByUser,
-    article: { articles },
+    article: { articlesByUser },
     userId,
 }) => {
     useEffect(() => {
@@ -12,10 +12,12 @@ const DashboardActivity = ({
     }, [getArticlesByUser]);
 
     console.log('articles returned');
-    console.log(articles); // TODO
+    console.log(articlesByUser); // TODO
     return (
         <>
-            <div className="bottom-content">Koukou World</div>
+            <div className="bottom-content">
+
+            </div>
         </>
     );
 };

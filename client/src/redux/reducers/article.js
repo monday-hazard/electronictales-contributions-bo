@@ -1,7 +1,8 @@
-import { GET_ARTICLES, ARTICLES_ERROR } from '../actions/types';
+import { GET_ARTICLES_BY_USER, ARTICLES_ERROR } from '../actions/types';
 
 const initialState = {
     articles: [],
+    articlesByUser: [],
     article: null,
     loading: true,
     error: {},
@@ -12,10 +13,10 @@ export default function (state = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
-        case GET_ARTICLES:
+        case GET_ARTICLES_BY_USER:
             return {
                 ...state,
-                articles: payload,
+                articlesByUser: payload,
                 loading: false,
             };
         case ARTICLES_ERROR:
@@ -24,6 +25,8 @@ export default function (state = initialState, action) {
                 error: payload,
                 loading: false,
             };
+        // TODO (Monday-Hazard) POST_ARTICLE
+        // TODO (Monday-Hazard) ARTICLE_ERROR
         default:
             return state;
     }

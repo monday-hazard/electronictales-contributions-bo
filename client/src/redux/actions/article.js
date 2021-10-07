@@ -3,8 +3,12 @@ import axios from 'axios';
 import { setAlert } from './alert';
 import { openModal } from './modal';
 
-import { GET_ARTICLES, ARTICLES_ERROR } from './types';
-import { POST_ARTICLE, ARTICLE_ERROR } from './types';
+import {
+    ARTICLE_ERROR,
+    ARTICLES_ERROR,
+    GET_ARTICLES_BY_USER,
+    POST_ARTICLE,
+} from './types';
 
 // Get Articles of one User
 export const getArticlesByUser = (userId) => async (dispatch) => {
@@ -12,7 +16,7 @@ export const getArticlesByUser = (userId) => async (dispatch) => {
         const res = await axios.get(`api/articles/user/${userId}`);
 
         dispatch({
-            type: GET_ARTICLES,
+            type: GET_ARTICLES_BY_USER,
             payload: res.data,
         });
     } catch (error) {
