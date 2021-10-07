@@ -12,11 +12,13 @@ import ghostAvatar from '../../../resources/img/avatarghost.png';
 
 import './Dashboard.css';
 
-import DashboardHome from './contents/home';
+import DashboardHome from './contents/Home';
+import DashboardActivity from './contents/Activity';
 
 const Dashboard = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
-   const userEmail = user ? user.email : "(｡◕‿◕｡)"
+   const userEmail = user ? user.email : "(｡◕‿◕｡)";
+   const userId = user ? user._id : undefined;
 
    const [activeTab, setActiveTab] = useState('dashboard');
    const [tabTitle, setTabTitle] = useState('dashboard');
@@ -60,6 +62,7 @@ const Dashboard = ({ auth: { isAuthenticated, loading, user }, logout }) => {
                </ul>
             </div>
             {activeTab === "dashboard" && <DashboardHome userEmail={userEmail}/>}
+            {activeTab === "activity" && <DashboardActivity user={{ userEmail, userId }}/>}
          </div>
       </div>
    );

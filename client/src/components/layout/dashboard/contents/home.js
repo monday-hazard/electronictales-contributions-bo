@@ -30,7 +30,7 @@ const DashboardHome = ({userEmail, getTopicsByUser, topic: { topicsByUser }}) =>
 
     useEffect(() => {
         getTopicsByUser(userEmail);
-    }, [getTopicsByUser]);
+    }, [getTopicsByUser, userEmail]);
 
     const introTLTA =
         "C'est un contenu pour le Tinder du dev : court, explicatif, imagé mais surtout court.";
