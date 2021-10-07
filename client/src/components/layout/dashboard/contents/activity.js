@@ -18,11 +18,11 @@ const DashboardActivity = ({
 }) => {
     useEffect(() => {
         getArticlesByUser(userId);
-    }, [getArticlesByUser]);
+    }, [getArticlesByUser, userId]);
 
     useEffect(() => {
         getTopicsByUser(userEmail);
-    }, [getTopicsByUser]);
+    }, [getTopicsByUser, userEmail]);
 
     return (
         <>
