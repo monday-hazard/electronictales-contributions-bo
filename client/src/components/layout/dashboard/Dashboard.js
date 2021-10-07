@@ -12,8 +12,8 @@ import ghostAvatar from '../../../resources/img/avatarghost.png';
 
 import './Dashboard.css';
 
-import DashboardHome from './contents/home';
-import DashboardActivity from './contents/activity';
+import DashboardHome from './contents/Home';
+import DashboardActivity from './contents/Activity';
 
 const Dashboard = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
