@@ -5,6 +5,7 @@ import { getArticlesByUser } from '../../../../redux/actions/article';
 import { getTopicsByUser } from '../../../../redux/actions/topic';
 import { connect } from 'react-redux';
 
+import ArticleCard from '../../../elements/list/ArticleCard';
 import TitleSection from '../../../elements/page-section/title-section/TitleSection';
 import TopicCard from '../../../elements/topics/TopicCard';
 
@@ -30,6 +31,13 @@ const DashboardActivity = ({
         <>
             <div className="bottom-content">
                 <TitleSection inDashboard title="Articles rédigés" />
+                {articlesByUser.length > 0 ? (
+                    articlesByUser.map((article) => (
+                        <ArticleCard key={article._id} article={article} />
+                    ))
+                ) : (
+                    <span>Tu n'as rédigé aucun article pour le moment</span>
+                )}
                 <TitleSection inDashboard title="Sujets proposés" />
                 {topicsByUser.length > 0 ? (
                     topicsByUser.map((topic) => (
@@ -46,7 +54,7 @@ const DashboardActivity = ({
 DashboardActivity.propTypes = {
     getArticlesByUser: PropTypes.func.isRequired,
     getTopicsByUser: PropTypes.func.isRequired,
-    // TODO finish
+    // TODO add the other properties ?
 };
 
 const mapStateToProps = (state) => ({

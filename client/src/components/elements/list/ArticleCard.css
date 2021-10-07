@@ -1,0 +1,67 @@
+.article-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1.5rem;
+    background-color: var(--transparent-background);
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.02);
+}
+
+.article-card .left-article-card {
+    display: flex;
+}
+
+.article-card .fire-picto {
+    height: 4rem;
+    margin-right: 2rem;
+}
+
+.article-card .type-label {
+    background: linear-gradient(
+        to left,
+        rgba(236, 86, 124, 0.4),
+        rgba(255, 64, 147, 0.5)
+    );
+    border: 1px solid var(--pinkflashy);
+    margin-top: 5px;
+    display: inline-block;
+    width: 7rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+    font-style: italic;
+    padding: 0.2rem 0rem;
+    border-radius: 5px;
+}
+
+.article-card .pen-picto-container {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+
+.article-card .pen-picto-container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.article-card .pen-picto-container:hover {
+    background-color: var(--pinkflashy);
+    transform: translateY(-3px);
+}
+
+/* .article-card .pen-picto {
+    padding: 1.1rem;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    transition: background-color .3s ease;
+ } */
