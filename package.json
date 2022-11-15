@@ -42,7 +42,7 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "concurrently": "^6.2.1",
+    "concurrently": "^6.5.1",
     "handlebars-helper-css": "^0.1.0",
     "nodemon": "^2.0.12"
   }

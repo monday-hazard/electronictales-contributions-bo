@@ -7,70 +7,66 @@ const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
 
-const { confirmMailNewUser } = require('../../mailer/sendMailer');
+//const { confirmMailNewUser } = require('../../mailer/sendMailer');
 
 // @route   POST api/users
 // @desc    Register user
 // @access  Public
 router.post(
-   '/',
-   [
-      check('userName', 'User name is required').not().isEmpty(),
-      check('email', 'Please include a valid email').isEmail(),
-      check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 })
-   ],
-   async (req, res) => {
-      const errors = validationResult(req);
+  '/',
+  [
+    check('userName', 'User name is required').not().isEmpty(),
+    check('email', 'Please include a valid email').isEmail(),
+    check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 }),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
 
-      if (!errors.isEmpty()) {
-         return res
-            .status(400)
-            .json({ errors: errors.array() });
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { userName, slackName, email, password } = req.body;
+
+    try {
+      let user = await User.findOne({ email });
+      if (user) {
+        return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
       }
 
-      const { userName, slackName, email, password } = req.body;
+      user = new User({
+        userName,
+        slackName,
+        email,
+        password,
+      });
 
-      try {
-         let user = await User.findOne({ email });
-         if (user) {
-            return res
-               .status(400)
-               .json({ errors: [{ msg: 'User already exists' }] });
-         }
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(password, salt);
+      await user.save();
+      const payload = {
+        user: {
+          id: user.id,
+        },
+      };
 
-         user = new User({
-            userName,
-            slackName,
-            email,
-            password
-         });
+      jwt.sign(
+        payload,
+        config.get('jwtSecret'),
+        // TODO: make expiration time to 3600
+        { expiresIn: 360000 },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
 
-         const salt = await bcrypt.genSalt(10);
-         user.password = await bcrypt.hash(password, salt);
-         await user.save();
-         const payload = {
-            user: {
-               id: user.id
-            }
-         }
-
-         jwt.sign(
-            payload,
-            config.get('jwtSecret'),
-            // TODO: make expiration time to 3600
-            { expiresIn: 360000 },
-            (err, token) => {
-               if (err) throw err;
-               res.json({ token });
-            }
-         );
-
-         confirmMailNewUser(email, userName, slackName);
-
-      } catch (err) {
-         console.error(err.message);
-         res.status(500).send('Server error');
-      }
-   });
+      //confirmMailNewUser(email, userName, slackName);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  }
+);
 
 module.exports = router;
